@@ -1,13 +1,16 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 import {Menu} from 'semantic-ui-react'
 
-export default class SideNavigation extends Component {
-    state = {};
-    handleItemClick = name => this.setState({activeItem: name});
+function SideNavigation(props) {
 
-    getMenu() {
-        const {activeItem} = this.state;
+    const [activeItem, setActiveItem] = useState('home');
 
+    const handleItemClick = (e, {name}) => {
+        setActiveItem(name);
+        console.log(name)
+    };
+
+    const getMenu = () => {
         return (
             <Menu fixed='left' vertical inverted stackable style={{marginTop: '52px'}}>
                 <Menu.Item>
@@ -17,7 +20,7 @@ export default class SideNavigation extends Component {
                         <Menu.Item
                             name='home'
                             active={activeItem === 'home'}
-                            onClick={this.handleItemClick}
+                            onClick={handleItemClick}
                         />
                     </Menu.Menu>
                 </Menu.Item>
@@ -29,17 +32,17 @@ export default class SideNavigation extends Component {
                         <Menu.Item
                             name='quotations'
                             active={activeItem === 'quotations'}
-                            onClick={this.handleItemClick}
+                            onClick={handleItemClick}
                         />
                         <Menu.Item
                             name='invoices'
                             active={activeItem === 'invoices'}
-                            onClick={this.handleItemClick}
+                            onClick={handleItemClick}
                         />
                         <Menu.Item
                             name='releases'
                             active={activeItem === 'releases'}
-                            onClick={this.handleItemClick}
+                            onClick={handleItemClick}
                         />
                     </Menu.Menu>
                 </Menu.Item>
@@ -51,35 +54,34 @@ export default class SideNavigation extends Component {
                         <Menu.Item
                             name='clients'
                             active={activeItem === 'clients'}
-                            onClick={this.handleItemClick}
+                            onClick={handleItemClick}
                         />
                         <Menu.Item
                             name='projects'
                             active={activeItem === 'projects'}
-                            onClick={this.handleItemClick}
+                            onClick={handleItemClick}
                         />
                         <Menu.Item
                             name='projectStatus'
                             active={activeItem === 'projectStatus'}
-                            onClick={this.handleItemClick}
+                            onClick={handleItemClick}
                         />
                     </Menu.Menu>
                 </Menu.Item>
             </Menu>
         )
-    }
+    };
 
-
-    render() {
-        return (
-            <div className='parent'>
-                <div className='side'>
-                    {this.getMenu()}
-                </div>
-                <div className='content'>
-                    {this.props.children}
-                </div>
+    return (
+        <div className='parent'>
+            <div className='side'>
+                {getMenu()}
             </div>
-        )
-    }
+            <div className='content'>
+                {props.children}
+            </div>
+        </div>
+    )
 }
+
+export default SideNavigation
