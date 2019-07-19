@@ -7,7 +7,7 @@ import {
     Image, Input, Segment
 } from 'semantic-ui-react';
 
-import './login.css'
+import './Login.css'
 import background from '../../assets/images/background_login.jpg'
 
 const Login = () => (
