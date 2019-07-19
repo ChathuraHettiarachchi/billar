@@ -1,9 +1,14 @@
 import React from 'react';
-import Login from './components/login/login'
+import Routes from './Routes';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 function App() {
     return (
-        <Login/>
+        <>
+            <Router>
+                <Routes/>
+            </Router>
+        </>
     );
 }
 
