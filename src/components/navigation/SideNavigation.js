@@ -5,7 +5,7 @@ export default class SideNavigation extends Component {
     state = {};
     handleItemClick = name => this.setState({activeItem: name});
 
-    render() {
+    getMenu() {
         const {activeItem} = this.state;
 
         return (
@@ -66,6 +66,20 @@ export default class SideNavigation extends Component {
                     </Menu.Menu>
                 </Menu.Item>
             </Menu>
+        )
+    }
+
+
+    render() {
+        return (
+            <div className='parent'>
+                <div className='side'>
+                    {this.getMenu()}
+                </div>
+                <div className='content'>
+                    {this.props.children}
+                </div>
+            </div>
         )
     }
 }
