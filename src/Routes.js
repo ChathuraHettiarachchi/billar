@@ -12,6 +12,10 @@ import QuotIndex from './components/pages/quotation/QuotIndex'
 import QuotCreateStepOne from './components/pages/quotation/QuotCreateStepOne'
 import QuotCreateStepTwo from './components/pages/quotation/QuotCreateStepTwo'
 
+import Invoice from './components/pages/invoice/InvoiceIndex'
+
+import Releases from './components/pages/releases/ReleasesIndex'
+
 const Routes = () => {
     return (
         <Layout>
@@ -23,6 +27,10 @@ const Routes = () => {
             <Route exact path="/quotation/index" component={QuotIndex}/>
             <Route exact path="/quotation/step1" component={QuotCreateStepOne}/>
             <Route exact path="/quotation/step2" component={QuotCreateStepTwo}/>
+
+            <Route exact path="/invoice/index" component={Invoice}/>
+
+            <Route exact path="/releases/index" component={Releases}/>
         </Layout>
     );
 };

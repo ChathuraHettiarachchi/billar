@@ -36,12 +36,12 @@ function SideNavigation(props) {
                             onClick={handleItemClick}
                         />
                         <Menu.Item
-                            name='invoices'
+                            name='invoices' as={Link} to={'/invoice/index'}
                             active={activeItem === 'invoices'}
                             onClick={handleItemClick}
                         />
                         <Menu.Item
-                            name='releases'
+                            name='releases' as={Link} to={'/releases/index'}
                             active={activeItem === 'releases'}
                             onClick={handleItemClick}
                         />
