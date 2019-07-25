@@ -30,7 +30,7 @@ function SideNavigation(props) {
                     <Menu.Header>Sales</Menu.Header>
 
                     <Menu.Menu>
-                        <Menu.Item
+                        <Menu.Item  as={Link} to={'/quotation/index'}
                             name='quotations'
                             active={activeItem === 'quotations'}
                             onClick={handleItemClick}
@@ -55,11 +55,6 @@ function SideNavigation(props) {
                         <Menu.Item as={Link} to={'/client/index'}
                             name='clients'
                             active={activeItem === 'clients'}
-                            onClick={handleItemClick}
-                        />
-                        <Menu.Item
-                            name='projects'
-                            active={activeItem === 'projects'}
                             onClick={handleItemClick}
                         />
                         <Menu.Item
