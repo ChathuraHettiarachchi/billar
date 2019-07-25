@@ -2,11 +2,19 @@
     min-height: 30px;
     height: 30px;
     background-color: #1579D0;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin: 40px 0 40px 0;
 }
 
 .quotation_detail div {
     padding: 0 20px 0 20px !important;
     color: white;
+}
+
+.ui.grid {
+    margin: 0rem !important;
+}
+
+.project_title {
+    color: #1579D0 !important;
+    font-size: 20px;
 }

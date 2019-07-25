@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="150b1cc0-d2d0-4322-8fd0-3d89c7100349" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/quotation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/quotation/AddressSection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepOne.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/quotation/Quotation.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotationInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/fidenz.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/fidenz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navigation/SideNavigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/SideNavigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/client/ClientCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/client/ClientCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/client/ClientIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/client/ClientIndex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/AddressSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/AddressSection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/Quotation.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/Quotation.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,18 +18,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/navigation/SideNavigation.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1218">
-              <caret line="58" column="26" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/client/ClientIndex.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -75,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+            <state relative-caret-position="462">
+              <caret line="40" column="76" selection-start-line="40" selection-start-column="76" selection-end-line="40" selection-end-column="76" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -88,52 +67,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/AddressSection.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="39" selection-end-line="32" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotationInfo.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/Quotation.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Routes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="378">
+              <caret line="18" column="15" lean-forward="true" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -150,8 +87,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sx</find>
       <find>className='quotation_detail'</find>
+      <find>sx</find>
+      <find>padding: 0 20px 0 20px !important;</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -184,11 +122,11 @@
         <option value="$PROJECT_DIR$/src/components/pages/client/ClientCreate.js" />
         <option value="$PROJECT_DIR$/src/components/pages/client/ClientIndex.js" />
         <option value="$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/quotation/AddressSection.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/quotation/Quotation.css" />
-        <option value="$PROJECT_DIR$/src/components/pages/quotation/QuotationInfo.js" />
         <option value="$PROJECT_DIR$/src/Routes.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/quotation/QuotationInfo.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/quotation/AddressSection.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/quotation/Quotation.css" />
+        <option value="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" />
       </list>
     </option>
   </component>
@@ -305,6 +243,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -362,12 +301,12 @@
       <workItem from="1563347454344" duration="14797000" />
       <workItem from="1563415124108" duration="3307000" />
       <workItem from="1563506074788" duration="12094000" />
-      <workItem from="1564023565998" duration="15078000" />
+      <workItem from="1564023565998" duration="17977000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45276000" />
+    <option name="totallyTimeSpent" value="48175000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -378,6 +317,7 @@
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32891566" />
@@ -555,10 +495,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/client/ClientCreate.js">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="35" column="86" selection-start-line="35" selection-start-column="86" selection-end-line="35" selection-end-column="86" />
+        <state relative-caret-position="333">
+          <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/AddressSection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -575,16 +535,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepOne.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="521">
@@ -595,46 +545,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotationInfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+        <state>
+          <caret column="38" lean-forward="true" selection-start-column="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/semantic-ui-react/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/client/ClientCreate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="39" column="34" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="34" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/AddressSection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="39" selection-end-line="32" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/Quotation.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        <state relative-caret-position="378">
+          <caret line="18" column="15" lean-forward="true" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotationInfo.js">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+        <state relative-caret-position="462">
+          <caret line="40" column="76" selection-start-line="40" selection-start-column="76" selection-end-line="40" selection-end-column="76" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
