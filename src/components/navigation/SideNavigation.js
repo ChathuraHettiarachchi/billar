@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Menu} from 'semantic-ui-react'
+import {Link} from 'react-router-dom';
 
 function SideNavigation(props) {
 
@@ -17,7 +18,7 @@ function SideNavigation(props) {
                     <Menu.Header>Dashboard</Menu.Header>
 
                     <Menu.Menu>
-                        <Menu.Item
+                        <Menu.Item as={Link} to={'/'}
                             name='home'
                             active={activeItem === 'home'}
                             onClick={handleItemClick}
@@ -51,7 +52,7 @@ function SideNavigation(props) {
                     <Menu.Header>Other</Menu.Header>
 
                     <Menu.Menu>
-                        <Menu.Item
+                        <Menu.Item as={Link} to={'/client/index'}
                             name='clients'
                             active={activeItem === 'clients'}
                             onClick={handleItemClick}
