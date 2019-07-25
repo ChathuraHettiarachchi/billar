@@ -1,0 +1,33 @@
+.fidenz_color {
+    background-color: #1579D0;
+}
+
+.ui.grid {
+    margin: 0rem !important;
+}
+
+
+.quotation_detail {
+    min-height: 30px;
+    height: 30px;
+    margin: 40px 0 40px 0;
+}
+
+.quotation_detail div {
+    padding: 0 20px 0 20px !important;
+    color: white;
+}
+
+.project_title {
+    font-size: 1.3em;
+    height: 50px;
+    min-height: 50px;
+}
+
+#finance .ui.table {
+    margin: 0 !important;
+}
+
+#create_quot_button {
+    padding: 0px !important;
+}

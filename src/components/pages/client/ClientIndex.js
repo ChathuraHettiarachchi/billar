@@ -14,10 +14,10 @@ function ClientIndex() {
           <Segment>
               <Grid style={{minHeight:'0'}}>
                   <Grid.Row>
-                      <Grid.Column width={2} floated='left' verticalAlign='middle'>
+                      <Grid.Column width={4} floated='left' verticalAlign='middle'>
                           <Header>Clients</Header>
                       </Grid.Column>
-                      <Grid.Column width={2} floated='right'>
+                      <Grid.Column width={4} floated='right'>
                           <Button primary floated='right' as={Link} to={'/client/new'}>Add New Client</Button>
                       </Grid.Column>
                   </Grid.Row>

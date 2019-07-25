@@ -32,13 +32,16 @@ function ClientCreate() {
                     </Form.Group>
 
                     <Form.Group widths='equal'>
+                        <Form.Input label='Address Line 1' placeholder='Address Line 1'/>
+                        <Form.Input label='Address Line 2' placeholder='Address Line 2'/>
                         <Form.Select fluid label='Country' placeholder='Country' options={COUNTRY_OPTIONS}/>
-                        <Form.Input type="file" fluid label='Client logo' placeholder='Select your logo file'/>
                     </Form.Group>
 
-                    <Form.TextArea label='Address' placeholder='Client address'/>
                     <Form.TextArea label='Description' placeholder='Tell us more about client...'/>
-                    <Form.Button primary right>Create New Client</Form.Button>
+
+                    <Form.Input type="file" fluid label='Client logo' placeholder='Select your logo file'/>
+
+                    <Button primary>Create New Client</Button>
                 </Form>
             </Segment>
         </div>
