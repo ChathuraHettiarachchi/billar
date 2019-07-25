@@ -7,7 +7,7 @@ import './Quotation.css'
 
 function QuotationInfo() {
     return (
-        <Grid className='quotation_detail'>
+        <Grid className='quotation_detail fidenz_color'>
             <Grid.Column width={4} textAlign='left' verticalAlign='middle'>
                 <p>Quotation No:</p>
             </Grid.Column>

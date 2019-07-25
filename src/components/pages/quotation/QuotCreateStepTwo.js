@@ -11,10 +11,13 @@ import {
 
 import AddressSection from './AddressSection'
 import QuotationInfo from './QuotationInfo'
+import Financials from './Financials'
+import PaymentPlan from './PaymentPlan'
+import Terms from './Terms'
 
 import fidenz from '../../../assets/images/fidenz.png'
 import quotation from '../../../assets/images/quotation.png'
-import COUNTRY_OPTIONS from "../../../assets/data/countriesData";
+
 
 function QuotCreateStepOne() {
     return (
@@ -33,13 +36,26 @@ function QuotCreateStepOne() {
                     <AddressSection/>
                     <QuotationInfo/>
                     <br/>
-                    <Form id='quot_title'>
-                        <Form.TextArea fluid placeholder='Project title' maxLength='100' style={{color: "#3371B1", fontSize:"2em", margin:'20px 0px 20px 0px'}}/>
+                    <Form>
+                        <Form.TextArea rows={2} placeholder='Project title' maxLength='100' style={{color: "#3371B1", fontSize:"2em", margin:'20px 0px 20px 0px'}}/>
                         <hr/>
                         <Header as='h1' style={{color: "#1579D0"}}>Scope of Work</Header>
-                        <Form.TextArea fluid placeholder='Scope of Work' row={3} style={{marginBottom:'30px'}}/>
-                        <Header as='h1' style={{color: "#1579D0"}}>Financial</Header>
+                        <Form.TextArea placeholder='Scope of Work' rows={4} style={{marginBottom:'20px'}}/>
                     </Form>
+
+                    <br/>
+                    <Financials/>
+                    <br/>
+                    <br/>
+                    <PaymentPlan/>
+                    <br/>
+                    <br/>
+                    <Terms/>
+                    <Grid style={{minHeight:'40px', padding: '0rem !important'}}>
+                        <Grid.Column id='create_quot_button' width={16} floated='right'>
+                            <Button primary floated='right'> Create Quotation</Button>
+                        </Grid.Column>
+                    </Grid>
                 </div>
             </Segment>
         </div>
