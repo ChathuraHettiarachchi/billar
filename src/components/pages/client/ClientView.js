@@ -16,6 +16,17 @@ function ClientCreate(props) {
 
     };
 
+
+
+    useEffect(() => {
+        const fetchData = () => {
+            const url = props.location.search;
+            console.log('url is: '+url);
+        };
+
+        fetchData();
+    }, []);
+
     return (
         <div>
             <Segment>

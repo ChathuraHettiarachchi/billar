@@ -37,10 +37,10 @@ function ClientIndex() {
                 <Table.Cell>{user.contact_number}</Table.Cell>
                 <Table.Cell>{user.country}</Table.Cell>
                 <Table.Cell>
-                    <Button size="mini" icon color="green">
+                    <Button size="mini" icon color="green"  as={Link} to={'/client/'+user.client_id+'/view'}>
                         <Icon name="desktop"/>
                     </Button>
-                    <Button size="mini" icon color="blue">
+                    <Button size="mini" icon color="blue" as={Link} to={'/client/'+user.client_id+'/edit'}>
                         <Icon name="pencil"/>
                     </Button>
                     <Button color="red" size="mini" icon>
@@ -96,7 +96,7 @@ function ClientIndex() {
                             <Header>Clients</Header>
                         </Grid.Column>
                         <Grid.Column width={4} floated='right'>
-                            <Button primary floated='right' as={Link} to={'/client/new'}>Add New Client</Button>
+                            <Button primary floated='right' as={Link} to={'/client/create/new'}>Add New Client</Button>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
