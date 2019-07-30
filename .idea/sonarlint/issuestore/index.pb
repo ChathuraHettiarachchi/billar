@@ -62,3 +62,11 @@ W
 .src/components/pages/releases/ReleasesIndex.js,7/b/7ba118fac1b8b015dce71051f88e8520a58d31c9
 \
 ,src/components/pages/invoice/InvoiceIndex.js,e/a/ea48b4f901f49aeb398965fe313821e90145441c
+Y
+)src/components/pages/client/ClientView.js,7/f/7fb9d0e357d3235a7fdb0def5cf3d282d92f71de
+Y
+)src/components/pages/client/ClientEdit.js,1/f/1f0e95d61ddba9ad72daad5b3a785b8b0fa18a3a
+Z
+*src/components/pages/status/StatusIndex.js,2/c/2cc41641918d7206446e659ef705fd2ad5f0cc6c
+Y
+)src/components/pages/status/StatusForm.js,2/a/2a4be9d11bd930ab69408a47b7cc347eef6852c0

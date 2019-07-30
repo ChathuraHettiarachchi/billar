@@ -6,24 +6,23 @@ import {
     Header,
     Segment,
     Table,
-    Icon,
-    Confirm
+    Icon
 } from "semantic-ui-react";
-import axios from 'axios';
 import Loader from "react-loader-spinner";
+import axios from "axios";
 
-function ClientIndex() {
+function StatusIndex() {
 
-    const [clients, setClients] = useState([]);
+    const [statusList, setStatusList] = useState([]);
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch('http://localhost:4000/clients/');
+            const res = await fetch('http://localhost:4000/status/');
             const json = await res.json();
 
             setLoading(false);
-            setClients(json.content.clients);
+            setStatusList(json.content.status_list);
         };
 
 
@@ -31,9 +30,9 @@ function ClientIndex() {
     }, []);
 
     const handleConfirmation = e => {
-        const r = window.confirm("Do you really want to remove this user?");
+        const r = window.confirm("Do you really want to remove this project status?");
         if (r == true) {
-            axios.delete('http://localhost:4000/clients/remove/' + e.target.value)
+            axios.delete('http://localhost:4000/status/remove/' + e.target.value)
                 .then(res => {
                     console.log(res);
                     window.location.reload()
@@ -45,37 +44,22 @@ function ClientIndex() {
         }
     };
 
-    const handleCancel = () => {
-
-    }
-
-    const getTableData = clients => {
-        return clients.map(user =>
-            <Table.Row key={user.client_id}>
-                <Table.Cell>{user.client_id}</Table.Cell>
-                <Table.Cell>{user.code}</Table.Cell>
-                <Table.Cell>{user.name}</Table.Cell>
-                <Table.Cell>{user.contact_number}</Table.Cell>
-                <Table.Cell>{user.country}</Table.Cell>
+    const getTableData = statusList => {
+        return statusList.map(status =>
+            <Table.Row key={status.status_id}>
+                <Table.Cell>{status.status_id}</Table.Cell>
+                <Table.Cell>{status.title}</Table.Cell>
+                <Table.Cell style={{backgroundColor:status.color}}>{status.color}</Table.Cell>
                 <Table.Cell>
-                    <Button size="mini" icon color="green" as={Link} to={'/client/' + user.client_id + '/view'}>
+                    <Button size="mini" icon color="green" as={Link} to={'/status/' + status.status_id + '/view'}>
                         <Icon name="desktop"/>
                     </Button>
-                    <Button size="mini" icon color="blue" as={Link} to={'/client/' + user.client_id + '/edit'}>
+                    <Button size="mini" icon color="blue" as={Link} to={'/status/' + status.status_id + '/edit'}>
                         <Icon name="pencil"/>
                     </Button>
-                    <Button color="red" size="mini" icon onClick={handleConfirmation} value={user.client_id} key={user.client_id}>
+                    <Button color="red" size="mini" icon onClick={handleConfirmation} value={status.status_id} key={status.status_id}>
                         <Icon name="delete"/>
                     </Button>
-                    {/*<Confirm
-                        open={isConfirmOpen}
-                        content='Are you sure, you need to delete this client?'
-                        onCancel={handleCancel}
-                        cancelButton='Never mind'
-                        confirmButton="Let's do it"
-                        onConfirm={handleConfirm}
-                        style={{position:''}}
-                    />*/}
                 </Table.Cell>
             </Table.Row>
         );
@@ -102,16 +86,14 @@ function ClientIndex() {
                 <Table.Header fullWidth>
                     <Table.Row>
                         <Table.HeaderCell>Id</Table.HeaderCell>
-                        <Table.HeaderCell>Code</Table.HeaderCell>
-                        <Table.HeaderCell>Client Name</Table.HeaderCell>
-                        <Table.HeaderCell>Contact Number</Table.HeaderCell>
-                        <Table.HeaderCell>Country</Table.HeaderCell>
+                        <Table.HeaderCell>Title</Table.HeaderCell>
+                        <Table.HeaderCell>Color</Table.HeaderCell>
                         <Table.HeaderCell width={2}>Actions</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
                 <Table.Body>
-                    {getTableData(clients)}
+                    {getTableData(statusList)}
                 </Table.Body>
             </Table>
 
@@ -123,10 +105,11 @@ function ClientIndex() {
                 <Grid style={{minHeight: '0'}}>
                     <Grid.Row>
                         <Grid.Column width={4} floated='left' verticalAlign='middle'>
-                            <Header>Clients</Header>
+                            <Header>Project Status List</Header>
                         </Grid.Column>
                         <Grid.Column width={4} floated='right'>
-                            <Button primary floated='right' as={Link} to={'/client/create/new'}>Add New Client</Button>
+                            <Button primary floated='right' as={Link} to={'/status/create/new'}>Add Project
+                                Status</Button>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
@@ -139,4 +122,4 @@ function ClientIndex() {
 }
 
 
-export default ClientIndex
+export default StatusIndex

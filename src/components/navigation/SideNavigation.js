@@ -57,7 +57,7 @@ function SideNavigation(props) {
                             active={activeItem === 'clients'}
                             onClick={handleItemClick}
                         />
-                        <Menu.Item
+                        <Menu.Item as={Link} to={'/status/index'}
                             name='projectStatus'
                             active={activeItem === 'projectStatus'}
                             onClick={handleItemClick}
