@@ -10,6 +10,9 @@ import ClientCreate from './components/pages/client/ClientCreate'
 import ClientEdit from './components/pages/client/ClientEdit'
 import ClientView from './components/pages/client/ClientView'
 
+import StatusIndex from './components/pages/status/StatusIndex'
+import StatusForm from './components/pages/status/StatusForm'
+
 import QuotIndex from './components/pages/quotation/QuotIndex'
 import QuotCreateStepOne from './components/pages/quotation/QuotCreateStepOne'
 import QuotCreateStepTwo from './components/pages/quotation/QuotCreateStepTwo'
@@ -35,6 +38,11 @@ const Routes = () => {
             <Route exact path="/invoice/index" component={Invoice}/>
 
             <Route exact path="/releases/index" component={Releases}/>
+
+            <Route exact path="/status/index" component={StatusIndex}/>
+            <Route exact path="/status/create/new" component={StatusForm}/>
+            <Route exact path="/status/:id/view" component={StatusForm}/>
+            <Route exact path="/status/:id/edit" component={StatusForm}/>
         </Layout>
     );
 };

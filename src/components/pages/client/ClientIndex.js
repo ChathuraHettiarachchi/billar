@@ -6,8 +6,10 @@ import {
     Header,
     Segment,
     Table,
-    Icon
+    Icon,
+    Confirm
 } from "semantic-ui-react";
+import axios from 'axios';
 import Loader from "react-loader-spinner";
 
 function ClientIndex() {
@@ -28,6 +30,25 @@ function ClientIndex() {
         fetchData();
     }, []);
 
+    const handleConfirmation = e => {
+        const r = window.confirm("Do you really want to remove this user?");
+        if (r == true) {
+            axios.delete('http://localhost:4000/clients/remove/' + e.target.value)
+                .then(res => {
+                    console.log(res);
+                    window.location.reload()
+                })
+                .catch(error => {
+                    console.log(error);
+                    setLoading(false);
+                });
+        }
+    };
+
+    const handleCancel = () => {
+
+    }
+
     const getTableData = clients => {
         return clients.map(user =>
             <Table.Row key={user.client_id}>
@@ -37,15 +58,24 @@ function ClientIndex() {
                 <Table.Cell>{user.contact_number}</Table.Cell>
                 <Table.Cell>{user.country}</Table.Cell>
                 <Table.Cell>
-                    <Button size="mini" icon color="green"  as={Link} to={'/client/'+user.client_id+'/view'}>
+                    <Button size="mini" icon color="green" as={Link} to={'/client/' + user.client_id + '/view'}>
                         <Icon name="desktop"/>
                     </Button>
-                    <Button size="mini" icon color="blue" as={Link} to={'/client/'+user.client_id+'/edit'}>
+                    <Button size="mini" icon color="blue" as={Link} to={'/client/' + user.client_id + '/edit'}>
                         <Icon name="pencil"/>
                     </Button>
-                    <Button color="red" size="mini" icon>
+                    <Button color="red" size="mini" icon onClick={handleConfirmation} value={user.client_id} key={user.client_id}>
                         <Icon name="delete"/>
                     </Button>
+                    {/*<Confirm
+                        open={isConfirmOpen}
+                        content='Are you sure, you need to delete this client?'
+                        onCancel={handleCancel}
+                        cancelButton='Never mind'
+                        confirmButton="Let's do it"
+                        onConfirm={handleConfirm}
+                        style={{position:''}}
+                    />*/}
                 </Table.Cell>
             </Table.Row>
         );

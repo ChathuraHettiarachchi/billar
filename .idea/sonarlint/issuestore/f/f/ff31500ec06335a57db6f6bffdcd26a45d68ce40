@@ -1,2 +1,4 @@
 
-Ljavascript:S1128"$Remove this unused import of 'Menu'.(„÷¹†ùÿÿÿÿ8¶ÀîºÂ-
+Mjavascript:S1128"%Remove this unused import of 'axios'.(ÒÁæÅúÿÿÿÿ8½îÿ‰Ä-
+jjavascript:UnusedVariable,">Remove the declaration of the unused 'handleConfirm' variable.(ªôâø8×ÉŠÄ-
+cjavascript:S1854,"@Remove this useless assignment to local variable "handleConfirm"(ªôâø8×ÉŠÄ-
