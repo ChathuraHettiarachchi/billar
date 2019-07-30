@@ -5,7 +5,7 @@ import Loader from "react-loader-spinner";
 import axios from 'axios';
 import COUNTRY_OPTIONS from '../../../assets/data/countriesData'
 
-function ClientCreate(props) {
+function ClientEdit(props) {
 
     const [isLoading, setLoading] = useState(true);
     const [pageTitle, setTitle] = useState('Loading...');
@@ -20,10 +20,6 @@ function ClientCreate(props) {
         description: '',
         country: ''
     });
-
-    const onFileSelect = () => {
-
-    };
 
     useEffect(() => {
         const fetchData = () => {
@@ -56,6 +52,10 @@ function ClientCreate(props) {
 
         fetchData();
     }, []);
+
+    const onFileSelect = () => {
+
+    };
 
     const updateFieldData = e => {
         const {name, value} = e.target;
@@ -144,4 +144,4 @@ function ClientCreate(props) {
 }
 
 
-export default ClientCreate
+export default ClientEdit
