@@ -12,7 +12,7 @@ import {
 import axios from 'axios';
 import Loader from "react-loader-spinner";
 
-function ClientIndex() {
+const ClientIndex = () => {
 
     const [clients, setClients] = useState([]);
     const [isLoading, setLoading] = useState(true);

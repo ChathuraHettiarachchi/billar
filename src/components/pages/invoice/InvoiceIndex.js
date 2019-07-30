@@ -30,7 +30,6 @@ function InvoiceIndex() {
                           <Table.HeaderCell>Invoice Date</Table.HeaderCell>
                           <Table.HeaderCell>Amount</Table.HeaderCell>
                           <Table.HeaderCell>Sent to Client</Table.HeaderCell>
-                          <Table.HeaderCell width={2}>Actions</Table.HeaderCell>
                       </Table.Row>
                   </Table.Header>
 
