@@ -33,12 +33,12 @@ function StatusIndex() {
             <Table.Row key={status.status_id}>
                 <Table.Cell>{status.status_id}</Table.Cell>
                 <Table.Cell>{status.title}</Table.Cell>
-                <Table.Cell color={status.color}>{status.color}</Table.Cell>
+                <Table.Cell style={{backgroundColor:status.color}}>{status.color}</Table.Cell>
                 <Table.Cell>
-                    <Button size="mini" icon color="green" as={Link} to={'/status/' + status.client_id + '/view'}>
+                    <Button size="mini" icon color="green" as={Link} to={'/status/' + status.status_id + '/view'}>
                         <Icon name="desktop"/>
                     </Button>
-                    <Button size="mini" icon color="blue" as={Link} to={'/status/' + status.client_id + '/edit'}>
+                    <Button size="mini" icon color="blue" as={Link} to={'/status/' + status.status_id + '/edit'}>
                         <Icon name="pencil"/>
                     </Button>
                     <Button color="red" size="mini" icon>

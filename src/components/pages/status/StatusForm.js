@@ -1,4 +1,4 @@
-import React, {useState, useEffect}  from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {
     Header,
@@ -8,56 +8,149 @@ import {
 } from "semantic-ui-react";
 import Loader from "react-loader-spinner";
 import axios from 'axios';
-import COUNTRY_OPTIONS from '../../../assets/data/countriesData'
+import {SliderPicker} from 'react-color';
 
-function StatusForm(props) {
 
-    const [pageType, setPageType] = useState('new');
+const StatusForm = (props) => {
+
+    const [pageType, setPageType] = useState(((props.location.pathname).split("/"))[3]);
     const [isLoading, setLoading] = useState(true);
-    const [pageTitle, setTitle] = useState('Create New Client');
-    const [client, setClient] = useState({
-        name: '',
-        code: '',
-        email: '',
-        contact_number: '',
-        address_line_first: '',
-        address_line_last: '',
-        description: '',
-        country: ''
+    const [pageTitle, setTitle] = useState('Create New Project Status');
+    const [status, setStatus] = useState({
+        status_id: ((props.location.pathname).split("/"))[2],
+        title: '',
+        color: ''
     });
 
     useEffect(() => {
-        setLoading(false);
-    },[]);
+        if (pageType === 'new') {
+            setLoading(false);
+        } else if (pageType === 'view' || pageType === 'edit') {
+            const fetchData = () => {
+                console.log(pageType)
+                axios.get('http://localhost:4000/status/' + status.status_id)
+                    .then(res => {
+                        console.log(res.data);
+                        setLoading(false);
 
-    const onFileSelect = () => {
+                        let content = res.data.content.status;
 
-    };
+                        if (pageType === 'view') {
+                            setTitle("'" + content.name + "' Info");
+                        } else {
+                            setTitle("Edit '" + content.name + "' Info");
+                        }
+
+                        setStatus({
+                            ...status,
+                            title: content.title,
+                            color: content.color
+                        });
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        setTitle("Something went wrong");
+                        setLoading(false);
+                    });
+            };
+
+            fetchData();
+        }
+    }, []);
 
     const updateFieldData = e => {
         const {name, value} = e.target;
-        setClient({...client, [name]: value});
+        setStatus({...status, [name]: value});
     };
 
-    const updateCountrySelect = (e, data) => {
-        setClient({...client, 'country': data.value});
+    const handleColorChange = color => {
+        setStatus({...status, color: color.hex});
     };
 
-    const submitUpdate = data => {
+    const submitCreate = data => {
         setTitle("Creating...");
         setLoading(true);
 
-        axios.post('http://localhost:4000/clients/new', {
-            client
+        axios.post('http://localhost:4000/status/new', {
+            status
         }).then(res => {
             console.log(res);
-            props.history.push('/client/index');
+            props.history.push('/status/index');
         }).catch(error => {
             console.log(error);
-            setTitle("Create New Client");
+            setTitle("Create New Project Status");
             setLoading(false);
         });
     };
+
+    const submitUpdate = data => {
+        setTitle("Updating...");
+        setLoading(true);
+
+        axios.post('http://localhost:4000/status/update/' + status.status_id, {
+            status
+        }).then(res => {
+            console.log(res);
+            props.history.push('/status/index');
+        }).catch(error => {
+            console.log(error);
+            setTitle("Edit '" + status.title + "' Info");
+            setLoading(false);
+        });
+    };
+
+
+    let formData;
+    if (pageType === 'new') {
+        formData =
+            <Form>
+                <Form.Input fluid label='Status name' placeholder='Status name' value={status.title}
+                            onChange={updateFieldData} name='title'/>
+                <label>Color code</label>
+                <br/>
+                <br/>
+                <SliderPicker
+                    color={status.color}
+                    onChangeComplete={handleColorChange}
+                />
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <Button primary onClick={submitCreate}>Create New Project Status</Button>
+            </Form>
+    } else if (pageType === 'edit') {
+        formData =
+            <Form>
+                <Form.Input fluid label='Status name' placeholder='Status name' value={status.title}
+                            onChange={updateFieldData} name='title'/>
+                <label>Color code</label>
+                <br/>
+                <br/>
+                <SliderPicker
+                    color={status.color}
+                    onChangeComplete={handleColorChange}
+                />
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <Button primary onClick={submitUpdate}>Update Project Status</Button>
+            </Form>
+    } else if (pageType === 'view') {
+        formData =
+            <Form>
+                <Form.Input fluid label='Status name' placeholder='Status name' value={status.title}
+                            readOnly name='title'/>
+                <label>Color code</label>
+                <br/>
+                <br/>
+                <SliderPicker
+                    color={status.color}
+                    disabled={true}
+                />
+            </Form>
+    }
 
     let content;
     if (isLoading) {
@@ -75,38 +168,7 @@ function StatusForm(props) {
                 </div>
             </div>
     } else {
-        content =
-            <Form>
-                <Form.Group widths='equal'>
-                    <Form.Input fluid label='Client name' placeholder='Client name' value={client.name}
-                                onChange={updateFieldData} name='name'/>
-                    <Form.Input fluid label='Client code' placeholder='Client code' value={client.code}
-                                onChange={updateFieldData} name='code'/>
-                </Form.Group>
-
-                <Form.Group widths='equal'>
-                    <Form.Input fluid label='Email address' placeholder='Email address' value={client.email}
-                                onChange={updateFieldData} name='email'/>
-                    <Form.Input fluid label='Contact number' placeholder='Contact number' value={client.contact_number}
-                                onChange={updateFieldData} name='contact_number'/>
-                </Form.Group>
-
-                <Form.Group widths='equal'>
-                    <Form.Input label='Address Line 1' placeholder='Address Line 1' value={client.address_line_first}
-                                onChange={updateFieldData} name='address_line_first'/>
-                    <Form.Input label='Address Line 2' placeholder='Address Line 2' value={client.address_line_last}
-                                onChange={updateFieldData} name='address_line_last'/>
-                    <Form.Select fluid label='Country' placeholder='Country' options={COUNTRY_OPTIONS}
-                                 value={client.country} onChange={updateCountrySelect} name='country'/>
-                </Form.Group>
-
-                <Form.TextArea label='Description' placeholder='Tell us more about client...' value={client.description}
-                               onChange={updateFieldData} name='description'/>
-
-                {/*<Form.Input type="file" fluid label='Client logo' placeholder='Select your logo file'/>*/}
-
-                <Button primary onClick={submitUpdate}>Create New Client</Button>
-            </Form>
+        content = formData
     }
 
     return (
@@ -118,7 +180,7 @@ function StatusForm(props) {
             </Segment>
         </div>
     );
-}
+};
 
 
 export default StatusForm
