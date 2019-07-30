@@ -7,7 +7,7 @@ import TableHeader from "./TableHeader";
 
 import './Quotation.css'
 
-const ReleasePlan = () => {
+const ReleasePlan = ({onReleasePlanDataChange}) => {
     const [releaseData, setReleaseData] = useState([]);
 
     const onNewRecord = () => {
@@ -19,12 +19,16 @@ const ReleasePlan = () => {
         const _tempReleases = [...releaseData];
         _tempReleases[event.target.dataset.id][event.target.name] = event.target.value;
         setReleaseData(_tempReleases);
+
+        onReleasePlanDataChange(releaseData);
     };
 
     const handleReleaseItemRemove = event => {
         const _tempReleases = [...releaseData];
         _tempReleases.splice(event.target.dataset.id, 1);
         setReleaseData(_tempReleases);
+
+        onReleasePlanDataChange(releaseData);
     };
 
     const getTableData = releaseData => {

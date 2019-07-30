@@ -7,7 +7,7 @@ import TableHeader from "./TableHeader";
 import './Quotation.css'
 import {Link} from "react-router-dom";
 
-const Financials = () => {
+const Financials = ({onFinanceDataChange}) => {
 
     const [financeData, setFinanceData] = useState([]);
 
@@ -19,6 +19,8 @@ const Financials = () => {
         const _tempFinances = [...financeData];
         _tempFinances[event.target.dataset.id][event.target.name] = event.target.value;
         setFinanceData(_tempFinances);
+
+        onFinanceDataChange(financeData)
     };
 
     const getTotalCosts = () => {
@@ -31,6 +33,8 @@ const Financials = () => {
         const _tempFinances = [...financeData];
         _tempFinances.splice(event.target.dataset.id, 1);
         setFinanceData(_tempFinances);
+
+        onFinanceDataChange(financeData)
     };
 
     const getTableData = financeData => {

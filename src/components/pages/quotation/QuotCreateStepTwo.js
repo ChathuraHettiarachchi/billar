@@ -32,14 +32,15 @@ const QuotCreateStepOne = (props) => {
     //add amount to first body
     //add client id to first body
 
+    const [totalAmount, setTotalAmount] = useState('');
+    const [terms, setTerms] = useState('');
     const [financials, setFinancials] = useState([]);
     const [releasePlans, setReleasePlans] = useState([]);
     const [paymentPlans, setPaymentPlans] = useState([]);
+
     const [quotationData, setQuotationData] = useState({
         title: '',
         description: '',
-        terms: '',
-        status: '',
     });
     const [client, setClient] = useState({});
 
@@ -92,6 +93,33 @@ const QuotCreateStepOne = (props) => {
         }
     }, []);
 
+    const onFinanceDataChange = (data) => {
+        setFinancials(data);
+        setTotalAmount(
+            financials.reduce((total, item) => {
+                return total + Number(item.amount);
+            }, 0));
+    };
+
+    const onReleasePlanDataChange = (data) => {
+        setReleasePlans(data);
+    };
+
+    const onPaymentPlanDataChange = (data) => {
+        setPaymentPlans(data);
+    };
+
+    const onTermsChange = (data) => {
+        setTerms(data);
+    };
+
+    const handleQuotationData = e => {
+        const {name, value} = e.target;
+        setQuotationData({...quotationData, [name]: value});
+
+        console.log(quotationData)
+    };
+
     let content;
     if (isLoading) {
         content =
@@ -123,24 +151,24 @@ const QuotCreateStepOne = (props) => {
                 <QuotationInfo/>
                 <br/>
                 <Form>
-                    <Form.TextArea rows={2} placeholder='Project title' maxLength='100'
+                    <Form.TextArea rows={2} placeholder='Project title' maxLength='100' name='title' value={quotationData.title} onChange={handleQuotationData}
                                    style={{color: "#3371B1", fontSize: "2em", margin: '20px 0px 20px 0px'}}/>
                     <hr/>
                     <Header as='h1' style={{color: "#1579D0"}}>Scope of Work</Header>
-                    <Form.TextArea placeholder='Scope of Work' rows={4} style={{marginBottom: '20px'}}/>
+                    <Form.TextArea placeholder='Scope of Work' rows={4}  name='description' value={quotationData.description} onChange={handleQuotationData} style={{marginBottom: '20px'}}/>
                 </Form>
 
                 <br/>
-                <Financials/>
+                <Financials onFinanceDataChange={onFinanceDataChange}/>
                 <br/>
                 <br/>
-                <ReleasePlan/>
+                <ReleasePlan onReleasePlanDataChange={onReleasePlanDataChange}/>
                 <br/>
                 <br/>
-                <PaymentPlan/>
+                <PaymentPlan onPaymentPlanDataChange={onPaymentPlanDataChange}/>
                 <br/>
                 <br/>
-                <Terms/>
+                <Terms onTermsChange={onTermsChange}/>
                 <Grid style={{minHeight: '40px', padding: '0rem !important'}}>
                     <Grid.Column id='create_quot_button' width={16} floated='right'>
                         <Button primary floated='right'> Create Quotation</Button>

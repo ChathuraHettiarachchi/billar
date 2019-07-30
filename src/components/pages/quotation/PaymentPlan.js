@@ -8,7 +8,7 @@ import TableHeader from "./TableHeader";
 
 import './Quotation.css'
 
-function PaymentPlan() {
+function PaymentPlan({onPaymentPlanDataChange}) {
     const [paymentData, setPaymentData] = useState([]);
 
     const onNewRecord = () => {
@@ -21,12 +21,16 @@ function PaymentPlan() {
         _tempPayments[event.target.dataset.id][event.target.name] = event.target.value;
         setPaymentData(_tempPayments);
         console.log(paymentData)
+
+        onPaymentPlanDataChange(paymentData);
     };
 
     const handleReleaseItemRemove = event => {
         const _tempPayments = [...paymentData];
         _tempPayments.splice(event.target.dataset.id, 1);
         setPaymentData(_tempPayments);
+
+        onPaymentPlanDataChange(paymentData);
     };
 
     const getTableData = paymentData => {

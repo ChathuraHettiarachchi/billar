@@ -1,18 +1,27 @@
 import React, {useState} from 'react';
 import {
-    Form, Input
+    Form
 } from "semantic-ui-react";
 
-function Terms() {
+const Terms = ({onTermsChange}) => {
+
+    const [terms, setTerms] = useState('');
+
+    const handleOnTermsChange = (e) => {
+        setTerms(e.target.value);
+
+        onTermsChange(terms);
+    };
+
     return (
         <div>
             <Form>
                 <Form.Field>
-                    <Form.TextArea label='Terms' placeholder='Terms and Conditions' style={{marginBottom:'20px'}}/>
+                    <Form.TextArea label='Terms' placeholder='Terms and Conditions' style={{marginBottom:'20px'}} name='terms' value={terms} onChange={handleOnTermsChange}/>
                 </Form.Field>
             </Form>
         </div>
     );
-}
+};
 
 export default Terms
