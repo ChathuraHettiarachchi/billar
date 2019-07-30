@@ -9,6 +9,7 @@ import {
     Icon
 } from "semantic-ui-react";
 import Loader from "react-loader-spinner";
+import axios from "axios";
 
 function StatusIndex() {
 
@@ -28,6 +29,21 @@ function StatusIndex() {
         fetchData();
     }, []);
 
+    const handleConfirmation = e => {
+        const r = window.confirm("Do you really want to remove this project status?");
+        if (r == true) {
+            axios.delete('http://localhost:4000/status/remove/' + e.target.value)
+                .then(res => {
+                    console.log(res);
+                    window.location.reload()
+                })
+                .catch(error => {
+                    console.log(error);
+                    setLoading(false);
+                });
+        }
+    };
+
     const getTableData = statusList => {
         return statusList.map(status =>
             <Table.Row key={status.status_id}>
@@ -41,7 +57,7 @@ function StatusIndex() {
                     <Button size="mini" icon color="blue" as={Link} to={'/status/' + status.status_id + '/edit'}>
                         <Icon name="pencil"/>
                     </Button>
-                    <Button color="red" size="mini" icon>
+                    <Button color="red" size="mini" icon onClick={handleConfirmation} value={status.status_id} key={status.status_id}>
                         <Icon name="delete"/>
                     </Button>
                 </Table.Cell>
