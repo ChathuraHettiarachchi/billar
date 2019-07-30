@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="150b1cc0-d2d0-4322-8fd0-3d89c7100349" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/Financials.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/Financials.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -91,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/Financials.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+            <state relative-caret-position="386">
+              <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -103,34 +104,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/client/ClientCreate.js">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/Financials.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="48" />
+            <state relative-caret-position="552">
+              <caret line="96" column="116" selection-start-line="96" selection-start-column="116" selection-end-line="96" selection-end-column="116" />
               <folding>
-                <element signature="e#0#50#0" expanded="true" />
+                <element signature="e#0#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/client/ClientIndex.js">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="128" column="59" selection-start-line="128" selection-start-column="44" selection-end-line="128" selection-end-column="59" />
+            <state relative-caret-position="552">
+              <caret line="81" column="116" selection-start-line="81" selection-start-column="116" selection-end-line="81" selection-end-column="116" />
               <folding>
-                <element signature="e#0#49#0" expanded="true" />
+                <element signature="e#0#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -158,6 +150,7 @@
       <find>financeData</find>
       <find>amount</find>
       <find>handleFinaceItemRemove</find>
+      <find>_tempReleases</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -167,6 +160,7 @@
       <replace>releaeData</replace>
       <replace>release_date</replace>
       <replace>handleReleaseItemRemove</replace>
+      <replace>_tempPayments</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -190,7 +184,6 @@
         <option value="$PROJECT_DIR$/src/assets/data/countriesData.js" />
         <option value="$PROJECT_DIR$/src/components/pages/quotation/QuotCreate.js" />
         <option value="$PROJECT_DIR$/src/components/pages/quotation/TableHeader.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js" />
         <option value="$PROJECT_DIR$/src/components/pages/quotation/Terms.js" />
         <option value="$PROJECT_DIR$/src/components/pages/quotation/QuotationInfo.js" />
         <option value="$PROJECT_DIR$/src/components/pages/quotation/Quotation.css" />
@@ -212,6 +205,7 @@
         <option value="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" />
         <option value="$PROJECT_DIR$/src/components/pages/quotation/Financials.js" />
         <option value="$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js" />
       </list>
     </option>
   </component>
@@ -390,12 +384,12 @@
       <workItem from="1564111684334" duration="709000" />
       <workItem from="1564290659472" duration="2074000" />
       <workItem from="1564304535923" duration="20557000" />
-      <workItem from="1564463662756" duration="17558000" />
+      <workItem from="1564463662756" duration="18206000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93973000" />
+    <option name="totallyTimeSpent" value="94621000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -581,16 +575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" column="18" selection-end-line="50" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotationInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -667,16 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/client/ClientCreate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepOne.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -739,8 +713,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/client/ClientIndex.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="128" column="59" selection-start-line="128" selection-start-column="44" selection-end-line="128" selection-end-column="59" />
+        <state relative-caret-position="807">
+          <caret line="68" column="29" lean-forward="true" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
@@ -757,12 +731,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/Financials.js">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/client/ClientCreate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+        <state relative-caret-position="348">
+          <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="48" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -774,10 +748,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/Financials.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="96" column="116" selection-start-line="96" selection-start-column="116" selection-end-line="96" selection-end-column="116" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        <state relative-caret-position="552">
+          <caret line="81" column="116" selection-start-line="81" selection-start-column="116" selection-end-line="81" selection-end-column="116" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

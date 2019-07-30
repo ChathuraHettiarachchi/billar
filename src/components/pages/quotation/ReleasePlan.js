@@ -79,7 +79,7 @@ const ReleasePlan = () => {
                 </Table.Body>
             </Table>
             <br/>
-            <Button secondary circular floated='right' icon='add' onClick={onNewRecord}/>
+            <Button secondary circular floated='right' icon='add' onClick={onNewRecord} style={{marginRight:'10px'}}/>
         </div>
     );
 }
