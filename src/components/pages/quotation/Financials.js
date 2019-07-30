@@ -28,6 +28,12 @@ const Financials = () => {
         }, 0);
     };
 
+    const handleFinaceItemRemove = event => {
+        const _tempFinances = [...financeData];
+        _tempFinances.splice(event.target.dataset.id, 1);
+        setFinanceData(_tempFinances);
+    };
+
     const getTableData = financeData => {
         return financeData.map((data, index) =>
             <Table.Row key={index}>
@@ -54,7 +60,7 @@ const Financials = () => {
                     />
                 </Table.Cell>
                 <Table.Cell>
-                    <Button secondary circular floated='right' icon='remove'/>
+                    <Button secondary circular floated='right' icon='remove' value={index} onClick={handleFinaceItemRemove}/>
                 </Table.Cell>
             </Table.Row>
         );
