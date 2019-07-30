@@ -8,7 +8,7 @@ import {
     Table,
     Icon
 } from "semantic-ui-react";
-import axios from 'axios';
+import Loader from "react-loader-spinner";
 
 function ClientIndex() {
 
@@ -20,8 +20,10 @@ function ClientIndex() {
             const res = await fetch('http://localhost:4000/clients/');
             const json = await res.json();
 
-            setClients(json.content.clients)
+            setLoading(false);
+            setClients(json.content.clients);
         };
+
 
         fetchData();
     }, []);
@@ -35,10 +37,10 @@ function ClientIndex() {
                 <Table.Cell>{user.contact_number}</Table.Cell>
                 <Table.Cell>{user.country}</Table.Cell>
                 <Table.Cell>
-                    <Button size="mini" icon color="green">
+                    <Button size="mini" icon color="green"  as={Link} to={'/client/'+user.client_id+'/view'}>
                         <Icon name="desktop"/>
                     </Button>
-                    <Button size="mini" icon color="blue">
+                    <Button size="mini" icon color="blue" as={Link} to={'/client/'+user.client_id+'/edit'}>
                         <Icon name="pencil"/>
                     </Button>
                     <Button color="red" size="mini" icon>
@@ -49,6 +51,42 @@ function ClientIndex() {
         );
     };
 
+    let tableContent;
+    if (isLoading) {
+        tableContent =
+            <div>
+                <div style={{
+                    width: "100%",
+                    height: "100",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
+                }}
+                >
+                    <Loader type="Plane" color="blue" height="100" width="100"/>
+                </div>
+            </div>
+    } else {
+        tableContent =
+            <Table compact celled>
+                <Table.Header fullWidth>
+                    <Table.Row>
+                        <Table.HeaderCell>Id</Table.HeaderCell>
+                        <Table.HeaderCell>Code</Table.HeaderCell>
+                        <Table.HeaderCell>Client Name</Table.HeaderCell>
+                        <Table.HeaderCell>Contact Number</Table.HeaderCell>
+                        <Table.HeaderCell>Country</Table.HeaderCell>
+                        <Table.HeaderCell width={2}>Actions</Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                    {getTableData(clients)}
+                </Table.Body>
+            </Table>
+
+    }
+
     return (
         <div>
             <Segment>
@@ -58,26 +96,13 @@ function ClientIndex() {
                             <Header>Clients</Header>
                         </Grid.Column>
                         <Grid.Column width={4} floated='right'>
-                            <Button primary floated='right' as={Link} to={'/client/new'}>Add New Client</Button>
+                            <Button primary floated='right' as={Link} to={'/client/create/new'}>Add New Client</Button>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
             </Segment>
             <Segment>
-                <Table compact celled>
-                    <Table.Header fullWidth>
-                        <Table.Row>
-                            <Table.HeaderCell>Id</Table.HeaderCell>
-                            <Table.HeaderCell>Code</Table.HeaderCell>
-                            <Table.HeaderCell>Client Name</Table.HeaderCell>
-                            <Table.HeaderCell>Contact Number</Table.HeaderCell>
-                            <Table.HeaderCell>Country</Table.HeaderCell>
-                            <Table.HeaderCell width={2}>Actions</Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Header>
-
-                    <Table.Body>{getTableData(clients)}</Table.Body>
-                </Table>
+                {tableContent}
             </Segment>
         </div>
     );

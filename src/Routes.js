@@ -7,6 +7,8 @@ import Layout from './components/Layout'
 import Home from './components/pages/Home'
 import ClientIndex from './components/pages/client/ClientIndex'
 import ClientCreate from './components/pages/client/ClientCreate'
+import ClientEdit from './components/pages/client/ClientEdit'
+import ClientView from './components/pages/client/ClientView'
 
 import QuotIndex from './components/pages/quotation/QuotIndex'
 import QuotCreateStepOne from './components/pages/quotation/QuotCreateStepOne'
@@ -22,7 +24,9 @@ const Routes = () => {
             <Route exact path="/" component={Home}/>
 
             <Route exact path="/client/index" component={ClientIndex}/>
-            <Route exact path="/client/new" component={ClientCreate}/>
+            <Route exact path="/client/create/new" component={ClientCreate}/>
+            <Route exact path="/client/:id/view" component={ClientView}/>
+            <Route exact path="/client/:id/edit" component={ClientEdit}/>
 
             <Route exact path="/quotation/index" component={QuotIndex}/>
             <Route exact path="/quotation/step1" component={QuotCreateStepOne}/>

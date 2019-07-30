@@ -1,20 +1,16 @@
-import React, {useState, useEffect}  from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {
-    Header,
-    Segment,
-    Form,
-    Button
-} from "semantic-ui-react";
+import {Header, Segment, Form, Button} from "semantic-ui-react";
 import Loader from "react-loader-spinner";
 import axios from 'axios';
 import COUNTRY_OPTIONS from '../../../assets/data/countriesData'
 
-function ClientCreate(props) {
+function ClientEdit(props) {
 
     const [isLoading, setLoading] = useState(true);
-    const [pageTitle, setTitle] = useState('Create New Client');
+    const [pageTitle, setTitle] = useState('Loading...');
     const [client, setClient] = useState({
+        client_id: (props.location.pathname).split("/")[2],
         name: '',
         code: '',
         email: '',
@@ -26,8 +22,36 @@ function ClientCreate(props) {
     });
 
     useEffect(() => {
-        setLoading(false);
-    },[]);
+        const fetchData = () => {
+            axios.get('http://localhost:4000/clients/' + client.client_id)
+                .then(res => {
+                    console.log(res.data);
+                    setLoading(false);
+
+                    let content = res.data.content.clients;
+                    setTitle("Edit '" + content.name + "' Info");
+
+                    setClient({
+                        ...client,
+                        name: content.name,
+                        code: content.code,
+                        email: content.email,
+                        contact_number: content.contact_number,
+                        address_line_first: content.address_line_first,
+                        address_line_last: content.address_line_last,
+                        description: content.description,
+                        country: content.country
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                    setTitle("Something went wrong");
+                    setLoading(false);
+                });
+        };
+
+        fetchData();
+    }, []);
 
     const onFileSelect = () => {
 
@@ -43,17 +67,17 @@ function ClientCreate(props) {
     };
 
     const submitUpdate = data => {
-        setTitle("Creating...");
+        setTitle("Updating...");
         setLoading(true);
 
-        axios.post('http://localhost:4000/clients/new', {
+        axios.post('http://localhost:4000/clients/update/' + client.client_id, {
             client
         }).then(res => {
             console.log(res);
             props.history.push('/client/index');
         }).catch(error => {
             console.log(error);
-            setTitle("Create New Client");
+            setTitle("Edit '" + client.name + "' Info");
             setLoading(false);
         });
     };
@@ -104,7 +128,7 @@ function ClientCreate(props) {
 
                 {/*<Form.Input type="file" fluid label='Client logo' placeholder='Select your logo file'/>*/}
 
-                <Button primary onClick={submitUpdate}>Create New Client</Button>
+                <Button primary onClick={submitUpdate}>Update Client</Button>
             </Form>
     }
 
@@ -120,4 +144,4 @@ function ClientCreate(props) {
 }
 
 
-export default ClientCreate
+export default ClientEdit
