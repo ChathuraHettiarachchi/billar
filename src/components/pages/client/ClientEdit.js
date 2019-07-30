@@ -1,13 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {
-    Header,
-    Segment,
-    Form,
-    Button, Table
-} from "semantic-ui-react";
+import {Header, Segment, Form, Button} from "semantic-ui-react";
 import Loader from "react-loader-spinner";
-
+import axios from 'axios';
 import COUNTRY_OPTIONS from '../../../assets/data/countriesData'
 
 function ClientCreate(props) {
@@ -31,25 +26,32 @@ function ClientCreate(props) {
     };
 
     useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch(('http://localhost:4000/clients/' + client.client_id));
-            const json = await res.json();
+        const fetchData = () => {
+            axios.get('http://localhost:4000/clients/' + client.client_id)
+                .then(res => {
+                    console.log(res.data);
+                    setLoading(false);
 
-            setLoading(false);
-            setTitle("Edit '"+json.content.clients.name+"' Info");
+                    let content = res.data.content.clients;
+                    setTitle("Edit '" + content.name + "' Info");
 
-            let c = json.content.clients;
-            setClient({
-                ...client,
-                name: c.name,
-                code: c.code,
-                email: c.email,
-                contact_number: c.contact_number,
-                address_line_first: c.address_line_first,
-                address_line_last: c.address_line_last,
-                description: c.description,
-                country: c.country
-            });
+                    setClient({
+                        ...client,
+                        name: content.name,
+                        code: content.code,
+                        email: content.email,
+                        contact_number: content.contact_number,
+                        address_line_first: content.address_line_first,
+                        address_line_last: content.address_line_last,
+                        description: content.description,
+                        country: content.country
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                    setTitle("Something went wrong");
+                    setLoading(false);
+                });
         };
 
         fetchData();
@@ -68,23 +70,16 @@ function ClientCreate(props) {
         setTitle("Updating...");
         setLoading(true);
 
-        (async () => {
-            console.log(JSON.stringify(client))
-            const rawResponse = await fetch(('http://localhost:4000/clients/update/'+client.client_id), {
-                method: 'POST',
-                header: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-                body: JSON.stringify(client)
-            });
-            const content = await rawResponse.json();
-
-            if (rawResponse.status === 200){
-                props.history.push('/clients/');
-            } else {
-                setTitle("Edit '"+client.name+"' Info");
-                setLoading(false);
-            }
-            console.log(content);
-        })();
+        axios.post('http://localhost:4000/clients/update/' + client.client_id, {
+            client
+        }).then(res => {
+            console.log(res);
+            props.history.push('/client/index');
+        }).catch(error => {
+            console.log(error);
+            setTitle("Edit '" + client.name + "' Info");
+            setLoading(false);
+        });
     };
 
     let content;
@@ -106,22 +101,30 @@ function ClientCreate(props) {
         content =
             <Form>
                 <Form.Group widths='equal'>
-                    <Form.Input fluid label='Client name' placeholder='Client name' value={client.name} onChange={updateFieldData} name='name'/>
-                    <Form.Input fluid label='Client code' placeholder='Client code' value={client.code} onChange={updateFieldData} name='code'/>
+                    <Form.Input fluid label='Client name' placeholder='Client name' value={client.name}
+                                onChange={updateFieldData} name='name'/>
+                    <Form.Input fluid label='Client code' placeholder='Client code' value={client.code}
+                                onChange={updateFieldData} name='code'/>
                 </Form.Group>
 
                 <Form.Group widths='equal'>
-                    <Form.Input fluid label='Email address' placeholder='Email address' value={client.email} onChange={updateFieldData} name='email'/>
-                    <Form.Input fluid label='Contact number' placeholder='Contact number' value={client.contact_number} onChange={updateFieldData} name='contact_number'/>
+                    <Form.Input fluid label='Email address' placeholder='Email address' value={client.email}
+                                onChange={updateFieldData} name='email'/>
+                    <Form.Input fluid label='Contact number' placeholder='Contact number' value={client.contact_number}
+                                onChange={updateFieldData} name='contact_number'/>
                 </Form.Group>
 
                 <Form.Group widths='equal'>
-                    <Form.Input label='Address Line 1' placeholder='Address Line 1' value={client.address_line_first} onChange={updateFieldData} name='address_line_first'/>
-                    <Form.Input label='Address Line 2' placeholder='Address Line 2' value={client.address_line_last} onChange={updateFieldData} name='address_line_last'/>
-                    <Form.Select fluid label='Country' placeholder='Country' options={COUNTRY_OPTIONS} value={client.country} onChange={updateCountrySelect} name='country'/>
+                    <Form.Input label='Address Line 1' placeholder='Address Line 1' value={client.address_line_first}
+                                onChange={updateFieldData} name='address_line_first'/>
+                    <Form.Input label='Address Line 2' placeholder='Address Line 2' value={client.address_line_last}
+                                onChange={updateFieldData} name='address_line_last'/>
+                    <Form.Select fluid label='Country' placeholder='Country' options={COUNTRY_OPTIONS}
+                                 value={client.country} onChange={updateCountrySelect} name='country'/>
                 </Form.Group>
 
-                <Form.TextArea label='Description' placeholder='Tell us more about client...' value={client.description} onChange={updateFieldData} name='description'/>
+                <Form.TextArea label='Description' placeholder='Tell us more about client...' value={client.description}
+                               onChange={updateFieldData} name='description'/>
 
                 {/*<Form.Input type="file" fluid label='Client logo' placeholder='Select your logo file'/>*/}
 
