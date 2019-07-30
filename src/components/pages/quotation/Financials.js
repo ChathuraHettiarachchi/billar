@@ -10,7 +10,6 @@ import {Link} from "react-router-dom";
 const Financials = () => {
 
     const [financeData, setFinanceData] = useState([]);
-    const [noId, setNoId] = useState(1);
 
     const onNewRecord = () => {
         setFinanceData(prevCosts => [...financeData, { description:'', amount: '' }]);

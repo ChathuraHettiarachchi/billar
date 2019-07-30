@@ -1,53 +1,85 @@
 import React, {useState} from 'react';
 import {
-    Grid, Header, Table
+    Button, Header, Table
 } from "semantic-ui-react";
 
 import TableHeader from "./TableHeader";
 
 import './Quotation.css'
 
-function ReleasePlan() {
+const ReleasePlan = () => {
+    const [releaseData, setReleaseData] = useState([]);
+
+    const onNewRecord = () => {
+        let date = Date.now().toLocaleString();
+        setReleaseData(prev => [...releaseData, { description:'', release_date: date }]);
+    };
+
+    const handleReleaseItemChange = event => {
+        const _tempReleases = [...releaseData];
+        _tempReleases[event.target.dataset.id][event.target.name] = event.target.value;
+        setReleaseData(_tempReleases);
+    };
+
+    const handleReleaseItemRemove = event => {
+        const _tempReleases = [...releaseData];
+        _tempReleases.splice(event.target.dataset.id, 1);
+        setReleaseData(_tempReleases);
+    };
+
+    const getTableData = releaseData => {
+        return releaseData.map((data, index) =>
+            <Table.Row key={index}>
+                <Table.Cell>{index + 1}</Table.Cell>
+                <Table.Cell>
+                    <input
+                        name="description"
+                        data-id={index}
+                        value={data.description}
+                        onChange={handleReleaseItemChange}
+                        style={{height:'35px', width:'100%'}}
+                        placeholder='Description'
+                    />
+                </Table.Cell>
+                <Table.Cell>
+                    <input
+                        name="release_date"
+                        data-id={index}
+                        value={data.release_date}
+                        onChange={handleReleaseItemChange}
+                        style={{height:'35px', width:'100%'}}
+                        placeholder='Release Date'
+                        type='date'
+                    />
+                </Table.Cell>
+                <Table.Cell>
+                    <Button secondary circular floated='right' icon='remove' value={index} onClick={handleReleaseItemRemove}/>
+                </Table.Cell>
+            </Table.Row>
+        );
+    };
+
     return (
         <div id='finance'>
             <Header as='h1' style={{color: "#1579D0"}}>Release Plan</Header>
-            <TableHeader title='Financial Details'/>
+            <TableHeader title='Invoicing Plan'/>
 
             <Table celled>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell width={2}>No</Table.HeaderCell>
+                        <Table.HeaderCell width={1}>No</Table.HeaderCell>
                         <Table.HeaderCell width={10}>Description</Table.HeaderCell>
-                        <Table.HeaderCell width={4}>Amount(USD)</Table.HeaderCell>
+                        <Table.HeaderCell width={4}>Release Date</Table.HeaderCell>
+                        <Table.HeaderCell width={1}> </Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
                 <Table.Body>
-                    <Table.Row>
-                        <Table.Cell>John</Table.Cell>
-                        <Table.Cell>Approved</Table.Cell>
-                        <Table.Cell>None</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>Jamie</Table.Cell>
-                        <Table.Cell>Approved</Table.Cell>
-                        <Table.Cell>Requires call</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>Jill</Table.Cell>
-                        <Table.Cell>Denied</Table.Cell>
-                        <Table.Cell>None</Table.Cell>
-                    </Table.Row>
+                    {getTableData(releaseData)}
                 </Table.Body>
-
-                <Table.Footer>
-                    <Table.Row>
-                        <Table.HeaderCell style={{backgroundColor:'#C9DEF1'}}> </Table.HeaderCell>
-                        <Table.HeaderCell verticalAlign='middle' style={{backgroundColor:'#C9DEF1'}}>TOTAL</Table.HeaderCell>
-                        <Table.HeaderCell style={{backgroundColor:'#C9DEF1'}}> </Table.HeaderCell>
-                    </Table.Row>
-                </Table.Footer>
             </Table>
+            <br/>
+            <Button secondary circular floated='right' icon='add' onClick={onNewRecord}/>
         </div>
     );
 }
