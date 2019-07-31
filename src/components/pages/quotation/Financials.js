@@ -10,6 +10,7 @@ import {Link} from "react-router-dom";
 const Financials = ({onFinanceDataChange, pageType, data}) => {
 
     const [financeData, setFinanceData] = useState(data);
+    const [readOnly, setReadOnly] = useState(pageType === 'view');
 
     useEffect(() => {
         setFinanceData(data)
@@ -54,6 +55,7 @@ const Financials = ({onFinanceDataChange, pageType, data}) => {
                         onChange={handleFinaceItemChange}
                         style={{height: '35px', width: '100%'}}
                         placeholder='Description'
+                        readOnly={readOnly}
                     />
                 </Table.Cell>
                 <Table.Cell>
@@ -65,15 +67,34 @@ const Financials = ({onFinanceDataChange, pageType, data}) => {
                         style={{height: '35px', width: '100%'}}
                         placeholder='Amount'
                         type='number'
+                        readOnly={readOnly}
                     />
                 </Table.Cell>
-                <Table.Cell>
-                    <Button secondary circular floated='right' icon='remove' value={index}
-                            onClick={handleFinaceItemRemove}/>
-                </Table.Cell>
+                {(readOnly === true ? <></> : <Table.Cell>
+                    <Button color='red' circular floated='right' icon='remove' value={index}
+                            onClick={handleFinaceItemRemove} disabled={readOnly}/>
+                </Table.Cell>)}
             </Table.Row>
         );
     };
+
+    let header_content;
+    if (readOnly) {
+        header_content =
+            <Table.Row>
+                <Table.HeaderCell width={1}>No</Table.HeaderCell>
+                <Table.HeaderCell width={10}>Description</Table.HeaderCell>
+                <Table.HeaderCell width={5}>Amount(USD)</Table.HeaderCell>
+            </Table.Row>
+    } else {
+        header_content =
+            <Table.Row>
+                <Table.HeaderCell width={1}>No</Table.HeaderCell>
+                <Table.HeaderCell width={10}>Description</Table.HeaderCell>
+                <Table.HeaderCell width={4}>Amount(USD)</Table.HeaderCell>
+                <Table.HeaderCell width={1}> </Table.HeaderCell>
+            </Table.Row>
+    }
 
     return (
         <div id='finance'>
@@ -82,12 +103,7 @@ const Financials = ({onFinanceDataChange, pageType, data}) => {
 
             <Table celled>
                 <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell width={1}>No</Table.HeaderCell>
-                        <Table.HeaderCell width={10}>Description</Table.HeaderCell>
-                        <Table.HeaderCell width={4}>Amount(USD)</Table.HeaderCell>
-                        <Table.HeaderCell width={1}> </Table.HeaderCell>
-                    </Table.Row>
+                    {header_content}
                 </Table.Header>
 
                 <Table.Body>
@@ -105,7 +121,8 @@ const Financials = ({onFinanceDataChange, pageType, data}) => {
                 </Table.Footer>
             </Table>
             <br/>
-            <Button secondary circular floated='right' icon='add' onClick={onNewRecord} style={{marginRight: '10px'}}/>
+            {(readOnly === true ? <></> : <Button secondary circular floated='right' icon='add' onClick={onNewRecord}
+                                                  style={{marginRight: '10px'}} disabled={readOnly}/>)}
         </div>
     );
 };

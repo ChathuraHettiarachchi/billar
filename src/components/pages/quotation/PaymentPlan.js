@@ -8,16 +8,18 @@ import TableHeader from "./TableHeader";
 
 import './Quotation.css'
 
-function PaymentPlan({onPaymentPlanDataChange,pageType, data}) {
-    const [paymentData, setPaymentData] = useState(data);
+function PaymentPlan({onPaymentPlanDataChange, pageType, data}) {
 
-    useEffect(()=>{
+    const [paymentData, setPaymentData] = useState(data);
+    const [readOnly, setReadOnly] = useState(pageType === 'view');
+
+    useEffect(() => {
         setPaymentData(data);
     }, []);
 
     const onNewRecord = () => {
         let date = Date.now().toLocaleString();
-        setPaymentData(prev => [...paymentData, { description:'', invoice_date: date, amount:'' }]);
+        setPaymentData(prev => [...paymentData, {description: '', invoice_date: date, amount: ''}]);
     };
 
     const handleReleaseItemChange = event => {
@@ -47,8 +49,9 @@ function PaymentPlan({onPaymentPlanDataChange,pageType, data}) {
                         data-id={index}
                         value={data.description}
                         onChange={handleReleaseItemChange}
-                        style={{height:'35px', width:'100%'}}
+                        style={{height: '35px', width: '100%'}}
                         placeholder='Description'
+                        readOnly={readOnly}
                     />
                 </Table.Cell>
                 <Table.Cell>
@@ -57,9 +60,10 @@ function PaymentPlan({onPaymentPlanDataChange,pageType, data}) {
                         data-id={index}
                         value={data.invoice_date}
                         onChange={handleReleaseItemChange}
-                        style={{height:'35px', width:'100%'}}
+                        style={{height: '35px', width: '100%'}}
                         type='date'
                         placeholder='Invoice Date'
+                        readOnly={readOnly}
                     />
                 </Table.Cell>
                 <Table.Cell>
@@ -68,17 +72,39 @@ function PaymentPlan({onPaymentPlanDataChange,pageType, data}) {
                         data-id={index}
                         value={data.amount}
                         onChange={handleReleaseItemChange}
-                        style={{height:'35px', width:'100%'}}
+                        style={{height: '35px', width: '100%'}}
                         placeholder='Amount'
                         type='number'
+                        readOnly={readOnly}
                     />
                 </Table.Cell>
-                <Table.Cell>
-                    <Button secondary circular floated='right' icon='remove' value={index} onClick={handleReleaseItemRemove}/>
-                </Table.Cell>
+                {(readOnly === true ? <></> : <Table.Cell>
+                    <Button color='red' circular floated='right' icon='remove' value={index}
+                            onClick={handleReleaseItemRemove} disabled={readOnly}/>
+                </Table.Cell>)}
             </Table.Row>
         );
     };
+
+    let header_content;
+    if (readOnly) {
+        header_content =
+            <Table.Row>
+                <Table.HeaderCell width={1}>No</Table.HeaderCell>
+                <Table.HeaderCell width={9}>Description</Table.HeaderCell>
+                <Table.HeaderCell width={4}>Invoice Date</Table.HeaderCell>
+                <Table.HeaderCell width={2}>Amount(USD)</Table.HeaderCell>
+            </Table.Row>
+    } else {
+        header_content =
+            <Table.Row>
+                <Table.HeaderCell width={1}>No</Table.HeaderCell>
+                <Table.HeaderCell width={8}>Description</Table.HeaderCell>
+                <Table.HeaderCell width={4}>Invoice Date</Table.HeaderCell>
+                <Table.HeaderCell width={2}>Amount(USD)</Table.HeaderCell>
+                <Table.HeaderCell width={1}> </Table.HeaderCell>
+            </Table.Row>
+    }
 
     return (
         <div id='finance'>
@@ -87,13 +113,7 @@ function PaymentPlan({onPaymentPlanDataChange,pageType, data}) {
 
             <Table celled>
                 <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell width={1}>No</Table.HeaderCell>
-                        <Table.HeaderCell width={8}>Description</Table.HeaderCell>
-                        <Table.HeaderCell width={4}>Invoice Date</Table.HeaderCell>
-                        <Table.HeaderCell width={2}>Amount(USD)</Table.HeaderCell>
-                        <Table.HeaderCell width={1}> </Table.HeaderCell>
-                    </Table.Row>
+                    {header_content}>
                 </Table.Header>
 
                 <Table.Body>
@@ -101,7 +121,9 @@ function PaymentPlan({onPaymentPlanDataChange,pageType, data}) {
                 </Table.Body>
             </Table>
             <br/>
-            <Button secondary circular floated='right' icon='add' onClick={onNewRecord} style={{marginRight:'10px'}}/>
+            {(readOnly === true ? <></> : <Button secondary circular floated='right' icon='add' onClick={onNewRecord}
+                                                  style={{marginRight: '10px'}}
+                                                  disabled={readOnly}/>)}
         </div>
     );
 }

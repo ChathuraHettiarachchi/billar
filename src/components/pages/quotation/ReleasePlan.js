@@ -8,7 +8,9 @@ import TableHeader from "./TableHeader";
 import './Quotation.css'
 
 const ReleasePlan = ({onReleasePlanDataChange, pageType, data}) => {
+
     const [releaseData, setReleaseData] = useState(data);
+    const [readOnly, setReadOnly] = useState(pageType === 'view');
 
     useEffect(() => {
         setReleaseData(data);
@@ -16,7 +18,7 @@ const ReleasePlan = ({onReleasePlanDataChange, pageType, data}) => {
 
     const onNewRecord = () => {
         let date = Date.now().toLocaleString();
-        setReleaseData(prev => [...releaseData, { description:'', release_date: date }]);
+        setReleaseData(prev => [...releaseData, {description: '', release_date: date}]);
     };
 
     const handleReleaseItemChange = event => {
@@ -45,8 +47,9 @@ const ReleasePlan = ({onReleasePlanDataChange, pageType, data}) => {
                         data-id={index}
                         value={data.description}
                         onChange={handleReleaseItemChange}
-                        style={{height:'35px', width:'100%'}}
+                        style={{height: '35px', width: '100%'}}
                         placeholder='Description'
+                        readOnly={readOnly}
                     />
                 </Table.Cell>
                 <Table.Cell>
@@ -55,17 +58,37 @@ const ReleasePlan = ({onReleasePlanDataChange, pageType, data}) => {
                         data-id={index}
                         value={data.release_date}
                         onChange={handleReleaseItemChange}
-                        style={{height:'35px', width:'100%'}}
+                        style={{height: '35px', width: '100%'}}
                         placeholder='Release Date'
                         type='date'
+                        readOnly={readOnly}
                     />
                 </Table.Cell>
-                <Table.Cell>
-                    <Button secondary circular floated='right' icon='remove' value={index} onClick={handleReleaseItemRemove}/>
-                </Table.Cell>
+                {(readOnly === true ? <></> : <Table.Cell>
+                    <Button color='red' circular floated='right' icon='remove' value={index}
+                            onClick={handleReleaseItemRemove} disabled={readOnly}/>
+                </Table.Cell>)}
             </Table.Row>
         );
     };
+
+    let header_content;
+    if (readOnly) {
+        header_content =
+            <Table.Row>
+                <Table.HeaderCell width={1}>No</Table.HeaderCell>
+                <Table.HeaderCell width={10}>Description</Table.HeaderCell>
+                <Table.HeaderCell width={5}>Release Date</Table.HeaderCell>
+            </Table.Row>;
+    } else {
+        header_content =
+            <Table.Row>
+                <Table.HeaderCell width={1}>No</Table.HeaderCell>
+                <Table.HeaderCell width={10}>Description</Table.HeaderCell>
+                <Table.HeaderCell width={4}>Release Date</Table.HeaderCell>
+                <Table.HeaderCell width={1}> </Table.HeaderCell>
+            </Table.Row>
+    }
 
     return (
         <div id='finance'>
@@ -74,12 +97,7 @@ const ReleasePlan = ({onReleasePlanDataChange, pageType, data}) => {
 
             <Table celled>
                 <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell width={1}>No</Table.HeaderCell>
-                        <Table.HeaderCell width={10}>Description</Table.HeaderCell>
-                        <Table.HeaderCell width={4}>Release Date</Table.HeaderCell>
-                        <Table.HeaderCell width={1}> </Table.HeaderCell>
-                    </Table.Row>
+                    {header_content}
                 </Table.Header>
 
                 <Table.Body>
@@ -87,9 +105,11 @@ const ReleasePlan = ({onReleasePlanDataChange, pageType, data}) => {
                 </Table.Body>
             </Table>
             <br/>
-            <Button secondary circular floated='right' icon='add' onClick={onNewRecord} style={{marginRight:'10px'}}/>
+            {(readOnly === true ? <></> : <Button secondary circular floated='right' icon='add' onClick={onNewRecord}
+                                                  style={{marginRight: '10px'}}
+                                                  disabled={readOnly}/>)}
         </div>
     );
-}
+};
 
 export default ReleasePlan

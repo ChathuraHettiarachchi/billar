@@ -7,6 +7,7 @@ import {
 const Terms = ({onTermsChange, pageType, data}) => {
 
     const [term, setTerms] = useState(data);
+    const [readOnly, setReadOnly] = useState((pageType === 'new' || pageType === 'edit'));
 
     useEffect(() => {
         setTerms(data);
@@ -18,22 +19,12 @@ const Terms = ({onTermsChange, pageType, data}) => {
         onTermsChange(term);
     };
 
-    let formData;
-    if (pageType === 'new' || pageType === 'edit') {
-        formData =
-            <Form.TextArea label='Terms' placeholder='Terms and Conditions' style={{marginBottom: '20px'}}
-                           name='term' value={term} onChange={handleOnTermsChange}/>
-    }else {
-        formData =
-            <Form.TextArea label='Terms' placeholder='Terms and Conditions' style={{marginBottom: '20px'}}
-                           name='term' value={term} onChange={handleOnTermsChange} readOnly/>
-    }
-
     return (
         <div>
             <Form>
                 <Form.Field>
-                    {formData}
+                    <Form.TextArea label='Terms' placeholder='Terms and Conditions' style={{marginBottom: '20px'}}
+                                   name='term' value={term} onChange={handleOnTermsChange} readOnly={!readOnly}/>
                 </Form.Field>
             </Form>
         </div>
