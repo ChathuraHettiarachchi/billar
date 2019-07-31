@@ -1,46 +1,44 @@
 import React, {useState, useEffect} from 'react';
 import {
-    Button,
-    Header, Table
+    Button, Header, Table
 } from "semantic-ui-react";
 
 import TableHeader from "./TableHeader";
 
 import './Quotation.css'
 
-function PaymentPlan({onPaymentPlanDataChange, pageType, data}) {
+const ReleasePlan = ({onReleasePlanDataChange, pageType, data}) => {
 
-    const [paymentData, setPaymentData] = useState(data);
+    const [releaseData, setReleaseData] = useState(data);
     const [readOnly, setReadOnly] = useState(pageType === 'view');
 
     useEffect(() => {
-        setPaymentData(data);
+        setReleaseData(data);
     }, []);
 
     const onNewRecord = () => {
         let date = Date.now().toLocaleString();
-        setPaymentData(prev => [...paymentData, {description: '', invoice_date: date, amount: ''}]);
+        setReleaseData(prev => [...releaseData, {description: '', release_date: date}]);
     };
 
     const handleReleaseItemChange = event => {
-        const _tempPayments = [...paymentData];
-        _tempPayments[event.target.dataset.id][event.target.name] = event.target.value;
-        setPaymentData(_tempPayments);
-        console.log(paymentData);
+        const _tempReleases = [...releaseData];
+        _tempReleases[event.target.dataset.id][event.target.name] = event.target.value;
+        setReleaseData(_tempReleases);
 
-        onPaymentPlanDataChange(paymentData);
+        onReleasePlanDataChange(releaseData);
     };
 
     const handleReleaseItemRemove = event => {
-        const _tempPayments = [...paymentData];
-        _tempPayments.splice(event.target.dataset.id, 1);
-        setPaymentData(_tempPayments);
+        const _tempReleases = [...releaseData];
+        _tempReleases.splice(event.target.dataset.id, 1);
+        setReleaseData(_tempReleases);
 
-        onPaymentPlanDataChange(paymentData);
+        onReleasePlanDataChange(releaseData);
     };
 
-    const getTableData = paymentData => {
-        return paymentData.map((data, index) =>
+    const getTableData = releaseData => {
+        return releaseData.map((data, index) =>
             <Table.Row key={index}>
                 <Table.Cell>{index + 1}</Table.Cell>
                 <Table.Cell>
@@ -56,25 +54,13 @@ function PaymentPlan({onPaymentPlanDataChange, pageType, data}) {
                 </Table.Cell>
                 <Table.Cell>
                     <input
-                        name="invoice_date"
+                        name="release_date"
                         data-id={index}
-                        value={data.invoice_date}
+                        value={data.release_date}
                         onChange={handleReleaseItemChange}
                         style={{height: '35px', width: '100%'}}
+                        placeholder='Release Date'
                         type='date'
-                        placeholder='Invoice Date'
-                        readOnly={readOnly}
-                    />
-                </Table.Cell>
-                <Table.Cell>
-                    <input
-                        name="amount"
-                        data-id={index}
-                        value={data.amount}
-                        onChange={handleReleaseItemChange}
-                        style={{height: '35px', width: '100%'}}
-                        placeholder='Amount'
-                        type='number'
                         readOnly={readOnly}
                     />
                 </Table.Cell>
@@ -91,24 +77,22 @@ function PaymentPlan({onPaymentPlanDataChange, pageType, data}) {
         header_content =
             <Table.Row>
                 <Table.HeaderCell width={1}>No</Table.HeaderCell>
-                <Table.HeaderCell width={9}>Description</Table.HeaderCell>
-                <Table.HeaderCell width={4}>Invoice Date</Table.HeaderCell>
-                <Table.HeaderCell width={2}>Amount(USD)</Table.HeaderCell>
-            </Table.Row>
+                <Table.HeaderCell width={10}>Description</Table.HeaderCell>
+                <Table.HeaderCell width={5}>Release Date</Table.HeaderCell>
+            </Table.Row>;
     } else {
         header_content =
             <Table.Row>
                 <Table.HeaderCell width={1}>No</Table.HeaderCell>
-                <Table.HeaderCell width={8}>Description</Table.HeaderCell>
-                <Table.HeaderCell width={4}>Invoice Date</Table.HeaderCell>
-                <Table.HeaderCell width={2}>Amount(USD)</Table.HeaderCell>
+                <Table.HeaderCell width={10}>Description</Table.HeaderCell>
+                <Table.HeaderCell width={4}>Release Date</Table.HeaderCell>
                 <Table.HeaderCell width={1}> </Table.HeaderCell>
             </Table.Row>
     }
 
     return (
         <div id='finance'>
-            <Header as='h1' style={{color: "#1579D0"}}>Payment Plan</Header>
+            <Header as='h1' style={{color: "#1579D0"}}>Release Plan</Header>
             <TableHeader title='Invoicing Plan'/>
 
             <Table celled>
@@ -117,7 +101,7 @@ function PaymentPlan({onPaymentPlanDataChange, pageType, data}) {
                 </Table.Header>
 
                 <Table.Body>
-                    {getTableData(paymentData)}
+                    {getTableData(releaseData)}
                 </Table.Body>
             </Table>
             <br/>
@@ -126,6 +110,6 @@ function PaymentPlan({onPaymentPlanDataChange, pageType, data}) {
                                                   disabled={readOnly}/>)}
         </div>
     );
-}
+};
 
-export default PaymentPlan
+export default ReleasePlan

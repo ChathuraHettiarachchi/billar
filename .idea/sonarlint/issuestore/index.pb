@@ -70,3 +70,5 @@ Z
 *src/components/pages/status/StatusIndex.js,2/c/2cc41641918d7206446e659ef705fd2ad5f0cc6c
 Y
 )src/components/pages/status/StatusForm.js,2/a/2a4be9d11bd930ab69408a47b7cc347eef6852c0
+]
+-src/components/pages/quotation/ReleasePlan.js,6/f/6fa79a60385f1e77cb5e42a928da99a2b4202dd5

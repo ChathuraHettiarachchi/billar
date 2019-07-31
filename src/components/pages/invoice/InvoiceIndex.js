@@ -24,13 +24,12 @@ function InvoiceIndex() {
               <Table compact celled>
                   <Table.Header fullWidth>
                       <Table.Row>
-                          <Table.HeaderCell>Id</Table.HeaderCell>
+                          <Table.HeaderCell width={1}>No.</Table.HeaderCell>
                           <Table.HeaderCell>Quotation</Table.HeaderCell>
                           <Table.HeaderCell>Client</Table.HeaderCell>
                           <Table.HeaderCell>Invoice Date</Table.HeaderCell>
                           <Table.HeaderCell>Amount</Table.HeaderCell>
                           <Table.HeaderCell>Sent to Client</Table.HeaderCell>
-                          <Table.HeaderCell width={2}>Actions</Table.HeaderCell>
                       </Table.Row>
                   </Table.Header>
 

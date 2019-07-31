@@ -28,7 +28,6 @@ function ReleasesIndex() {
                           <Table.HeaderCell>Client</Table.HeaderCell>
                           <Table.HeaderCell>Title</Table.HeaderCell>
                           <Table.HeaderCell>Amount</Table.HeaderCell>
-                          <Table.HeaderCell width={2}>Actions</Table.HeaderCell>
                       </Table.Row>
                   </Table.Header>
 

@@ -6,15 +6,15 @@ import {
 
 import './Quotation.css'
 
-function AddressSection() {
+function AddressSection({client}) {
     return(
         <Grid style={{minHeight:'80px'}}>
             <Grid.Column width={4}>
                 <Header><b>Customer:</b></Header>
-                <address style={{fontSize:18, color:'#535353'}}>Client name here<br/>
-                    Address line 1<br/>
-                    Address line 2<br/>
-                    email address of the client</address>
+                <address style={{fontSize:18, color:'#535353'}}>{client.name}<br/>
+                    {client.address_line_first}<br/>
+                    {client.address_line_last}<br/>
+                    {client.email}</address>
             </Grid.Column>
             <Grid.Column width={8}/>
             <Grid.Column width={4} textAlign='right'>

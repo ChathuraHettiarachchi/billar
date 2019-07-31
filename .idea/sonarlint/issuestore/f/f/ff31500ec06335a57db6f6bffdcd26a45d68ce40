@@ -1,4 +1,5 @@
 
-Mjavascript:S1128"%Remove this unused import of 'axios'.(ÒÁæÅúÿÿÿÿ8½îÿ‰Ä-
-jjavascript:UnusedVariable,">Remove the declaration of the unused 'handleConfirm' variable.(ªôâø8×ÉŠÄ-
-cjavascript:S1854,"@Remove this useless assignment to local variable "handleConfirm"(ªôâø8×ÉŠÄ-
+bjavascript:S18540"?Remove this useless assignment to local variable "handleCancel"(÷­ÿ8Áª“‹Ä-
+Jjavascript:S1128
+"'Remove this unused import of 'Confirm'.(’‹°×8Áª“‹Ä-
+ijavascript:UnusedVariable0"=Remove the declaration of the unused 'handleCancel' variable.(÷­ÿ8Áª“‹Ä-

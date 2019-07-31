@@ -5,7 +5,7 @@ import Loader from "react-loader-spinner";
 import axios from 'axios';
 import COUNTRY_OPTIONS from '../../../assets/data/countriesData'
 
-function ClientEdit(props) {
+const ClientEdit = (props) => {
 
     const [isLoading, setLoading] = useState(true);
     const [pageTitle, setTitle] = useState('Loading...');

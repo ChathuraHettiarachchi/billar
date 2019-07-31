@@ -12,7 +12,7 @@ import {
 import axios from 'axios';
 import Loader from "react-loader-spinner";
 
-function ClientIndex() {
+const ClientIndex = () => {
 
     const [clients, setClients] = useState([]);
     const [isLoading, setLoading] = useState(true);
@@ -50,9 +50,9 @@ function ClientIndex() {
     }
 
     const getTableData = clients => {
-        return clients.map(user =>
+        return clients.map((user, index) =>
             <Table.Row key={user.client_id}>
-                <Table.Cell>{user.client_id}</Table.Cell>
+                <Table.Cell>{index + 1}</Table.Cell>
                 <Table.Cell>{user.code}</Table.Cell>
                 <Table.Cell>{user.name}</Table.Cell>
                 <Table.Cell>{user.contact_number}</Table.Cell>
@@ -101,7 +101,7 @@ function ClientIndex() {
             <Table compact celled>
                 <Table.Header fullWidth>
                     <Table.Row>
-                        <Table.HeaderCell>Id</Table.HeaderCell>
+                        <Table.HeaderCell width={1}>No.</Table.HeaderCell>
                         <Table.HeaderCell>Code</Table.HeaderCell>
                         <Table.HeaderCell>Client Name</Table.HeaderCell>
                         <Table.HeaderCell>Contact Number</Table.HeaderCell>
