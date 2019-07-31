@@ -92,7 +92,7 @@ const QuotIndex = (props) => {
         return quotations.map((quotation, index) =>
             <Table.Row key={index}>
                 <Table.Cell>{index + 1}</Table.Cell>
-                <Table.Cell>#{(Moment(quotation.created_at).format('YYYYMM') + '100' + quotation.quotation_id)}</Table.Cell>
+                <Table.Cell><b>#{(Moment(quotation.created_at).format('YYYYMM') + '00' + quotation.quotation_id)}</b></Table.Cell>
                 <Table.Cell>{quotation.code}</Table.Cell>
                 <Table.Cell>{quotation.title}</Table.Cell>
                 <Table.Cell>{new Date(quotation.created_at).toLocaleDateString()}</Table.Cell>

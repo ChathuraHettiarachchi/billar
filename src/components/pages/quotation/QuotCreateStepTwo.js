@@ -89,7 +89,7 @@ const QuotCreateStepOne = (props) => {
                         description: quot.description,
                         created_at: Moment(quot.created_at).format('DD - MMMM - YYYY'),
                         updated_at: Moment(quot.updated_at).format('DD - MMMM - YYYY'),
-                        quot_no: (Moment(quot.created_at).format('YYYYMM') + '100' + quot.quotation_id)
+                        quot_no: (Moment(quot.created_at).format('YYYYMM') + '00' + quot.quotation_id)
                     });
 
                     let financeData = financeInfo.data.content.financials.map(f => {
