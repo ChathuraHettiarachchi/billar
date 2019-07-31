@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {
-    Button,
+    Button, Form,
     Grid,
     Header, Icon,
     Segment,
@@ -10,19 +10,40 @@ import {
 import Loader from "react-loader-spinner";
 import axios from 'axios';
 import Moment from 'moment';
+import COUNTRY_OPTIONS from "../../../assets/data/countriesData";
 
 const QuotIndex = (props) => {
 
     const [isLoading, setLoading] = useState(true);
     const [quotations, setQuotations] = useState([]);
+    const [statusList, setStatusList] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch('http://localhost:4000/quotations/');
-            const json = await res.json();
+        const fetchData = () => {
 
-            setLoading(false);
-            setQuotations(json.content.quotations);
+            axios.all([
+                axios.get('http://localhost:4000/quotations/'),
+                axios.get('http://localhost:4000/status/')
+            ]).then(axios.spread((quotations, statusList) => {
+                let quots = quotations.data.content.quotations;
+                let statusData = statusList.data.content.status_list;
+
+                let statusForSelect = statusData.map(status => {
+                    return {
+                        "text": status.title,
+                        "key": status.status_id,
+                        "value": status.status_id
+                    }
+                });
+
+                setQuotations(quots);
+                setStatusList(statusForSelect);
+            })).then(() => {
+                setLoading(false);
+            }).catch(error => {
+                console.log(error);
+                setLoading(false);
+            });
         };
 
 
@@ -44,15 +65,49 @@ const QuotIndex = (props) => {
         }
     };
 
+    const onQuotationStateChange = (event, index, rowValue) => {
+        console.log(index.value);
+        console.log(index['data-id']);
+
+        const _tempQuotations = [...quotations];
+        _tempQuotations[index['data-id']]['status'] = index.value;
+
+        setQuotations(_tempQuotations);
+
+        setLoading(true);
+        axios.post(('http://localhost:4000/quotations/update/'+quotations[index['data-id']].quotation_id+'/status'), {
+            quotation: {
+                status: index.value
+            }
+        }).then(res => {
+            console.log(res);
+            setLoading(false);
+        }).catch(error => {
+            console.log(error);
+            setLoading(false);
+        });
+    };
+
     const getTableData = quotations => {
         return quotations.map((quotation, index) =>
-            <Table.Row key={quotation.quotation_id}>
-                <Table.Cell>{index+1}</Table.Cell>
-                <Table.Cell>#{(Moment(quotation.created_at).format('YYYYMM')+'100'+quotation.quotation_id)}</Table.Cell>
+            <Table.Row key={index}>
+                <Table.Cell>{index + 1}</Table.Cell>
+                <Table.Cell>#{(Moment(quotation.created_at).format('YYYYMM') + '100' + quotation.quotation_id)}</Table.Cell>
                 <Table.Cell>{quotation.code}</Table.Cell>
                 <Table.Cell>{quotation.title}</Table.Cell>
                 <Table.Cell>{new Date(quotation.created_at).toLocaleDateString()}</Table.Cell>
-                <Table.Cell>{quotation.status}</Table.Cell>
+                <Table.Cell>
+                    <Form>
+                        <Form.Select
+                            fluid
+                            options={statusList}
+                            value={parseInt(quotation.status)}
+                            onChange={onQuotationStateChange}
+                            name='status'
+                            data-id={index}
+                        />
+                    </Form>
+                </Table.Cell>
                 <Table.Cell>{quotation.amount}</Table.Cell>
                 <Table.Cell>
                     <Button size="mini" icon color="green" as={Link}
