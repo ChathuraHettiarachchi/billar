@@ -50,21 +50,6 @@ const QuotIndex = (props) => {
         fetchData();
     }, []);
 
-    const handleConfirmation = e => {
-        const r = window.confirm("Do you really want to remove this quotation?");
-        if (r == true) {
-            axios.delete('http://localhost:4000/quotations/remove/' + e.target.value)
-                .then(res => {
-                    console.log(res);
-                    window.location.reload()
-                })
-                .catch(error => {
-                    console.log(error);
-                    setLoading(false);
-                });
-        }
-    };
-
     const onQuotationStateChange = (event, index, rowValue) => {
         console.log(index.value);
         console.log(index['data-id']);
@@ -88,9 +73,24 @@ const QuotIndex = (props) => {
         });
     };
 
+    const handleConfirmation = (event, data) => {
+        const r = window.confirm("Do you really want to remove this quotation?");
+        if (r == true) {
+            axios.delete('http://localhost:4000/quotations/remove/' + data.value)
+                .then(res => {
+                    console.log(res);
+                    window.location.reload()
+                })
+                .catch(error => {
+                    console.log(error);
+                    setLoading(false);
+                });
+        }
+    };
+
     const getTableData = quotations => {
         return quotations.map((quotation, index) =>
-            <Table.Row key={index}>
+            <Table.Row key={quotation.quotation_id}>
                 <Table.Cell>{index + 1}</Table.Cell>
                 <Table.Cell><b>#{(Moment(quotation.created_at).format('YYYYMM') + '00' + quotation.quotation_id)}</b></Table.Cell>
                 <Table.Cell>{quotation.code}</Table.Cell>
@@ -119,8 +119,7 @@ const QuotIndex = (props) => {
                             to={'/quotation/step2/' + quotation.client_id + '/edit/' + quotation.quotation_id}>
                         <Icon name="pencil"/>
                     </Button>
-                    <Button color="red" size="mini" icon onClick={handleConfirmation} value={quotation.quotation_id}
-                            key={quotation.quotation_id}>
+                    <Button color="red" size="mini" icon onClick={handleConfirmation} value={quotation.quotation_id} key={quotation.quotation_id}>
                         <Icon name="delete"/>
                     </Button>
                 </Table.Cell>
