@@ -10,13 +10,13 @@ import {
 import Loader from "react-loader-spinner";
 import axios from 'axios';
 import Moment from 'moment';
-import COUNTRY_OPTIONS from "../../../assets/data/countriesData";
 
 const QuotIndex = (props) => {
 
     const [isLoading, setLoading] = useState(true);
     const [quotations, setQuotations] = useState([]);
     const [statusList, setStatusList] = useState([]);
+    const [statusOptions, setStatusOptions] = useState([]);
 
     useEffect(() => {
         const fetchData = () => {
@@ -27,7 +27,6 @@ const QuotIndex = (props) => {
             ]).then(axios.spread((quotations, statusList) => {
                 let quots = quotations.data.content.quotations;
                 let statusData = statusList.data.content.status_list;
-
                 let statusForSelect = statusData.map(status => {
                     return {
                         "text": status.title,
@@ -36,8 +35,9 @@ const QuotIndex = (props) => {
                     }
                 });
 
+                setStatusList(statusData);
                 setQuotations(quots);
-                setStatusList(statusForSelect);
+                setStatusOptions(statusForSelect);
             })).then(() => {
                 setLoading(false);
             }).catch(error => {
@@ -100,11 +100,12 @@ const QuotIndex = (props) => {
                     <Form>
                         <Form.Select
                             fluid
-                            options={statusList}
+                            options={statusOptions}
                             value={parseInt(quotation.status)}
                             onChange={onQuotationStateChange}
                             name='status'
                             data-id={index}
+                            style={{backgroundColor:(statusList.find(x => x.status_id === parseInt(quotation.status)).color)}}
                         />
                     </Form>
                 </Table.Cell>

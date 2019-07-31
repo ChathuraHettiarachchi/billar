@@ -40,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="83" column="30" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
+            <state relative-caret-position="436">
+              <caret line="102" column="51" lean-forward="true" selection-start-line="102" selection-start-column="51" selection-end-line="102" selection-end-column="51" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -392,12 +392,12 @@
       <workItem from="1564290659472" duration="2074000" />
       <workItem from="1564304535923" duration="20557000" />
       <workItem from="1564463662756" duration="21148000" />
-      <workItem from="1564541966551" duration="19912000" />
+      <workItem from="1564541966551" duration="20327000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117475000" />
+    <option name="totallyTimeSpent" value="117890000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -412,7 +412,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2149401" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2149401" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" />
@@ -772,8 +772,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="83" column="30" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
+        <state relative-caret-position="436">
+          <caret line="102" column="51" lean-forward="true" selection-start-line="102" selection-start-column="51" selection-end-line="102" selection-end-column="51" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
