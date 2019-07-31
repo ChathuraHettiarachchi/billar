@@ -36,9 +36,9 @@ const StatusForm = (props) => {
                         let content = res.data.content.status;
 
                         if (pageType === 'view') {
-                            setTitle("'" + content.name + "' Info");
+                            setTitle("'" + content.title + "' Info");
                         } else {
-                            setTitle("Edit '" + content.name + "' Info");
+                            setTitle("Edit '" + content.title + "' Info");
                         }
 
                         setStatus({

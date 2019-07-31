@@ -34,8 +34,8 @@ const Routes = () => {
             <Route exact path="/quotation/index" component={QuotIndex}/>
             <Route exact path="/quotation/step1" component={QuotCreateStepOne}/>
             <Route exact path="/quotation/step2/:id/new" component={QuotCreateStepTwo}/>
-            <Route exact path="/quotation/step2/:id/view" component={QuotCreateStepTwo}/>
-            <Route exact path="/quotation/step2/:id/edit" component={QuotCreateStepTwo}/>
+            <Route exact path="/quotation/step2/:id/view/:quotationId" component={QuotCreateStepTwo}/>
+            <Route exact path="/quotation/step2/:id/edit/:quotationId" component={QuotCreateStepTwo}/>
 
             <Route exact path="/invoice/index" component={Invoice}/>
 

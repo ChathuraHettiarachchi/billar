@@ -1,4 +1,8 @@
 
-Djavascript:S1128"(Remove this unused import of 'useState'.(×¢Ñ
-<javascript:S3317"(Rename this file to "QuotCreateStepOne".
+ajavascript:S1854">Remove this useless assignment to local variable "setPageType"(©À£8ƒæ¶‘Ä-
 @javascript:S1128"$Remove this unused import of 'Link'.(‚Ğ¦
+hjavascript:UnusedVariable"<Remove the declaration of the unused 'setClientId' variable.(ƒ¤®°8Š–¾‘Ä-
+<javascript:S3317"(Rename this file to "QuotCreateStepOne".
+ajavascript:S1854">Remove this useless assignment to local variable "setClientId"(ƒ¤®°8Š–¾‘Ä-
+Rjavascript:S1128"/Remove this unused import of 'COUNTRY_OPTIONS'.(‡íÀ­8öö’Ä-
+hjavascript:UnusedVariable"<Remove the declaration of the unused 'setPageType' variable.(©À£8ƒæ¶‘Ä-

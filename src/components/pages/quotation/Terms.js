@@ -1,23 +1,39 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
+    Button,
     Form
 } from "semantic-ui-react";
 
-const Terms = ({onTermsChange}) => {
+const Terms = ({onTermsChange, pageType, data}) => {
 
-    const [terms, setTerms] = useState('');
+    const [term, setTerms] = useState(data);
+
+    useEffect(() => {
+        setTerms(data);
+    }, []);
 
     const handleOnTermsChange = (e) => {
         setTerms(e.target.value);
 
-        onTermsChange(terms);
+        onTermsChange(term);
     };
+
+    let formData;
+    if (pageType === 'new' || pageType === 'edit') {
+        formData =
+            <Form.TextArea label='Terms' placeholder='Terms and Conditions' style={{marginBottom: '20px'}}
+                           name='term' value={term} onChange={handleOnTermsChange}/>
+    }else {
+        formData =
+            <Form.TextArea label='Terms' placeholder='Terms and Conditions' style={{marginBottom: '20px'}}
+                           name='term' value={term} onChange={handleOnTermsChange} readOnly/>
+    }
 
     return (
         <div>
             <Form>
                 <Form.Field>
-                    <Form.TextArea label='Terms' placeholder='Terms and Conditions' style={{marginBottom:'20px'}} name='terms' value={terms} onChange={handleOnTermsChange}/>
+                    {formData}
                 </Form.Field>
             </Form>
         </div>

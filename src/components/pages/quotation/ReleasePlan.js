@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     Button, Header, Table
 } from "semantic-ui-react";
@@ -7,8 +7,12 @@ import TableHeader from "./TableHeader";
 
 import './Quotation.css'
 
-const ReleasePlan = ({onReleasePlanDataChange}) => {
-    const [releaseData, setReleaseData] = useState([]);
+const ReleasePlan = ({onReleasePlanDataChange, pageType, data}) => {
+    const [releaseData, setReleaseData] = useState(data);
+
+    useEffect(() => {
+        setReleaseData(data);
+    }, []);
 
     const onNewRecord = () => {
         let date = Date.now().toLocaleString();

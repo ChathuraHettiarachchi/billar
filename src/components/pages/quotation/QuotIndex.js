@@ -53,13 +53,16 @@ const QuotIndex = (props) => {
                 <Table.Cell>{quotation.status}</Table.Cell>
                 <Table.Cell>{quotation.amount}</Table.Cell>
                 <Table.Cell>
-                    <Button size="mini" icon color="green" as={Link} to={'/quotation/step2/' + quotation.quotation_id + '/view'}>
+                    <Button size="mini" icon color="green" as={Link}
+                            to={'/quotation/step2/' + quotation.client_id + '/view/' + quotation.quotation_id}>
                         <Icon name="desktop"/>
                     </Button>
-                    <Button size="mini" icon color="blue" as={Link} to={'/quotation/step2/' + quotation.quotation_id + '/edit'}>
+                    <Button size="mini" icon color="blue" as={Link}
+                            to={'/quotation/step2/' + quotation.client_id + '/edit/' + quotation.quotation_id}>
                         <Icon name="pencil"/>
                     </Button>
-                    <Button color="red" size="mini" icon onClick={handleConfirmation} value={quotation.quotation_id} key={quotation.quotation_id}>
+                    <Button color="red" size="mini" icon onClick={handleConfirmation} value={quotation.quotation_id}
+                            key={quotation.quotation_id}>
                         <Icon name="delete"/>
                     </Button>
                 </Table.Cell>
@@ -105,10 +108,10 @@ const QuotIndex = (props) => {
     }
 
 
-    return(
+    return (
         <div>
             <Segment>
-                <Grid style={{minHeight:'0'}}>
+                <Grid style={{minHeight: '0'}}>
                     <Grid.Row>
                         <Grid.Column width={4} floated='left' verticalAlign='middle'>
                             <Header>Quotations</Header>
@@ -125,7 +128,6 @@ const QuotIndex = (props) => {
         </div>
     );
 }
-
 
 
 export default QuotIndex

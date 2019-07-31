@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     Button,
     Header, Table
@@ -8,19 +8,23 @@ import TableHeader from "./TableHeader";
 
 import './Quotation.css'
 
-function PaymentPlan({onPaymentPlanDataChange}) {
-    const [paymentData, setPaymentData] = useState([]);
+function PaymentPlan({onPaymentPlanDataChange,pageType, data}) {
+    const [paymentData, setPaymentData] = useState(data);
+
+    useEffect(()=>{
+        setPaymentData(data);
+    }, []);
 
     const onNewRecord = () => {
         let date = Date.now().toLocaleString();
-        setPaymentData(prev => [...paymentData, { description:'', invoicing_date: date, amount:'' }]);
+        setPaymentData(prev => [...paymentData, { description:'', invoice_date: date, amount:'' }]);
     };
 
     const handleReleaseItemChange = event => {
         const _tempPayments = [...paymentData];
         _tempPayments[event.target.dataset.id][event.target.name] = event.target.value;
         setPaymentData(_tempPayments);
-        console.log(paymentData)
+        console.log(paymentData);
 
         onPaymentPlanDataChange(paymentData);
     };
@@ -49,9 +53,9 @@ function PaymentPlan({onPaymentPlanDataChange}) {
                 </Table.Cell>
                 <Table.Cell>
                     <input
-                        name="invoicing_date"
+                        name="invoice_date"
                         data-id={index}
-                        value={data.invoicing_date}
+                        value={data.invoice_date}
                         onChange={handleReleaseItemChange}
                         style={{height:'35px', width:'100%'}}
                         type='date'

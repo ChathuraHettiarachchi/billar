@@ -20,7 +20,6 @@ import fidenz from '../../../assets/images/fidenz.png'
 import quotation from '../../../assets/images/quotation.png'
 import axios from "axios";
 import Loader from "react-loader-spinner";
-import COUNTRY_OPTIONS from "../../../assets/data/countriesData";
 
 
 const QuotCreateStepOne = (props) => {
@@ -28,9 +27,9 @@ const QuotCreateStepOne = (props) => {
     const [pageType, setPageType] = useState(((props.location.pathname).split("/"))[4]);
     const [isLoading, setLoading] = useState(true);
     const [clientId, setClientId] = useState(((props.location.pathname).split("/"))[3]);
-
-    //add amount to first body
-    //add client id to first body
+    const [quotationId, setQuotationId] = useState(
+        (((props.location.pathname).split("/")).length === 6) ? ((props.location.pathname).split("/"))[5] : ''
+    );
 
     const [totalAmount, setTotalAmount] = useState('');
     const [terms, setTerms] = useState('');
@@ -62,34 +61,63 @@ const QuotCreateStepOne = (props) => {
 
             fetchData();
         } else if (pageType === 'view' || pageType === 'edit') {
-            // const fetchData = () => {
-            //     console.log(pageType)
-            //     axios.get('http://localhost:4000/status/' + status.status_id)
-            //         .then(res => {
-            //             console.log(res.data);
-            //             setLoading(false);
-            //
-            //             let content = res.data.content.status;
-            //
-            //             if (pageType === 'view') {
-            //                 setTitle("'" + content.name + "' Info");
-            //             } else {
-            //                 setTitle("Edit '" + content.name + "' Info");
-            //             }
-            //
-            //             setStatus({
-            //                 ...status,
-            //                 title: content.title,
-            //                 color: content.color
-            //             });
-            //         })
-            //         .catch(error => {
-            //             console.log(error);
-            //             setLoading(false);
-            //         });
-            // };
-            //
-            // fetchData();
+            const fetchData = () => {
+                console.log(pageType);
+                axios.all([
+                    axios.get('http://localhost:4000/clients/' + clientId),
+                    axios.get('http://localhost:4000/quotations/' + quotationId),
+                    axios.get('http://localhost:4000/financials/quotation/' + quotationId),
+                    axios.get('http://localhost:4000/releases/quotation/' + quotationId),
+                    axios.get('http://localhost:4000/payments/quotation/' + quotationId)
+                ]).then(axios.spread((clientInfo, quotationInfo, financeInfo, releaseInfo, paymentInfo) => {
+                    let client = clientInfo.data.content.clients;
+                    setClient(client);
+
+                    let terms = quotationInfo.data.content.quotations.terms;
+                    setTerms(terms);
+
+                    setTotalAmount(quotationInfo.data.content.quotations.amount);
+                    setQuotationData({
+                        ...quotationData,
+                        title: quotationInfo.data.content.quotations.title,
+                        description: quotationInfo.data.content.quotations.description,
+                    });
+
+                    let financeData = financeInfo.data.content.financials.map(f => {
+                        return {
+                            description: f.description,
+                            amount: f.amount
+                        }
+                    });
+
+                    let releaseData = releaseInfo.data.content.releases.map(r => {
+                        return {
+                            description: r.description,
+                            release_date: (new Date(r.release_date).toISOString().slice(0,10)),
+                        }
+                    });
+
+                    let paymentData = paymentInfo.data.content.payments.map(p => {
+                        return {
+                            description: p.description,
+                            invoice_date: (new Date(p.invoice_date).toISOString().slice(0,10)),
+                            amount: p.amount
+                        }
+                    });
+
+                    setFinancials(financeData);
+                    setReleasePlans(releaseData);
+                    setPaymentPlans(paymentData);
+                })).then(() => {
+                    console.log(quotationData);
+                    setLoading(false);
+                }).catch(error => {
+                    console.log(error);
+                    setLoading(false);
+                });
+            };
+
+            fetchData();
         }
     }, []);
 
@@ -111,6 +139,7 @@ const QuotCreateStepOne = (props) => {
 
     const onTermsChange = (data) => {
         setTerms(data);
+        console.log('on terms change:' + data)
     };
 
     const handleQuotationData = e => {
@@ -118,6 +147,33 @@ const QuotCreateStepOne = (props) => {
         setQuotationData({...quotationData, [name]: value});
 
         console.log(quotationData)
+    };
+
+    const quotationObject = {
+        title: quotationData.title,
+        description: quotationData.description,
+        amount: totalAmount,
+        terms: terms,
+        client_id: client.client_id,
+        status: '',
+        financials: financials,
+        releases: releasePlans,
+        payments: paymentPlans
+    };
+
+    const createQuotation = e => {
+        setLoading(true);
+
+        axios.post('http://localhost:4000/quotations/new', {
+            quotation: quotationObject
+        }).then(res => {
+            console.log(res);
+            setLoading(false);
+            props.history.push('/quotation/index');
+        }).catch(error => {
+            console.log(error);
+            setLoading(false);
+        });
     };
 
     let content;
@@ -151,27 +207,30 @@ const QuotCreateStepOne = (props) => {
                 <QuotationInfo/>
                 <br/>
                 <Form>
-                    <Form.TextArea rows={2} placeholder='Project title' maxLength='100' name='title' value={quotationData.title} onChange={handleQuotationData}
+                    <Form.TextArea rows={2} placeholder='Project title' maxLength='100' name='title'
+                                   value={quotationData.title} onChange={handleQuotationData}
                                    style={{color: "#3371B1", fontSize: "2em", margin: '20px 0px 20px 0px'}}/>
                     <hr/>
                     <Header as='h1' style={{color: "#1579D0"}}>Scope of Work</Header>
-                    <Form.TextArea placeholder='Scope of Work' rows={4}  name='description' value={quotationData.description} onChange={handleQuotationData} style={{marginBottom: '20px'}}/>
+                    <Form.TextArea placeholder='Scope of Work' rows={4} name='description'
+                                   value={quotationData.description} onChange={handleQuotationData}
+                                   style={{marginBottom: '20px'}}/>
                 </Form>
 
                 <br/>
-                <Financials onFinanceDataChange={onFinanceDataChange}/>
+                <Financials onFinanceDataChange={onFinanceDataChange} pageType={pageType} data={financials}/>
                 <br/>
                 <br/>
-                <ReleasePlan onReleasePlanDataChange={onReleasePlanDataChange}/>
+                <ReleasePlan onReleasePlanDataChange={onReleasePlanDataChange} pageType={pageType} data={releasePlans}/>
                 <br/>
                 <br/>
-                <PaymentPlan onPaymentPlanDataChange={onPaymentPlanDataChange}/>
+                <PaymentPlan onPaymentPlanDataChange={onPaymentPlanDataChange} pageType={pageType} data={paymentPlans}/>
                 <br/>
                 <br/>
-                <Terms onTermsChange={onTermsChange}/>
+                <Terms onTermsChange={onTermsChange} pageType={pageType} data={terms}/>
                 <Grid style={{minHeight: '40px', padding: '0rem !important'}}>
                     <Grid.Column id='create_quot_button' width={16} floated='right'>
-                        <Button primary floated='right'> Create Quotation</Button>
+                        <Button primary floated='right' onClick={createQuotation}> Create Quotation</Button>
                     </Grid.Column>
                 </Grid>
             </div>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     Grid, Header, Table, Button, Icon, Form
 } from "semantic-ui-react";
@@ -7,12 +7,17 @@ import TableHeader from "./TableHeader";
 import './Quotation.css'
 import {Link} from "react-router-dom";
 
-const Financials = ({onFinanceDataChange}) => {
+const Financials = ({onFinanceDataChange, pageType, data}) => {
 
-    const [financeData, setFinanceData] = useState([]);
+    const [financeData, setFinanceData] = useState(data);
+
+    useEffect(() => {
+        setFinanceData(data)
+    }, []);
+
 
     const onNewRecord = () => {
-        setFinanceData(prevCosts => [...financeData, { description:'', amount: '' }]);
+        setFinanceData(prevCosts => [...financeData, {description: '', amount: ''}]);
     };
 
     const handleFinaceItemChange = event => {
@@ -47,7 +52,7 @@ const Financials = ({onFinanceDataChange}) => {
                         data-id={index}
                         value={data.description}
                         onChange={handleFinaceItemChange}
-                        style={{height:'35px', width:'100%'}}
+                        style={{height: '35px', width: '100%'}}
                         placeholder='Description'
                     />
                 </Table.Cell>
@@ -57,13 +62,14 @@ const Financials = ({onFinanceDataChange}) => {
                         data-id={index}
                         value={data.amount}
                         onChange={handleFinaceItemChange}
-                        style={{height:'35px', width:'100%'}}
+                        style={{height: '35px', width: '100%'}}
                         placeholder='Amount'
                         type='number'
                     />
                 </Table.Cell>
                 <Table.Cell>
-                    <Button secondary circular floated='right' icon='remove' value={index} onClick={handleFinaceItemRemove}/>
+                    <Button secondary circular floated='right' icon='remove' value={index}
+                            onClick={handleFinaceItemRemove}/>
                 </Table.Cell>
             </Table.Row>
         );
@@ -93,12 +99,13 @@ const Financials = ({onFinanceDataChange}) => {
                         <Table.HeaderCell style={{backgroundColor: '#C9DEF1'}}> </Table.HeaderCell>
                         <Table.HeaderCell verticalAlign='middle'
                                           style={{backgroundColor: '#C9DEF1'}}><b>TOTAL</b></Table.HeaderCell>
-                        <Table.HeaderCell style={{backgroundColor: '#C9DEF1'}}><b>{getTotalCosts()}</b></Table.HeaderCell>
+                        <Table.HeaderCell
+                            style={{backgroundColor: '#C9DEF1'}}><b>{getTotalCosts()}</b></Table.HeaderCell>
                     </Table.Row>
                 </Table.Footer>
             </Table>
             <br/>
-            <Button secondary circular floated='right' icon='add' onClick={onNewRecord} style={{marginRight:'10px'}}/>
+            <Button secondary circular floated='right' icon='add' onClick={onNewRecord} style={{marginRight: '10px'}}/>
         </div>
     );
 };
