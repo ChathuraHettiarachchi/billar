@@ -9,6 +9,7 @@ import {
 } from "semantic-ui-react";
 import Loader from "react-loader-spinner";
 import axios from 'axios';
+import Moment from 'moment';
 
 const QuotIndex = (props) => {
 
@@ -44,9 +45,10 @@ const QuotIndex = (props) => {
     };
 
     const getTableData = quotations => {
-        return quotations.map(quotation =>
+        return quotations.map((quotation, index) =>
             <Table.Row key={quotation.quotation_id}>
-                <Table.Cell>{quotation.quotation_id}</Table.Cell>
+                <Table.Cell>{index+1}</Table.Cell>
+                <Table.Cell>#{(Moment(quotation.created_at).format('YYYYMM')+'100'+quotation.quotation_id)}</Table.Cell>
                 <Table.Cell>{quotation.code}</Table.Cell>
                 <Table.Cell>{quotation.title}</Table.Cell>
                 <Table.Cell>{new Date(quotation.created_at).toLocaleDateString()}</Table.Cell>
@@ -90,12 +92,13 @@ const QuotIndex = (props) => {
             <Table compact celled>
                 <Table.Header fullWidth>
                     <Table.Row>
-                        <Table.HeaderCell>Id</Table.HeaderCell>
-                        <Table.HeaderCell>Client Code</Table.HeaderCell>
-                        <Table.HeaderCell>Title</Table.HeaderCell>
-                        <Table.HeaderCell>Created At</Table.HeaderCell>
-                        <Table.HeaderCell>Status</Table.HeaderCell>
-                        <Table.HeaderCell>Amount</Table.HeaderCell>
+                        <Table.HeaderCell width={1}>No.</Table.HeaderCell>
+                        <Table.HeaderCell width={2}>Quotation No.</Table.HeaderCell>
+                        <Table.HeaderCell width={2}>Client Code</Table.HeaderCell>
+                        <Table.HeaderCell width={3}>Title</Table.HeaderCell>
+                        <Table.HeaderCell width={2}>Created At</Table.HeaderCell>
+                        <Table.HeaderCell width={2}>Status</Table.HeaderCell>
+                        <Table.HeaderCell width={2}>Amount</Table.HeaderCell>
                         <Table.HeaderCell width={2}>Actions</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>

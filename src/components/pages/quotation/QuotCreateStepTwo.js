@@ -8,6 +8,7 @@ import {
     Grid,
     Image
 } from "semantic-ui-react";
+import Moment from 'moment';
 
 import AddressSection from './AddressSection'
 import QuotationInfo from './QuotationInfo'
@@ -41,6 +42,9 @@ const QuotCreateStepOne = (props) => {
     const [quotationData, setQuotationData] = useState({
         title: '',
         description: '',
+        created_at: Moment(new Date()).format('DD - MMMM - YYYY'),
+        updated_at: Moment(new Date()).format('DD - MMMM - YYYY'),
+        quot_no: '#New'
     });
     const [client, setClient] = useState({});
 
@@ -74,14 +78,18 @@ const QuotCreateStepOne = (props) => {
                     let client = clientInfo.data.content.clients;
                     setClient(client);
 
-                    let terms = quotationInfo.data.content.quotations.terms;
+                    let quot = quotationInfo.data.content.quotations;
+                    let terms = quot.terms;
                     setTerms(terms);
 
-                    setTotalAmount(quotationInfo.data.content.quotations.amount);
+                    setTotalAmount(quot.amount);
                     setQuotationData({
                         ...quotationData,
-                        title: quotationInfo.data.content.quotations.title,
-                        description: quotationInfo.data.content.quotations.description,
+                        title: quot.title,
+                        description: quot.description,
+                        created_at: Moment(quot.created_at).format('DD - MMMM - YYYY'),
+                        updated_at: Moment(quot.updated_at).format('DD - MMMM - YYYY'),
+                        quot_no: (Moment(quot.created_at).format('YYYYMM')+'100'+quot.quotation_id)
                     });
 
                     let financeData = financeInfo.data.content.financials.map(f => {
@@ -181,6 +189,19 @@ const QuotCreateStepOne = (props) => {
         console.log('Downloading as PDF')
     };
 
+    const updateQuotation = e => {
+        console.log('Update Quotation')
+    };
+
+    let actionButton;
+    if (pageType === 'view') {
+        actionButton = <Button primary floated='right' onClick={downloadAsPDF}>Download as PDF</Button>
+    } else if (pageType === 'edit') {
+        actionButton = <Button primary floated='right' onClick={updateQuotation}>Update Quotation</Button>
+    } else {
+        actionButton = <Button primary floated='right' onClick={createQuotation}>Create Quotation</Button>
+    }
+
     let content;
     if (isLoading) {
         content =
@@ -209,7 +230,7 @@ const QuotCreateStepOne = (props) => {
             </Grid>
             <div style={{padding: '8px'}}>
                 <AddressSection client={client}/>
-                <QuotationInfo/>
+                <QuotationInfo createdDate={quotationData.created_at} updatedDate={quotationData.updated_at} no={quotationData.quot_no}/>
                 <br/>
                 <Form>
                     <Form.TextArea rows={2} placeholder='Project title' maxLength='100' name='title'
@@ -236,12 +257,7 @@ const QuotCreateStepOne = (props) => {
                 <Terms onTermsChange={onTermsChange} pageType={pageType} data={terms}/>
                 <Grid style={{minHeight: '40px', padding: '0rem !important'}}>
                     <Grid.Column id='create_quot_button' width={16} floated='right'>
-                        <Button
-                            primary
-                            floated='right'
-                            onClick={readOnly === true ? downloadAsPDF : createQuotation}>
-                            {readOnly === true ? "Download as PDF" : "Create Quotation"}
-                        </Button>
+                        {actionButton}
                     </Grid.Column>
                 </Grid>
             </div>

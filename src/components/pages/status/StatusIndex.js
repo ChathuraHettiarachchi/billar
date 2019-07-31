@@ -45,9 +45,9 @@ function StatusIndex() {
     };
 
     const getTableData = statusList => {
-        return statusList.map(status =>
+        return statusList.map((status, index) =>
             <Table.Row key={status.status_id}>
-                <Table.Cell>{status.status_id}</Table.Cell>
+                <Table.Cell>{index + 1}</Table.Cell>
                 <Table.Cell>{status.title}</Table.Cell>
                 <Table.Cell style={{backgroundColor:status.color}}>{status.color}</Table.Cell>
                 <Table.Cell>
@@ -85,7 +85,7 @@ function StatusIndex() {
             <Table compact celled>
                 <Table.Header fullWidth>
                     <Table.Row>
-                        <Table.HeaderCell>Id</Table.HeaderCell>
+                        <Table.HeaderCell width={1}>No.</Table.HeaderCell>
                         <Table.HeaderCell>Title</Table.HeaderCell>
                         <Table.HeaderCell>Color</Table.HeaderCell>
                         <Table.HeaderCell width={2}>Actions</Table.HeaderCell>

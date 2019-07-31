@@ -5,17 +5,18 @@ import {
 
 import './Quotation.css'
 
-function QuotationInfo() {
+function QuotationInfo({no, createdDate, updatedDate}) {
+
     return (
         <Grid className='quotation_detail fidenz_color'>
             <Grid.Column width={4} textAlign='left' verticalAlign='middle'>
-                <p>Quotation No:</p>
+                <p>Quotation No:  #{no}</p>
             </Grid.Column>
             <Grid.Column width={8} textAlign='center' verticalAlign='middle'>
-                <p>Quotation No:</p>
+                <p>Created Date:  {createdDate}</p>
             </Grid.Column>
             <Grid.Column width={4} textAlign='right' verticalAlign='middle'>
-                <p>Quotation No:</p>
+                <p>Updated Date:  {updatedDate}</p>
             </Grid.Column>
         </Grid>
     );
