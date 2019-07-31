@@ -113,7 +113,7 @@ function PaymentPlan({onPaymentPlanDataChange, pageType, data}) {
 
             <Table celled>
                 <Table.Header>
-                    {header_content}>
+                    {header_content}
                 </Table.Header>
 
                 <Table.Body>

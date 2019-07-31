@@ -70,7 +70,7 @@ const Financials = ({onFinanceDataChange, pageType, data}) => {
                         readOnly={readOnly}
                     />
                 </Table.Cell>
-                {(readOnly === true ? <></> : <Table.Cell>
+                {(readOnly === true ? <></>: <Table.Cell>
                     <Button color='red' circular floated='right' icon='remove' value={index}
                             onClick={handleFinaceItemRemove} disabled={readOnly}/>
                 </Table.Cell>)}

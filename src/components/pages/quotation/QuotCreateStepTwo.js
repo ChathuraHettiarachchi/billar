@@ -25,6 +25,7 @@ import Loader from "react-loader-spinner";
 const QuotCreateStepOne = (props) => {
 
     const [pageType, setPageType] = useState(((props.location.pathname).split("/"))[4]);
+    const [readOnly, setReadOnly] = useState(pageType === 'view');
     const [isLoading, setLoading] = useState(true);
     const [clientId, setClientId] = useState(((props.location.pathname).split("/"))[3]);
     const [quotationId, setQuotationId] = useState(
@@ -93,14 +94,14 @@ const QuotCreateStepOne = (props) => {
                     let releaseData = releaseInfo.data.content.releases.map(r => {
                         return {
                             description: r.description,
-                            release_date: (new Date(r.release_date).toISOString().slice(0,10)),
+                            release_date: (new Date(r.release_date).toISOString().slice(0, 10)),
                         }
                     });
 
                     let paymentData = paymentInfo.data.content.payments.map(p => {
                         return {
                             description: p.description,
-                            invoice_date: (new Date(p.invoice_date).toISOString().slice(0,10)),
+                            invoice_date: (new Date(p.invoice_date).toISOString().slice(0, 10)),
                             amount: p.amount
                         }
                     });
@@ -176,6 +177,10 @@ const QuotCreateStepOne = (props) => {
         });
     };
 
+    const downloadAsPDF = e => {
+        console.log('Downloading as PDF')
+    };
+
     let content;
     if (isLoading) {
         content =
@@ -209,12 +214,13 @@ const QuotCreateStepOne = (props) => {
                 <Form>
                     <Form.TextArea rows={2} placeholder='Project title' maxLength='100' name='title'
                                    value={quotationData.title} onChange={handleQuotationData}
-                                   style={{color: "#3371B1", fontSize: "2em", margin: '20px 0px 20px 0px'}}/>
+                                   style={{color: "#3371B1", fontSize: "2em", margin: '20px 0px 20px 0px'}}
+                                   readOnly={readOnly}/>
                     <hr/>
                     <Header as='h1' style={{color: "#1579D0"}}>Scope of Work</Header>
                     <Form.TextArea placeholder='Scope of Work' rows={4} name='description'
                                    value={quotationData.description} onChange={handleQuotationData}
-                                   style={{marginBottom: '20px'}}/>
+                                   style={{marginBottom: '20px'}} readOnly={readOnly}/>
                 </Form>
 
                 <br/>
@@ -230,12 +236,16 @@ const QuotCreateStepOne = (props) => {
                 <Terms onTermsChange={onTermsChange} pageType={pageType} data={terms}/>
                 <Grid style={{minHeight: '40px', padding: '0rem !important'}}>
                     <Grid.Column id='create_quot_button' width={16} floated='right'>
-                        <Button primary floated='right' onClick={createQuotation}> Create Quotation</Button>
+                        <Button
+                            primary
+                            floated='right'
+                            onClick={readOnly === true ? downloadAsPDF : createQuotation}>
+                            {readOnly === true ? "Download as PDF" : "Create Quotation"}
+                        </Button>
                     </Grid.Column>
                 </Grid>
             </div>
         </Segment>
-
     }
 
     return (
