@@ -89,7 +89,7 @@ const QuotCreateStepOne = (props) => {
                         description: quot.description,
                         created_at: Moment(quot.created_at).format('DD - MMMM - YYYY'),
                         updated_at: Moment(quot.updated_at).format('DD - MMMM - YYYY'),
-                        quot_no: (Moment(quot.created_at).format('YYYYMM')+'100'+quot.quotation_id)
+                        quot_no: (Moment(quot.created_at).format('YYYYMM') + '100' + quot.quotation_id)
                     });
 
                     let financeData = financeInfo.data.content.financials.map(f => {
@@ -148,7 +148,6 @@ const QuotCreateStepOne = (props) => {
 
     const onTermsChange = (data) => {
         setTerms(data);
-        console.log('on terms change:' + data)
     };
 
     const handleQuotationData = e => {
@@ -170,10 +169,17 @@ const QuotCreateStepOne = (props) => {
         payments: paymentPlans
     };
 
-    const createQuotation = e => {
+    const createOrUpdateQuotation = e => {
         setLoading(true);
 
-        axios.post('http://localhost:4000/quotations/new', {
+        let url;
+        if (pageType === 'new') {
+            url = 'http://localhost:4000/quotations/new'
+        } else if (pageType === 'edit') {
+            url = 'http://localhost:4000/quotations/update/' + quotationId
+        }
+
+        axios.post(url, {
             quotation: quotationObject
         }).then(res => {
             console.log(res);
@@ -189,17 +195,13 @@ const QuotCreateStepOne = (props) => {
         console.log('Downloading as PDF')
     };
 
-    const updateQuotation = e => {
-        console.log('Update Quotation')
-    };
-
     let actionButton;
     if (pageType === 'view') {
         actionButton = <Button primary floated='right' onClick={downloadAsPDF}>Download as PDF</Button>
     } else if (pageType === 'edit') {
-        actionButton = <Button primary floated='right' onClick={updateQuotation}>Update Quotation</Button>
+        actionButton = <Button primary floated='right' onClick={createOrUpdateQuotation}>Update Quotation</Button>
     } else {
-        actionButton = <Button primary floated='right' onClick={createQuotation}>Create Quotation</Button>
+        actionButton = <Button primary floated='right' onClick={createOrUpdateQuotation}>Create Quotation</Button>
     }
 
     let content;
@@ -230,7 +232,8 @@ const QuotCreateStepOne = (props) => {
             </Grid>
             <div style={{padding: '8px'}}>
                 <AddressSection client={client}/>
-                <QuotationInfo createdDate={quotationData.created_at} updatedDate={quotationData.updated_at} no={quotationData.quot_no}/>
+                <QuotationInfo createdDate={quotationData.created_at} updatedDate={quotationData.updated_at}
+                               no={quotationData.quot_no}/>
                 <br/>
                 <Form>
                     <Form.TextArea rows={2} placeholder='Project title' maxLength='100' name='title'
