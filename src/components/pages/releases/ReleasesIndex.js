@@ -9,6 +9,7 @@ import './Release.css'
 import ReleaseRow from './ReleaseRow'
 import axios from "axios";
 import {Link} from "react-router-dom";
+import Loader from "react-loader-spinner";
 
 function ReleasesIndex() {
 
@@ -55,6 +56,25 @@ function ReleasesIndex() {
 
     const groupByQuot = groupBy('quotation_id');
 
+    let tableContent;
+    if (isLoading) {
+        tableContent =
+            <div>
+                <div style={{
+                    width: "100%",
+                    height: "100",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
+                }}
+                >
+                    <Loader type="Plane" color="blue" height="100" width="100"/>
+                </div>
+            </div>
+    } else {
+        tableContent = <div>{getTableData(releaseList)}</div>
+    }
+
     return (
         <div>
             <Segment>
@@ -66,7 +86,7 @@ function ReleasesIndex() {
                     </Grid.Row>
                 </Grid>
             </Segment>
-            {getTableData(releaseList)}
+            {tableContent}
         </div>
     );
 }
