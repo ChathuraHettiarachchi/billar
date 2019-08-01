@@ -44,7 +44,7 @@ const QuotCreateStepOne = (props) => {
         description: '',
         created_at: Moment(new Date()).format('DD - MMMM - YYYY'),
         updated_at: Moment(new Date()).format('DD - MMMM - YYYY'),
-        quot_no: '#New'
+        quot_no: 'New'
     });
     const [client, setClient] = useState({});
 

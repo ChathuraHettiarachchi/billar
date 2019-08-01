@@ -72,3 +72,7 @@ Y
 )src/components/pages/status/StatusForm.js,2/a/2a4be9d11bd930ab69408a47b7cc347eef6852c0
 ]
 -src/components/pages/quotation/ReleasePlan.js,6/f/6fa79a60385f1e77cb5e42a928da99a2b4202dd5
+Y
+)src/components/pages/releases/Release.css,6/8/68fd7371c0d52279d1ea592bc4d1f9ca2bb3f5e8
+[
++src/components/pages/releases/ReleaseRow.js,8/9/8900b384f37e514e91295b8ae76fe35e43b14ee0

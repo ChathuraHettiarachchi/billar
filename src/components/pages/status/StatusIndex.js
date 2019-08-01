@@ -57,9 +57,9 @@ function StatusIndex() {
                     <Button size="mini" icon color="blue" as={Link} to={'/status/' + status.status_id + '/edit'}>
                         <Icon name="pencil"/>
                     </Button>
-                    <Button color="red" size="mini" icon onClick={handleConfirmation} value={status.status_id} key={status.status_id}>
-                        <Icon name="delete"/>
-                    </Button>
+                    {/*<Button color="red" size="mini" icon onClick={handleConfirmation} value={status.status_id} key={status.status_id}>*/}
+                    {/*    <Icon name="delete"/>*/}
+                    {/*</Button>*/}
                 </Table.Cell>
             </Table.Row>
         );
