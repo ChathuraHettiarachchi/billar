@@ -88,6 +88,16 @@ const QuotIndex = (props) => {
         }
     };
 
+    const getStatusColor = quotation => {
+        let color;
+        if (quotation.status === null || quotation.status === ''){
+            color = '#fff';
+        } else {
+            color = statusList.find(x => x.status_id === parseInt(quotation.status)).color;
+        }
+        return color
+    };
+
     const getTableData = quotations => {
         return quotations.map((quotation, index) =>
             <Table.Row key={quotation.quotation_id}>
@@ -105,7 +115,7 @@ const QuotIndex = (props) => {
                             onChange={onQuotationStateChange}
                             name='status'
                             data-id={index}
-                            style={{backgroundColor:(statusList.find(x => x.status_id === parseInt(quotation.status)).color)}}
+                            style={{backgroundColor:(getStatusColor(quotation))}}
                         />
                     </Form>
                 </Table.Cell>
