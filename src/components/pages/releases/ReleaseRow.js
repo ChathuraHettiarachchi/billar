@@ -19,12 +19,34 @@ function ReleaseRow({data}) {
     };
 
     const datePassed = {
-        backgroundColor: '#ff4c4c'
+        backgroundColor: '#000000',
+        color: '#ffffff'
+    };
+
+    const dateThisWeek = {
+        backgroundColor: '#cc0000',
+        color: '#ffffff'
+    };
+
+    const dateNextWeek = {
+        backgroundColor: '#098c39',
+        color: '#ffffff'
+    };
+
+    const dateOther = {
+        backgroundColor: '#fff',
+        color: '#000'
     };
 
     const passedStyle = date => {
-        if ((new Date()) > (new Date(date))){
+        if (Moment() > Moment(date)){
             return datePassed;
+        } else if (Moment().isoWeek() === Moment(date).isoWeek()){
+            return dateThisWeek;
+        } else if (Moment(date).isoWeek() === (Moment().isoWeek()+1)){
+            return dateNextWeek;
+        } else {
+            return dateOther;
         }
     };
 

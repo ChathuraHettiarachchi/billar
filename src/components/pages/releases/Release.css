@@ -11,6 +11,14 @@
     vertical-align: middle;
 }
 
+.column-rel-indicator {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 35px; /* Should be removed. Only for demonstration */
+    vertical-align: middle;
+}
+
 .column-rel-release {
     float: left;
     vertical-align: middle;
@@ -31,4 +39,46 @@
     content: "";
     display: table;
     clear: both;
+}
+
+#color_box_wrapper{
+    display: table;
+}
+
+#color_box, #color_text{
+    display: inline-block;
+    margin: 0px;
+}
+
+#color_text{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.this-week {
+    height: 20px;
+    width: 20px;
+    background-color: #cc0000;
+    border: 1px solid rgba(0, 0, 0, .8);
+}
+
+.next-week {
+    height: 20px;
+    width: 20px;
+    background-color: #098c39;
+    border: 1px solid rgba(0, 0, 0, .8);
+}
+
+.passed {
+    height: 20px;
+    width: 20px;
+    background-color: #000000;
+    border: 1px solid rgba(0, 0, 0, .8);
+}
+
+.other {
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .8);
 }

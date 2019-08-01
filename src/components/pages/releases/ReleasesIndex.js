@@ -79,9 +79,34 @@ function ReleasesIndex() {
         <div>
             <Segment>
                 <Grid style={{minHeight: '0'}}>
-                    <Grid.Row>
+                    <Grid.Row style={{height: '90px'}}>
                         <Grid.Column width={4} floated='left' verticalAlign='middle'>
                             <Header>Releases</Header>
+                        </Grid.Column>
+                        <Grid.Column width={4} floated='right'>
+                            <div className="row-rel">
+                                <div className="column-rel-indicator">
+                                    <div id="color_box_wrapper">
+                                        <div id="color_box" className="passed"/>
+                                        <pre id="color_text"> Completed</pre>
+                                    </div>
+                                    <div id="color_box_wrapper">
+                                        <div id="color_box" className="next-week"/>
+                                        <pre id="color_text"> Next week</pre>
+                                    </div>
+                                </div>
+                                <div className="column-rel-indicator">
+                                    <div id="color_box_wrapper">
+                                        <div id="color_box" className="this-week"/>
+                                        <pre id="color_text"> This week</pre>
+                                    </div>
+                                    <div id="color_box_wrapper">
+                                        <div id="color_box" className="other"/>
+                                        <pre id="color_text"> Future</pre>
+                                    </div>
+                                </div>
+                            </div>
+
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
