@@ -22,8 +22,8 @@ const QuotIndex = (props) => {
         const fetchData = () => {
 
             axios.all([
-                axios.get('http://localhost:4000/quotations/'),
-                axios.get('http://localhost:4000/status/')
+                axios.get(process.env.REACT_APP_BASE_URL + 'quotations/'),
+                axios.get(process.env.REACT_APP_BASE_URL + 'status/')
             ]).then(axios.spread((quotations, statusList) => {
                 let quots = quotations.data.content.quotations;
                 let statusData = statusList.data.content.status_list;
@@ -60,7 +60,7 @@ const QuotIndex = (props) => {
         setQuotations(_tempQuotations);
 
         setLoading(true);
-        axios.post(('http://localhost:4000/quotations/update/'+quotations[index['data-id']].quotation_id+'/status'), {
+        axios.post((process.env.REACT_APP_BASE_URL + 'quotations/update/'+quotations[index['data-id']].quotation_id+'/status'), {
             quotation: {
                 status: index.value
             }
@@ -76,7 +76,7 @@ const QuotIndex = (props) => {
     const handleConfirmation = (event, data) => {
         const r = window.confirm("Do you really want to remove this quotation?");
         if (r == true) {
-            axios.delete('http://localhost:4000/quotations/remove/' + data.value)
+            axios.delete(process.env.REACT_APP_BASE_URL + 'quotations/remove/' + data.value)
                 .then(res => {
                     console.log(res);
                     window.location.reload()

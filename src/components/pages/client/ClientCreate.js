@@ -46,7 +46,7 @@ const ClientCreate = (props) => {
         setTitle("Creating...");
         setLoading(true);
 
-        axios.post('http://localhost:4000/clients/new', {
+        axios.post(process.env.REACT_APP_BASE_URL + 'clients/new', {
             client
         }).then(res => {
             console.log(res);

@@ -18,7 +18,7 @@ function StatusIndex() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch('http://localhost:4000/status/');
+            const res = await fetch(process.env.REACT_APP_BASE_URL + 'status/');
             const json = await res.json();
 
             setLoading(false);
@@ -32,7 +32,7 @@ function StatusIndex() {
     const handleConfirmation = e => {
         const r = window.confirm("Do you really want to remove this project status?");
         if (r == true) {
-            axios.delete('http://localhost:4000/status/remove/' + e.target.value)
+            axios.delete(process.env.REACT_APP_BASE_URL + 'status/remove/' + e.target.value)
                 .then(res => {
                     console.log(res);
                     window.location.reload()

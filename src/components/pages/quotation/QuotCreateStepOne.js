@@ -16,7 +16,7 @@ const QuotCreateStepOne = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch('http://localhost:4000/clients/');
+            const res = await fetch(process.env.REACT_APP_BASE_URL + 'clients/');
             const json = await res.json();
 
             setLoading(false);

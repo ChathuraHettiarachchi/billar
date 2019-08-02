@@ -28,7 +28,7 @@ const ClientView = (props) => {
 
     useEffect(() => {
         const fetchData = () => {
-            axios.get('http://localhost:4000/clients/' + client.client_id)
+            axios.get(process.env.REACT_APP_BASE_URL + 'clients/' + client.client_id)
                 .then(res => {
                     console.log(res.data);
                     setLoading(false);

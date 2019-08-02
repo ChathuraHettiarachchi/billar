@@ -19,7 +19,7 @@ const ClientIndex = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch('http://localhost:4000/clients/');
+            const res = await fetch(process.env.REACT_APP_BASE_URL + 'clients/');
             const json = await res.json();
 
             setLoading(false);
@@ -33,7 +33,7 @@ const ClientIndex = () => {
     const handleConfirmation = e => {
         const r = window.confirm("Do you really want to remove this user?");
         if (r == true) {
-            axios.delete('http://localhost:4000/clients/remove/' + e.target.value)
+            axios.delete(process.env.REACT_APP_BASE_URL + 'clients/remove/' + e.target.value)
                 .then(res => {
                     console.log(res);
                     window.location.reload()

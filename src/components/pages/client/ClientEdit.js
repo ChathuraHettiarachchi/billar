@@ -23,7 +23,7 @@ const ClientEdit = (props) => {
 
     useEffect(() => {
         const fetchData = () => {
-            axios.get('http://localhost:4000/clients/' + client.client_id)
+            axios.get(process.env.REACT_APP_BASE_URL + 'clients/' + client.client_id)
                 .then(res => {
                     console.log(res.data);
                     setLoading(false);
@@ -70,7 +70,7 @@ const ClientEdit = (props) => {
         setTitle("Updating...");
         setLoading(true);
 
-        axios.post('http://localhost:4000/clients/update/' + client.client_id, {
+        axios.post(process.env.REACT_APP_BASE_URL + 'clients/update/' + client.client_id, {
             client
         }).then(res => {
             console.log(res);

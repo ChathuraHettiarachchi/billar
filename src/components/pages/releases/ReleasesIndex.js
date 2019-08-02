@@ -18,7 +18,7 @@ function ReleasesIndex() {
 
     useEffect(() => {
         const fetchData = () => {
-            axios.get('http://localhost:4000/releases/all')
+            axios.get(process.env.REACT_APP_BASE_URL + 'releases/all')
                 .then(res => {
                     setLoading(false);
                     return res.data.content.releases

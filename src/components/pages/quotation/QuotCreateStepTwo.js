@@ -51,7 +51,7 @@ const QuotCreateStepOne = (props) => {
     useEffect(() => {
         if (pageType === 'new') {
             const fetchData = () => {
-                axios.get('http://localhost:4000/clients/' + clientId)
+                axios.get(process.env.REACT_APP_BASE_URL + 'clients/' + clientId)
                     .then(res => {
                         setLoading(false);
 
@@ -69,11 +69,11 @@ const QuotCreateStepOne = (props) => {
             const fetchData = () => {
                 console.log(pageType);
                 axios.all([
-                    axios.get('http://localhost:4000/clients/' + clientId),
-                    axios.get('http://localhost:4000/quotations/' + quotationId),
-                    axios.get('http://localhost:4000/financials/quotation/' + quotationId),
-                    axios.get('http://localhost:4000/releases/quotation/' + quotationId),
-                    axios.get('http://localhost:4000/payments/quotation/' + quotationId)
+                    axios.get(process.env.REACT_APP_BASE_URL + 'clients/' + clientId),
+                    axios.get(process.env.REACT_APP_BASE_URL + 'quotations/' + quotationId),
+                    axios.get(process.env.REACT_APP_BASE_URL + 'financials/quotation/' + quotationId),
+                    axios.get(process.env.REACT_APP_BASE_URL + 'releases/quotation/' + quotationId),
+                    axios.get(process.env.REACT_APP_BASE_URL + 'payments/quotation/' + quotationId)
                 ]).then(axios.spread((clientInfo, quotationInfo, financeInfo, releaseInfo, paymentInfo) => {
                     let client = clientInfo.data.content.clients;
                     setClient(client);
@@ -174,9 +174,9 @@ const QuotCreateStepOne = (props) => {
 
         let url;
         if (pageType === 'new') {
-            url = 'http://localhost:4000/quotations/new'
+            url = process.env.REACT_APP_BASE_URL + 'quotations/new'
         } else if (pageType === 'edit') {
-            url = 'http://localhost:4000/quotations/update/' + quotationId
+            url = process.env.REACT_APP_BASE_URL + 'quotations/update/' + quotationId
         }
 
         axios.post(url, {

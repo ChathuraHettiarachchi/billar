@@ -28,7 +28,7 @@ const StatusForm = (props) => {
         } else if (pageType === 'view' || pageType === 'edit') {
             const fetchData = () => {
                 console.log(pageType)
-                axios.get('http://localhost:4000/status/' + status.status_id)
+                axios.get(process.env.REACT_APP_BASE_URL + 'status/' + status.status_id)
                     .then(res => {
                         console.log(res.data);
                         setLoading(false);
@@ -71,7 +71,7 @@ const StatusForm = (props) => {
         setTitle("Creating...");
         setLoading(true);
 
-        axios.post('http://localhost:4000/status/new', {
+        axios.post(process.env.REACT_APP_BASE_URL + 'status/new', {
             status
         }).then(res => {
             console.log(res);
@@ -87,7 +87,7 @@ const StatusForm = (props) => {
         setTitle("Updating...");
         setLoading(true);
 
-        axios.post('http://localhost:4000/status/update/' + status.status_id, {
+        axios.post(process.env.REACT_APP_BASE_URL + 'status/update/' + status.status_id, {
             status
         }).then(res => {
             console.log(res);

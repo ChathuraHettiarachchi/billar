@@ -18,7 +18,7 @@ function InvoiceIndex() {
 
     useEffect(() => {
         const fetchData = () => {
-            axios.get('http://localhost:4000/payments/all')
+            axios.get(process.env.REACT_APP_BASE_URL + 'payments/all')
                 .then(res => {
                     setLoading(false);
                     return res.data.content.payments
@@ -118,7 +118,7 @@ function InvoiceIndex() {
                 <Grid style={{minHeight: '0'}}>
                     <Grid.Row>
                         <Grid.Column width={2} floated='left' verticalAlign='middle'>
-                            <Header>Invoices</Header>
+                            <Header>Client Invoices</Header>
                         </Grid.Column>
                         <Grid.Column width={8} floated='left' verticalAlign='middle'>
                         </Grid.Column>
