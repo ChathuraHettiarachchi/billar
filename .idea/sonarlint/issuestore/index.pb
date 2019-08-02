@@ -76,3 +76,5 @@ Y
 )src/components/pages/releases/Release.css,6/8/68fd7371c0d52279d1ea592bc4d1f9ca2bb3f5e8
 [
 +src/components/pages/releases/ReleaseRow.js,8/9/8900b384f37e514e91295b8ae76fe35e43b14ee0
+X
+(src/components/pages/invoice/invoice.css,3/d/3de2b80e862a8c6c50d83deafa61b6f126d27caf
