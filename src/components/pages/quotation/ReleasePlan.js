@@ -26,15 +26,15 @@ const ReleasePlan = ({onReleasePlanDataChange, pageType, data}) => {
         _tempReleases[event.target.dataset.id][event.target.name] = event.target.value;
         setReleaseData(_tempReleases);
 
-        onReleasePlanDataChange(releaseData);
+        onReleasePlanDataChange(_tempReleases);
     };
 
-    const handleReleaseItemRemove = event => {
+    const handleReleaseItemRemove = (event, data) => {
         const _tempReleases = [...releaseData];
-        _tempReleases.splice(event.target.dataset.id, 1);
+        _tempReleases.splice(data.value, 1);
         setReleaseData(_tempReleases);
 
-        onReleasePlanDataChange(releaseData);
+        onReleasePlanDataChange(_tempReleases);
     };
 
     const getTableData = releaseData => {

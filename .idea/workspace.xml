@@ -2,7 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="150b1cc0-d2d0-4322-8fd0-3d89c7100349" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/2/02250351aed90f62d344991ecf72bb885eca5946" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/3/538818e7684624a442fce4828d05432406a7e873" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/06650c0be7e7e456a76bf80c9584a88b6dcccc26" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/06650c0be7e7e456a76bf80c9584a88b6dcccc26" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/c/2cc41641918d7206446e659ef705fd2ad5f0cc6c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/c/2cc41641918d7206446e659ef705fd2ad5f0cc6c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cb8f412f5351d8a56880225d69ee64877a79954" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cb8f412f5351d8a56880225d69ee64877a79954" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/f/6fa79a60385f1e77cb5e42a928da99a2b4202dd5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/f/6fa79a60385f1e77cb5e42a928da99a2b4202dd5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7ba118fac1b8b015dce71051f88e8520a58d31c9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7ba118fac1b8b015dce71051f88e8520a58d31c9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/5/852039d23b5174777856e37f4ccbc4bd97eb08d9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/5/852039d23b5174777856e37f4ccbc4bd97eb08d9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fd1c733029efbbab37b1e46fc4fa678cf34428e3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fd1c733029efbbab37b1e46fc4fa678cf34428e3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/Financials.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/Financials.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -13,59 +28,22 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="307">
-                    <caret line="91" column="101" selection-start-line="91" selection-start-column="33" selection-end-line="91" selection-end-column="101" />
-                    <folding>
-                      <element signature="e#0#49#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/src/components/pages/status/StatusIndex.js">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="1134">
-                    <caret line="65" column="6" selection-start-line="46" selection-start-column="4" selection-end-line="65" selection-end-column="6" />
-                    <folding>
-                      <element signature="e#0#49#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/src/components/pages/releases/ReleasesIndex.js">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="1344">
-                    <caret line="75" column="5" selection-start-line="58" selection-start-column="4" selection-end-line="75" selection-end-column="5" />
-                    <folding>
-                      <element signature="e#0#49#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/invoice/InvoiceIndex.js">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/Financials.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="483">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="173">
+              <caret line="75" column="10" selection-start-line="75" selection-start-column="10" selection-end-line="75" selection-end-column="10" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -74,68 +52,30 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.js">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1275">
+              <caret line="38" column="45" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="130" column="39" selection-start-line="130" selection-start-column="39" selection-end-line="130" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="441">
+              <caret line="28" column="45" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package.json">
+        <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env.production">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/env-cmd/dist/get-env-vars.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="43" column="74" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/assets/data/countriesData.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1569">
-              <caret line="500" column="65" selection-start-line="500" selection-start-column="3" selection-end-line="500" selection-end-column="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/pages/client/ClientCreate.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+            <state relative-caret-position="480">
+              <caret line="95" column="49" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
               <folding>
-                <element signature="e#0#50#0" expanded="true" />
+                <element signature="e#0#49#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -153,7 +93,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>className='quotation_detail'</find>
       <find>sx</find>
       <find>padding: 0 20px 0 20px !important;</find>
       <find>Sri</find>
@@ -179,6 +118,11 @@
       <find>new Date</find>
       <find>totalAmount</find>
       <find>'http://localhost:4000/</find>
+      <find>REACT_APP_BASE_URL</find>
+      <find>quotationInfo</find>
+      <find>quotationObject</find>
+      <find>setTotalAmount</find>
+      <find>handleFinaceItemChange</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -208,7 +152,6 @@
         <option value="$PROJECT_DIR$/src/components/navigation/TopNavigation.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/Layout.js" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/store/configureStore.js" />
         <option value="$PROJECT_DIR$/src/components/pages/client/index.js" />
         <option value="$PROJECT_DIR$/src/components/pages/client/CreateClient.js" />
@@ -227,14 +170,10 @@
         <option value="$PROJECT_DIR$/src/Routes.js" />
         <option value="$PROJECT_DIR$/src/components/pages/status/StatusForm.js" />
         <option value="$PROJECT_DIR$/src/components/pages/quotation/Terms.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/quotation/Financials.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js" />
         <option value="$PROJECT_DIR$/src/components/pages/quotation/QuotationInfo.js" />
         <option value="$PROJECT_DIR$/src/components/pages/client/ClientIndex.js" />
         <option value="$PROJECT_DIR$/src/components/pages/status/StatusIndex.js" />
         <option value="$PROJECT_DIR$/src/components/pages/releases/Release.js" />
-        <option value="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" />
         <option value="$PROJECT_DIR$/src/components/pages/releases/ReleaseRow.js" />
         <option value="$PROJECT_DIR$/src/components/pages/releases/Release.css" />
         <option value="$PROJECT_DIR$/src/components/pages/releases/ReleasesIndex.js" />
@@ -246,11 +185,16 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/components/pages/invoice/InvoiceIndex.js" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/.env.production" />
+        <option value="$PROJECT_DIR$/src/components/pages/quotation/Financials.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js" />
+        <option value="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
@@ -269,6 +213,11 @@
             <path>
               <item name="billar" type="b2602c69:ProjectViewProjectNode" />
               <item name="billar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="billar" type="b2602c69:ProjectViewProjectNode" />
+              <item name="billar" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="billar" type="b2602c69:ProjectViewProjectNode" />
@@ -300,7 +249,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="quotation" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -325,11 +274,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/components/pages/releases" />
       <recent name="$PROJECT_DIR$/src/components/pages/quotation" />
       <recent name="$PROJECT_DIR$/src/components/pages/status" />
-      <recent name="$PROJECT_DIR$/src/components/pages/client" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/assets/data" />
@@ -390,12 +339,14 @@
       <workItem from="1564463662756" duration="21148000" />
       <workItem from="1564541966551" duration="26977000" />
       <workItem from="1564629371810" duration="16001000" />
-      <workItem from="1564717156273" duration="9675000" />
+      <workItem from="1564717156273" duration="11344000" />
+      <workItem from="1568012172871" duration="6168000" />
+      <workItem from="1568087881608" duration="1896000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150216000" />
+    <option name="totallyTimeSpent" value="159949000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -410,7 +361,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2149401" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18322763" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" />
@@ -426,7 +377,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32891566" />
       <window_info anchor="bottom" id="SonarLint" order="9" />
       <window_info anchor="bottom" id="DB Execution Console" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49964765" weight="0.32771084" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49964765" weight="0.60240966" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5003524" side_tool="true" weight="0.32891566" />
       <window_info anchor="bottom" id="TypeScript" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -461,15 +412,31 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js</url>
+          <line>133</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js</url>
+          <line>130</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js</url>
+          <line>126</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-774" />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/images/fidenz.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -480,13 +447,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/store/Card.js" />
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/configureStore.js" />
     <entry file="file://$PROJECT_DIR$/src/store/SideMenu.js" />
     <entry file="file://$PROJECT_DIR$/src/components/Layout.js">
@@ -663,13 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="687">
-          <caret line="107" column="35" selection-start-line="107" selection-start-column="35" selection-end-line="107" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/releases/ReleaseRow.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -687,44 +640,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="117" column="77" selection-start-line="117" selection-start-column="77" selection-end-line="117" selection-end-column="77" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/invoice/invoice.css">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="11" selection-start-column="1" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/Financials.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="26" column="38" selection-start-line="24" selection-start-column="8" selection-end-line="26" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1218">
-          <caret line="66" column="22" selection-start-line="57" selection-start-column="20" selection-end-line="66" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="91" column="101" selection-start-line="91" selection-start-column="33" selection-end-line="91" selection-end-column="101" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -748,34 +667,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UserDefaults.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/UserDefaults.js" />
+    <entry file="file://$PROJECT_DIR$/.env" />
+    <entry file="file://$PROJECT_DIR$/.env.development">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/data/countriesData.js">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/invoice/InvoiceIndex.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1569">
-          <caret line="500" column="65" selection-start-line="500" selection-start-column="3" selection-end-line="500" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="130" column="39" selection-start-line="130" selection-start-column="39" selection-end-line="130" selection-end-column="39" />
+        <state relative-caret-position="136">
+          <caret line="35" column="11" lean-forward="true" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#49#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="11" selection-start-column="11" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -789,12 +692,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2709">
+          <caret line="130" column="39" selection-start-line="130" selection-start-column="39" selection-end-line="130" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env.production">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="53" selection-start-column="53" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/env-cmd/dist/get-env-vars.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="903">
+          <caret line="43" column="74" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/data/countriesData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10500">
+          <caret line="500" column="65" selection-start-line="500" selection-start-column="3" selection-end-line="500" selection-end-column="65" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/client/ClientCreate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
+        <state relative-caret-position="798">
           <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
@@ -802,33 +750,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env.development">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/env-cmd/dist/get-env-vars.js">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="43" column="74" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/pages/invoice/InvoiceIndex.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="173">
+          <caret line="75" column="10" selection-start-line="75" selection-start-column="10" selection-end-line="75" selection-end-column="10" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env.production">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/Financials.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="483">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1275">
+          <caret line="38" column="45" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="28" column="45" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="95" column="49" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -92,27 +92,36 @@ const QuotCreateStepOne = (props) => {
                         quot_no: (Moment(quot.created_at).format('YYYYMM') + '00' + quot.quotation_id)
                     });
 
-                    let financeData = financeInfo.data.content.financials.map(f => {
-                        return {
-                            description: f.description,
-                            amount: f.amount
-                        }
-                    });
+                    let financeData = [];
+                    if (financeInfo.data.content !=null && financeInfo.data.content.financials.length > 0){
+                      financeData = financeInfo.data.content.financials.map(f => {
+                          return {
+                              description: f.description,
+                              amount: f.amount
+                          }
+                      });
+                    }
 
-                    let releaseData = releaseInfo.data.content.releases.map(r => {
-                        return {
-                            description: r.description,
-                            release_date: (new Date(r.release_date).toISOString().slice(0, 10)),
-                        }
-                    });
+                    let releaseData = [];
+                    if (releaseInfo.data.content !=null && releaseInfo.data.content.releases.length > 0){
+                        releaseData = releaseInfo.data.content.releases.map(r => {
+                            return {
+                                description: r.description,
+                                release_date: (new Date(r.release_date).toISOString().slice(0, 10)),
+                            }
+                        });
+                    }
 
-                    let paymentData = paymentInfo.data.content.payments.map(p => {
-                        return {
-                            description: p.description,
-                            invoice_date: (new Date(p.invoice_date).toISOString().slice(0, 10)),
-                            amount: p.amount
-                        }
-                    });
+                    let paymentData = [];
+                    if (paymentInfo.data.content !=null && paymentInfo.data.content.payments.length > 0){
+                        paymentData = paymentInfo.data.content.payments.map(p => {
+                            return {
+                                description: p.description,
+                                invoice_date: (new Date(p.invoice_date).toISOString().slice(0, 10)),
+                                amount: p.amount
+                            }
+                        });
+                    }
 
                     setFinancials(financeData);
                     setReleasePlans(releaseData);
@@ -132,10 +141,6 @@ const QuotCreateStepOne = (props) => {
 
     const onFinanceDataChange = (data) => {
         setFinancials(data);
-        setTotalAmount(
-            financials.reduce((total, item) => {
-                return total + Number(item.amount);
-            }, 0));
     };
 
     const onReleasePlanDataChange = (data) => {
@@ -148,6 +153,10 @@ const QuotCreateStepOne = (props) => {
 
     const onTermsChange = (data) => {
         setTerms(data);
+    };
+
+    const onTotalChange = (data) => {
+        setTotalAmount(data)
     };
 
     const handleQuotationData = e => {
@@ -248,7 +257,7 @@ const QuotCreateStepOne = (props) => {
                 </Form>
 
                 <br/>
-                <Financials onFinanceDataChange={onFinanceDataChange} pageType={pageType} data={financials}/>
+                <Financials onFinanceDataChange={onFinanceDataChange} pageType={pageType} data={financials} total={onTotalChange}/>
                 <br/>
                 <br/>
                 <ReleasePlan onReleasePlanDataChange={onReleasePlanDataChange} pageType={pageType} data={releasePlans}/>

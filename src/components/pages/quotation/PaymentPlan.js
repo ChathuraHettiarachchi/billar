@@ -28,15 +28,15 @@ function PaymentPlan({onPaymentPlanDataChange, pageType, data}) {
         setPaymentData(_tempPayments);
         console.log(paymentData);
 
-        onPaymentPlanDataChange(paymentData);
+        onPaymentPlanDataChange(_tempPayments);
     };
 
-    const handleReleaseItemRemove = event => {
+    const handleReleaseItemRemove = (event, data) => {
         const _tempPayments = [...paymentData];
-        _tempPayments.splice(event.target.dataset.id, 1);
+        _tempPayments.splice(data.value, 1);
         setPaymentData(_tempPayments);
 
-        onPaymentPlanDataChange(paymentData);
+        onPaymentPlanDataChange(_tempPayments);
     };
 
     const getTableData = paymentData => {

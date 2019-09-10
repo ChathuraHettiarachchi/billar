@@ -7,7 +7,7 @@ import TableHeader from "./TableHeader";
 import './Quotation.css'
 import {Link} from "react-router-dom";
 
-const Financials = ({onFinanceDataChange, pageType, data}) => {
+const Financials = ({onFinanceDataChange, pageType, data, total}) => {
 
     const [financeData, setFinanceData] = useState(data);
     const [readOnly, setReadOnly] = useState(pageType === 'view');
@@ -26,21 +26,24 @@ const Financials = ({onFinanceDataChange, pageType, data}) => {
         _tempFinances[event.target.dataset.id][event.target.name] = event.target.value;
         setFinanceData(_tempFinances);
 
-        onFinanceDataChange(financeData)
+        onFinanceDataChange(_tempFinances)
     };
 
     const getTotalCosts = () => {
-        return financeData.reduce((total, item) => {
+        const totalAmount = financeData.reduce((total, item) => {
             return total + Number(item.amount);
         }, 0);
+
+        total(totalAmount);
+        return totalAmount
     };
 
-    const handleFinaceItemRemove = event => {
+    const handleFinaceItemRemove = (event, data) => {
         const _tempFinances = [...financeData];
-        _tempFinances.splice(event.target.dataset.id, 1);
+        _tempFinances.splice(data.value, 1);
         setFinanceData(_tempFinances);
 
-        onFinanceDataChange(financeData)
+        onFinanceDataChange(_tempFinances)
     };
 
     const getTableData = financeData => {
