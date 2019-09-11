@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {
     Button,
     Grid,
-    Header, Icon,
+    Header, Icon, Image,
     Segment,
     Table
 } from "semantic-ui-react";
@@ -15,6 +15,8 @@ function InvoiceIndex(props) {
 
     const [invoiceList, setInvoiceList] = useState([]);
     const [isLoading, setLoading] = useState(true);
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
 
     useEffect(() => {
         const fetchData = () => {
@@ -31,7 +33,6 @@ function InvoiceIndex(props) {
                         }
                     });
                     setInvoiceList(data);
-                    console.log(data);
                 })
                 .catch(error => {
                     console.log(error);
@@ -41,6 +42,35 @@ function InvoiceIndex(props) {
 
         fetchData();
     }, []);
+
+    const filterInvoices = e => {
+        if (startDate === null || endDate === null){
+            alert("You must enter both 'From' and 'To'");
+        } else {
+            axios.get(process.env.REACT_APP_BASE_URL + 'payments/all/'+startDate+'/to/'+endDate)
+                .then(res => {
+                    setLoading(false);
+                    return res.data.content.payments
+                })
+                .then(result => {
+                    let data = result.map(f => {
+                        return {
+                            item: f,
+                            sent_amount: ''
+                        }
+                    });
+                    setInvoiceList(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                    setLoading(false);
+                });
+        }
+    };
+
+    const resetFilter = e => {
+        window.location.reload();
+    };
 
     const getRemaining = invoice => {
         let amount = (invoice.sent_to_client == null ? 0 : invoice.sent_to_client);
@@ -120,6 +150,13 @@ function InvoiceIndex(props) {
         );
     };
 
+    const handleStartDate = event => {
+        setStartDate(event.target.value);
+    };
+
+    const handleEndDate = event => {
+        setEndDate(event.target.value);
+    };
 
     let totalAmount = invoiceList.reduce((a, b) => {
         return (a + (b.item.sent_to_client === null ? 0 : b.item.sent_to_client));
@@ -180,15 +217,16 @@ function InvoiceIndex(props) {
                 </Grid>
             </Segment>
             <Segment>
-                <Grid style={{minHeight: '0'}}>
+                <Grid style={{minHeight: '0'}} divided='vertically' columns={2}>
                     <Grid.Row>
                         <Grid.Column width={1} floated='left' verticalAlign='middle'>
-                            <h5>From :</h5>
+                            <p>From:</p>
                         </Grid.Column>
-                        <Grid.Column width={6} floated='left' verticalAlign='middle'>
+                        <Grid.Column width={5} floated='left' verticalAlign='middle'>
                             <div className="block">
                                 <input
-                                    name="from"
+                                    name="startDate"
+                                    onChange={handleStartDate}
                                     style={{height: '35px', width: '100%'}}
                                     type='date'
                                     placeholder='From'
@@ -197,20 +235,22 @@ function InvoiceIndex(props) {
 
                         </Grid.Column>
                         <Grid.Column width={1} floated='left' verticalAlign='middle'>
-                            <h5>To :</h5>
+                            <p>To:</p>
                         </Grid.Column>
-                        <Grid.Column width={6} floated='left' verticalAlign='middle'>
+                        <Grid.Column width={5} floated='left' verticalAlign='middle'>
                             <div className="block">
                                 <input
-                                    name="from"
+                                    name="endDate"
+                                    onChange={handleEndDate}
                                     style={{height: '35px', width: '100%'}}
                                     type='date'
                                     placeholder='From'
                                 />
                             </div>
                         </Grid.Column>
-                        <Grid.Column width={2} floated='left' verticalAlign='middle'>
-                            <Button primary style={{width: '100%'}} icon='search'/>
+                        <Grid.Column width={3} floated='right' verticalAlign='middle' >
+                            <Button style={{height: '35px', width: '48%'}} primary icon='search' onClick={filterInvoices}/>
+                            <Button style={{height: '35px', width: '48%'}} primary icon='close' onClick={resetFilter}/>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
