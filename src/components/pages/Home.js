@@ -52,8 +52,8 @@ const Home = props => (
                                         <ul>
                                             <li><s>Show</s></li>
                                             <li><s>Index</s></li>
-                                            <li style={{color:'red'}}>Set - sent to client amount</li>
-                                            <li style={{color:'red'}}>Filtering data</li>
+                                            <li><s>Set - sent to client amount</s></li>
+                                            <li><s>Filtering data</s></li>
                                         </ul>
                                     </li>
                                     <li><s>Quotations</s>
@@ -84,7 +84,7 @@ const Home = props => (
                                     <li><s>Invoices</s>
                                         <ul>
                                             <li><s>Index</s></li>
-                                            <li style={{color:'red'}}>Filtering</li>
+                                            <li><s>Filtering</s></li>
                                         </ul>
                                     </li>
                                     <li><s>Releases</s>
@@ -130,8 +130,8 @@ const Home = props => (
                                     <li>Removing client need to remove all related quotations</li>
                                     <li>Generate PDF</li>
                                     <li>Validation on Payment Plan section</li>
-                                    <li>Invoices 'sent to clint' update and validation</li>
-                                    <li>Invoices filtering</li>
+                                    <li><s>Invoices 'sent to clint' update and validation</s></li>
+                                    <li><s>Invoices filtering</s></li>
                                     <li>Home - Dashboard</li>
                                 </ul>
                             </li>

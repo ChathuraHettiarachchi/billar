@@ -2,7 +2,6 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 
 import Login from './components/login/Login'
-import Layout from './components/Layout'
 
 import Home from './components/pages/Home'
 import ClientIndex from './components/pages/client/ClientIndex'
