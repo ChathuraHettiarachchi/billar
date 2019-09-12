@@ -2,7 +2,6 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 
 import Login from './components/login/Login'
-import Layout from './components/Layout'
 
 import Home from './components/pages/Home'
 import ClientIndex from './components/pages/client/ClientIndex'
@@ -23,7 +22,7 @@ import Releases from './components/pages/releases/ReleasesIndex'
 
 const Routes = () => {
     return (
-        <Layout>
+        <>
             <Route exact path="/" component={Home}/>
 
             <Route exact path="/client/index" component={ClientIndex}/>
@@ -45,7 +44,7 @@ const Routes = () => {
             <Route exact path="/status/create/new" component={StatusForm}/>
             <Route exact path="/status/:id/view" component={StatusForm}/>
             <Route exact path="/status/:id/edit" component={StatusForm}/>
-        </Layout>
+        </>
     );
 };
 

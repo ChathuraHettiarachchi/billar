@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {
     Button,
     Grid,
-    Header, Icon,
+    Header, Icon, Image,
     Segment,
     Table
 } from "semantic-ui-react";
@@ -11,10 +11,12 @@ import axios from "axios";
 import Loader from "react-loader-spinner";
 import Moment from "moment";
 
-function InvoiceIndex() {
+function InvoiceIndex(props) {
 
     const [invoiceList, setInvoiceList] = useState([]);
     const [isLoading, setLoading] = useState(true);
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
 
     useEffect(() => {
         const fetchData = () => {
@@ -24,7 +26,13 @@ function InvoiceIndex() {
                     return res.data.content.payments
                 })
                 .then(result => {
-                    setInvoiceList(result);
+                    let data = result.map(f => {
+                        return {
+                            item: f,
+                            sent_amount: ''
+                        }
+                    });
+                    setInvoiceList(data);
                 })
                 .catch(error => {
                     console.log(error);
@@ -35,8 +43,37 @@ function InvoiceIndex() {
         fetchData();
     }, []);
 
+    const filterInvoices = e => {
+        if (startDate === null || endDate === null){
+            alert("You must enter both 'From' and 'To'");
+        } else {
+            axios.get(process.env.REACT_APP_BASE_URL + 'payments/all/'+startDate+'/to/'+endDate)
+                .then(res => {
+                    setLoading(false);
+                    return res.data.content.payments
+                })
+                .then(result => {
+                    let data = result.map(f => {
+                        return {
+                            item: f,
+                            sent_amount: ''
+                        }
+                    });
+                    setInvoiceList(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                    setLoading(false);
+                });
+        }
+    };
+
+    const resetFilter = e => {
+        window.location.reload();
+    };
+
     const getRemaining = invoice => {
-        let amount = (invoice.sent_to_client == null ? 0 : invoice.sent_to_client)
+        let amount = (invoice.sent_to_client == null ? 0 : invoice.sent_to_client);
         return (invoice.amount - amount)
     };
 
@@ -44,34 +81,85 @@ function InvoiceIndex() {
         return getRemaining(invoice) === 0;
     };
 
+    const updateSentAmount = (event, data) => {
+      if (invoiceList[data.value].sent_amount === 0 || invoiceList[data.value].sent_amount === ''){
+          alert("You must input value more than '0'");
+      } else {
+          let iData = invoiceList[data.value];
+
+          if(iData.sent_amount > getRemaining(iData.item)){
+              alert("You must a value lower than 'Remaining Amount'");
+          } else {
+              setLoading(true);
+              axios.post(process.env.REACT_APP_BASE_URL + "payments/update/amount", {
+                  payment: {
+                      amount:(iData.sent_amount + iData.item.sent_to_client),
+                      id:iData.item.payment_id
+                  }
+              }).then(res => {
+                  console.log(res);
+                  setLoading(false);
+
+                  const _tempInvoices = [...invoiceList];
+                  _tempInvoices[data.value]['item']['sent_to_client'] = (iData.sent_amount + iData.item.sent_to_client);
+                  _tempInvoices[data.value]['sent_amount'] = '';
+
+                  setInvoiceList(_tempInvoices);
+
+                  props.history.push('/invoice/index');
+              }).catch(error => {
+                  console.log(error);
+                  setLoading(false);
+              });
+          }
+      }
+    };
+
+    const changeSendingAmount = event => {
+        const _tempInvoices = [...invoiceList];
+        _tempInvoices[event.target.dataset.id][event.target.name] = parseInt(event.target.value);
+        setInvoiceList(_tempInvoices);
+    };
+
     const getTableData = invoiceList => {
         return invoiceList.map((invoice, index) =>
-            <Table.Row key={invoice.payment_id}>
+            <Table.Row key={invoice.item.payment_id}>
                 <Table.Cell>{index + 1}</Table.Cell>
-                <Table.Cell>{(Moment(invoice.quotation_created_at).format('YYYYMM') + '00' + invoice.quotation_id)}</Table.Cell>
-                <Table.Cell>{invoice.client_code}</Table.Cell>
-                <Table.Cell>{(Moment(invoice.invoice_date).format('YYYY-MMM-DD'))}</Table.Cell>
-                <Table.Cell>{invoice.amount}</Table.Cell>
-                <Table.Cell>{(invoice.sent_to_client == null ? 0 : invoice.sent_to_client)}</Table.Cell>
-                <Table.Cell>{getRemaining(invoice)}</Table.Cell>
+                <Table.Cell>{(Moment(invoice.item.quotation_created_at).format('YYYYMM') + '00' + invoice.item.quotation_id)}</Table.Cell>
+                <Table.Cell>{invoice.item.client_code}</Table.Cell>
+                <Table.Cell>{(Moment(invoice.item.invoice_date).format('YYYY-MMM-DD'))}</Table.Cell>
+                <Table.Cell>{invoice.item.amount}</Table.Cell>
+                <Table.Cell>{(invoice.item.sent_to_client == null ? 0 : invoice.item.sent_to_client)}</Table.Cell>
+                <Table.Cell>{getRemaining(invoice.item)}</Table.Cell>
                 <Table.Cell>
                     <input type='number'
+                           name='sent_amount'
+                           value={invoice.sent_amount}
+                           data-id={index}
                            style={{width: '100%'}}
-                           readOnly={isEnable(invoice)}
+                           readOnly={isEnable(invoice.item)}
                            min='0'
-                           max={getRemaining(invoice)}
+                           max={getRemaining(invoice.item)}
+                           onChange={changeSendingAmount}
                     />
                 </Table.Cell>
                 <Table.Cell>
-                    <Button primary style={{width: '100%'}} disabled={isEnable(invoice)}>Send</Button>
+                    <Button primary style={{width: '100%'}} disabled={isEnable(invoice.item)} onClick={updateSentAmount} value={index}>Send</Button>
                 </Table.Cell>
             </Table.Row>
         );
     };
 
+    const handleStartDate = event => {
+        setStartDate(event.target.value);
+    };
+
+    const handleEndDate = event => {
+        setEndDate(event.target.value);
+    };
 
     let totalAmount = invoiceList.reduce((a, b) => {
-        return (a + (b.sent_to_client === null ? 0 : b.sent_to_client));
+        return (a + (b.item.sent_to_client === null ? 0 : b.item.sent_to_client));
     }, 0);
 
     let tableContent;
@@ -129,15 +217,16 @@ function InvoiceIndex() {
                 </Grid>
             </Segment>
             <Segment>
-                <Grid style={{minHeight: '0'}}>
+                <Grid style={{minHeight: '0'}} divided='vertically' columns={2}>
                     <Grid.Row>
                         <Grid.Column width={1} floated='left' verticalAlign='middle'>
-                            <h5>From :</h5>
+                            <p>From:</p>
                         </Grid.Column>
-                        <Grid.Column width={6} floated='left' verticalAlign='middle'>
+                        <Grid.Column width={5} floated='left' verticalAlign='middle'>
                             <div className="block">
                                 <input
-                                    name="from"
+                                    name="startDate"
+                                    onChange={handleStartDate}
                                     style={{height: '35px', width: '100%'}}
                                     type='date'
                                     placeholder='From'
@@ -146,20 +235,22 @@ function InvoiceIndex() {
 
                         </Grid.Column>
                         <Grid.Column width={1} floated='left' verticalAlign='middle'>
-                            <h5>To :</h5>
+                            <p>To:</p>
                         </Grid.Column>
-                        <Grid.Column width={6} floated='left' verticalAlign='middle'>
+                        <Grid.Column width={5} floated='left' verticalAlign='middle'>
                             <div className="block">
                                 <input
-                                    name="from"
+                                    name="endDate"
+                                    onChange={handleEndDate}
                                     style={{height: '35px', width: '100%'}}
                                     type='date'
                                     placeholder='From'
                                 />
                             </div>
                         </Grid.Column>
-                        <Grid.Column width={2} floated='left' verticalAlign='middle'>
-                            <Button primary style={{width: '100%'}} icon='search'/>
+                        <Grid.Column width={3} floated='right' verticalAlign='middle' >
+                            <Button style={{height: '35px', width: '48%'}} primary icon='search' onClick={filterInvoices}/>
+                            <Button style={{height: '35px', width: '48%'}} primary icon='close' onClick={resetFilter}/>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

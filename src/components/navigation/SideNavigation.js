@@ -8,7 +8,8 @@ function SideNavigation(props) {
 
     const handleItemClick = (e, {name}) => {
         setActiveItem(name);
-        console.log(name)
+        console.log(name);
+        // window.location.reload();
     };
 
     const getMenu = () => {
