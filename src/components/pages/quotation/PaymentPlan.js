@@ -8,7 +8,7 @@ import TableHeader from "./TableHeader";
 
 import './Quotation.css'
 
-function PaymentPlan({onPaymentPlanDataChange, pageType, data}) {
+function PaymentPlan({onPaymentPlanDataChange, pageType, data, deleted}) {
 
     const [paymentData, setPaymentData] = useState(data);
     const [readOnly, setReadOnly] = useState(pageType === 'view');
@@ -33,6 +33,12 @@ function PaymentPlan({onPaymentPlanDataChange, pageType, data}) {
 
     const handleReleaseItemRemove = (event, data) => {
         const _tempPayments = [...paymentData];
+
+        let removingItem = _tempPayments[data.value];
+        if(removingItem.id  > 0){
+            deleted(removingItem.id)
+        }
+
         _tempPayments.splice(data.value, 1);
         setPaymentData(_tempPayments);
 

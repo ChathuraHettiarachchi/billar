@@ -38,6 +38,10 @@ const QuotCreateStepTwo = (props) => {
     const [releasePlans, setReleasePlans] = useState([]);
     const [paymentPlans, setPaymentPlans] = useState([]);
 
+    const [deletedFinancials, setDeletedFinancials] = useState([]);
+    const [deletedReleases, setDeletedReleases] = useState([]);
+    const [deletedPayments, setDeletedPayments] = useState([]);
+
     const [quotationData, setQuotationData] = useState({
         title: '',
         description: '',
@@ -95,6 +99,7 @@ const QuotCreateStepTwo = (props) => {
                     if (financeInfo.data.content !=null && financeInfo.data.content.financials.length > 0){
                       financeData = financeInfo.data.content.financials.map(f => {
                           return {
+                              id: f.financial_id,
                               description: f.description,
                               amount: f.amount
                           }
@@ -105,6 +110,7 @@ const QuotCreateStepTwo = (props) => {
                     if (releaseInfo.data.content !=null && releaseInfo.data.content.releases.length > 0){
                         releaseData = releaseInfo.data.content.releases.map(r => {
                             return {
+                                id: r.release_id,
                                 description: r.description,
                                 release_date: (new Date(r.release_date).toISOString().slice(0, 10)),
                             }
@@ -115,6 +121,7 @@ const QuotCreateStepTwo = (props) => {
                     if (paymentInfo.data.content !=null && paymentInfo.data.content.payments.length > 0){
                         paymentData = paymentInfo.data.content.payments.map(p => {
                             return {
+                                id: p.payment_id,
                                 description: p.description,
                                 invoice_date: (new Date(p.invoice_date).toISOString().slice(0, 10)),
                                 amount: p.amount
@@ -158,6 +165,18 @@ const QuotCreateStepTwo = (props) => {
         setTotalAmount(data)
     };
 
+    const onDeleteFinancial = (data) => {
+        setDeletedFinancials([...deletedFinancials, data])
+    };
+
+    const onDeleteRelease = (data) => {
+        setDeletedReleases([...deletedReleases, data])
+    };
+
+    const onDeletePayment = (data) => {
+        setDeletedPayments([...deletedPayments, data])
+    };
+
     const handleQuotationData = e => {
         const {name, value} = e.target;
         setQuotationData({...quotationData, [name]: value});
@@ -174,7 +193,12 @@ const QuotCreateStepTwo = (props) => {
         status: '',
         financials: financials,
         releases: releasePlans,
-        payments: paymentPlans
+        payments: paymentPlans,
+        deletedItems: {
+            releases: deletedReleases,
+            financials: deletedFinancials,
+            payments: deletedFinancials
+        }
     };
 
     const createOrUpdateQuotation = e => {
@@ -256,13 +280,13 @@ const QuotCreateStepTwo = (props) => {
                 </Form>
 
                 <br/>
-                <Financials onFinanceDataChange={onFinanceDataChange} pageType={pageType} data={financials} total={onTotalChange}/>
+                <Financials onFinanceDataChange={onFinanceDataChange} pageType={pageType} data={financials} total={onTotalChange} deleted={onDeleteFinancial}/>
                 <br/>
                 <br/>
-                <ReleasePlan onReleasePlanDataChange={onReleasePlanDataChange} pageType={pageType} data={releasePlans}/>
+                <ReleasePlan onReleasePlanDataChange={onReleasePlanDataChange} pageType={pageType} data={releasePlans} deleted={onDeleteRelease}/>
                 <br/>
                 <br/>
-                <PaymentPlan onPaymentPlanDataChange={onPaymentPlanDataChange} pageType={pageType} data={paymentPlans}/>
+                <PaymentPlan onPaymentPlanDataChange={onPaymentPlanDataChange} pageType={pageType} data={paymentPlans} deleted={onDeletePayment}/>
                 <br/>
                 <br/>
                 <Terms onTermsChange={onTermsChange} pageType={pageType} data={terms}/>
@@ -271,6 +295,7 @@ const QuotCreateStepTwo = (props) => {
                         {actionButton}
                     </Grid.Column>
                 </Grid>
+                <p hidden>{JSON.stringify(quotationObject)}</p>
             </div>
         </Segment>
     }

@@ -7,7 +7,7 @@ import TableHeader from "./TableHeader";
 import './Quotation.css'
 import {Link} from "react-router-dom";
 
-const Financials = ({onFinanceDataChange, pageType, data, total}) => {
+const Financials = ({onFinanceDataChange, pageType, data, total, deleted}) => {
 
     const [financeData, setFinanceData] = useState(data);
     const [readOnly, setReadOnly] = useState(pageType === 'view');
@@ -18,7 +18,7 @@ const Financials = ({onFinanceDataChange, pageType, data, total}) => {
 
 
     const onNewRecord = () => {
-        setFinanceData(prevCosts => [...financeData, {description: '', amount: ''}]);
+        setFinanceData(prevCosts => [...financeData, {id: -1,description: '', amount: ''}]);
     };
 
     const handleFinaceItemChange = event => {
@@ -40,6 +40,12 @@ const Financials = ({onFinanceDataChange, pageType, data, total}) => {
 
     const handleFinaceItemRemove = (event, data) => {
         const _tempFinances = [...financeData];
+
+        let removingItem = _tempFinances[data.value];
+        if(removingItem.id > 0){
+            deleted(removingItem.id)
+        }
+
         _tempFinances.splice(data.value, 1);
         setFinanceData(_tempFinances);
 
