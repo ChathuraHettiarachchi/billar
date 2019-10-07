@@ -85,3 +85,9 @@ X
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 ?
 .env.production,5/3/538818e7684624a442fce4828d05432406a7e873
+D
+src/auth_config.json,5/8/588204e3cf0e2b4ba62f2da01ffe26e1aa9ecd58
+J
+src/react-auth0-wrapper.js,1/a/1a767a377e3e2c46b4c231a90b14ac4d36807434
+R
+"src/components/BillarNavigation.js,b/c/bceb243ef2a45d489f55c0e91f216342d09b041c

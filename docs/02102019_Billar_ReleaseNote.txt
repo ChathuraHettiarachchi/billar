@@ -1,0 +1,62 @@
+=======================================================
+Release Note
+=======================================================
+Project       - Billar
+Date          - November 27 2018
+Language	  - NodeJs/React
+Version	      - 0.1.0.1
+Released By   - Chathura Hettiarachchi
+=======================================================
+
+1. Download Instructions:
+   ----------------------
+   - N/A
+
+2. New Features on this Release:
+   ----------------------------------------------------
+	1. Dashboard
+		- Quatations
+		- Invoices
+		- Releases
+		- Clients
+		- Project Status
+	2. Quatation
+		- CRUD
+	3. Invoices
+		- Filtering
+		- Send amount to client
+	4. Releases
+		- Display releases with status
+	5. Clients
+		- CRUD
+	6. Project status
+		- CRUD
+	7. User login with Auth0 (can only login)
+
+
+3. Features NOT Included on this Release:
+   --------------------------------------
+   - Track the user who edit or create records
+   - Download quotation as PDF
+   - Dashboard
+
+4. New Bug - Fixes On this Release:
+   --------------------------------
+   - N/A
+	
+5. Known Issues in this Release: 
+   -----------------------------
+   - Quotation
+   		- Need to fill all fields to create a record, otherwise quot will created without remaining info
+   		- Need to validate invoices with total amount
+	
+6. Special Notes:
+   --------------
+	1. Dev Url : https://billar-react.herokuapp.com/
+	Admin User:
+			Email: appdevchoot@gmail.com
+			Password: e#Wh4!2hkdWfr8W
+	
+
+
+	

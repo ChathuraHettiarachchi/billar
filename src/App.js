@@ -1,18 +1,24 @@
 import React from 'react';
-import Routes from './Routes';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import Login from "./components/login/Login";
-import Layout from "./components/Layout";
+
+import BillarNavigation from "./components/BillarNavigation";
+import { useAuth0 } from "./react-auth0-wrapper";
 
 function App() {
+
+    const { loading } = useAuth0();
+
+    if (loading) {
+        return (
+            <div>Loading...</div>
+        );
+    }
+
     return (
-        <>
-            <Router>
-                <Layout>
-                    <Routes/>
-                </Layout>
-            </Router>
-        </>
+        <div className="App">
+            <header>
+                <BillarNavigation />
+            </header>
+        </div>
     );
 }
 

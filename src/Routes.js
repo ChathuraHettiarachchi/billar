@@ -1,8 +1,6 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
 
-import Login from './components/login/Login'
-
 import Home from './components/pages/Home'
 import ClientIndex from './components/pages/client/ClientIndex'
 import ClientCreate from './components/pages/client/ClientCreate'
