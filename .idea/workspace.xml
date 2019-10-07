@@ -5,6 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/client/ClientCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/client/ClientCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/client/ClientEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/client/ClientEdit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -167,7 +169,7 @@
       <workItem from="1568264183501" duration="6261000" />
       <workItem from="1568721352302" duration="330000" />
       <workItem from="1570418924560" duration="220000" />
-      <workItem from="1570420741056" duration="4750000" />
+      <workItem from="1570420741056" duration="5588000" />
     </task>
     <servers />
   </component>

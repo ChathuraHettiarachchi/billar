@@ -228,7 +228,7 @@ const QuotCreateStepTwo = (props) => {
                 </div>
             </div>
     } else {
-        content = <Segment style={{padding: '50px'}} ref={ref}>
+        content = <Segment style={{padding: '50px'}}>
             <Grid style={{minHeight: '90px'}}>
                 <Grid.Column width={4}>
                     <Image src={fidenz} style={{height: '60px'}}/>
