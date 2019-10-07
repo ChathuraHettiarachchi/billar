@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="150b1cc0-d2d0-4322-8fd0-3d89c7100349" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a767a377e3e2c46b4c231a90b14ac4d36807434" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/8/588204e3cf0e2b4ba62f2da01ffe26e1aa9ecd58" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/c/bceb243ef2a45d489f55c0e91f216342d09b041c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/02102019_Billar_ReleaseNote.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/android-chrome-192x192.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/android-chrome-512x512.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/apple-touch-icon.png" afterDir="false" />
@@ -178,7 +182,7 @@
       <workItem from="1568264183501" duration="6261000" />
       <workItem from="1568721352302" duration="330000" />
       <workItem from="1570418924560" duration="220000" />
-      <workItem from="1570420741056" duration="1150000" />
+      <workItem from="1570420741056" duration="1844000" />
     </task>
     <servers />
   </component>
