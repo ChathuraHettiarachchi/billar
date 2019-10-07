@@ -22,8 +22,7 @@ import quotation from '../../../assets/images/quotation.png'
 import axios from "axios";
 import Loader from "react-loader-spinner";
 
-
-const QuotCreateStepOne = (props) => {
+const QuotCreateStepTwo = (props) => {
 
     const [pageType, setPageType] = useState(((props.location.pathname).split("/"))[4]);
     const [readOnly, setReadOnly] = useState(pageType === 'view');
@@ -229,7 +228,7 @@ const QuotCreateStepOne = (props) => {
                 </div>
             </div>
     } else {
-        content = <Segment style={{padding: '50px'}}>
+        content = <Segment style={{padding: '50px'}} ref={ref}>
             <Grid style={{minHeight: '90px'}}>
                 <Grid.Column width={4}>
                     <Image src={fidenz} style={{height: '60px'}}/>
@@ -284,4 +283,4 @@ const QuotCreateStepOne = (props) => {
 };
 
 
-export default QuotCreateStepOne
+export default QuotCreateStepTwo
