@@ -14,7 +14,8 @@ const BillarNavigation = () => {
     return (
         <div>
             {!isAuthenticated && (
-                loginWithRedirect({})
+                // loginWithRedirect({})
+                <Login/>
             )}
 
             {isAuthenticated && (
