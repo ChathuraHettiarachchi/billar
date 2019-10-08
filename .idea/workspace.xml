@@ -3,7 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="150b1cc0-d2d0-4322-8fd0-3d89c7100349" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navigation/SideNavigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation/SideNavigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/client/ClientCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/client/ClientCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/client/ClientEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/client/ClientEdit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/client/ClientIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/client/ClientIndex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/client/ClientView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/client/ClientView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/invoice/InvoiceIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/invoice/InvoiceIndex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepOne.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepOne.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/releases/ReleasesIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/releases/ReleasesIndex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/status/StatusForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/status/StatusForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/status/StatusIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/status/StatusIndex.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +128,7 @@
       <workItem from="1568721352302" duration="330000" />
       <workItem from="1570418924560" duration="220000" />
       <workItem from="1570420741056" duration="13374000" />
-      <workItem from="1570504562690" duration="9295000" />
+      <workItem from="1570504562690" duration="10840000" />
     </task>
     <servers />
   </component>
