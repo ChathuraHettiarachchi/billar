@@ -1,20 +1,42 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Button, Menu} from 'semantic-ui-react'
 import {Link} from 'react-router-dom';
-import { useAuth0 } from "../../react-auth0-wrapper";
+import {useAuth0} from "../../react-auth0-wrapper";
 
 function SideNavigation(props) {
 
-    const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
-    const [activeItem, setActiveItem] = useState('home');
+    const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
+    const [activeItem, setActiveItem] = useState(((window.location.href).split("/"))[3]);
+
+    useEffect(() => {
+        try {
+            let selected = ((window.location.href).split("/"))[3];
+            if (selected === 'quotation') {
+                setActiveItem('quotations')
+            } else if (selected === 'status') {
+                setActiveItem('projectStatus')
+            } else if (selected === 'invoice') {
+                setActiveItem('invoices')
+            } else if (selected === 'client') {
+                setActiveItem('clients')
+            } else if (selected === 'releases'){
+                setActiveItem('releases')
+            } else {
+                setActiveItem('home')
+            }
+
+            console.log("Active: " + activeItem);
+        } catch (e) {
+            setActiveItem('home')
+        }
+    }, []);
+
 
     const handleItemClick = (e, {name}) => {
         setActiveItem(name);
-        console.log(name);
-        // window.location.reload();
     };
 
-    const getMenu = () => {
+    const getMenu = (item) => {
         return (
             <Menu fixed='left' vertical inverted style={{marginTop: '52px'}}>
                 <Menu.Item>
@@ -23,7 +45,7 @@ function SideNavigation(props) {
                     <Menu.Menu>
                         <Menu.Item as={Link} to={'/'}
                                    name='home'
-                                   active={activeItem === 'home'}
+                                   active={item === 'home'}
                                    onClick={handleItemClick}
                         />
                     </Menu.Menu>
@@ -35,17 +57,17 @@ function SideNavigation(props) {
                     <Menu.Menu>
                         <Menu.Item as={Link} to={'/quotation/index'}
                                    name='quotations'
-                                   active={activeItem === 'quotations'}
+                                   active={item === 'quotations'}
                                    onClick={handleItemClick}
                         />
                         <Menu.Item
                             name='invoices' as={Link} to={'/invoice/index'}
-                            active={activeItem === 'invoices'}
+                            active={item === 'invoices'}
                             onClick={handleItemClick}
                         />
                         <Menu.Item
                             name='releases' as={Link} to={'/releases/index'}
-                            active={activeItem === 'releases'}
+                            active={item === 'releases'}
                             onClick={handleItemClick}
                         />
                     </Menu.Menu>
@@ -57,18 +79,19 @@ function SideNavigation(props) {
                     <Menu.Menu>
                         <Menu.Item as={Link} to={'/client/index'}
                                    name='clients'
-                                   active={activeItem === 'clients'}
+                                   active={item === 'clients'}
                                    onClick={handleItemClick}
                         />
                         <Menu.Item as={Link} to={'/status/index'}
                                    name='projectStatus'
-                                   active={activeItem === 'projectStatus'}
+                                   active={item === 'projectStatus'}
                                    onClick={handleItemClick}
                         />
                     </Menu.Menu>
                 </Menu.Item>
                 <Menu.Item>
-                    {isAuthenticated && <Button style={{width: '100%'}} primary onClick={() => logout()}>Log out</Button>}
+                    {isAuthenticated &&
+                    <Button style={{width: '100%'}} primary onClick={() => logout()}>Log out</Button>}
                 </Menu.Item>
             </Menu>
         )
@@ -77,7 +100,7 @@ function SideNavigation(props) {
     return (
         <div className='parent'>
             <div className='side'>
-                {getMenu()}
+                {getMenu(activeItem)}
             </div>
             <div className='content'>
                 {props.children}
