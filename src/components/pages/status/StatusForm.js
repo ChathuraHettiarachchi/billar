@@ -8,8 +8,8 @@ import {
 } from "semantic-ui-react";
 import Loader from "react-loader-spinner";
 import axios from 'axios';
-import {SliderPicker} from 'react-color';
-
+import {SwatchesPicker} from 'react-color';
+import './Status.css'
 
 const StatusForm = (props) => {
 
@@ -109,7 +109,7 @@ const StatusForm = (props) => {
                 <label>Color code</label>
                 <br/>
                 <br/>
-                <SliderPicker
+                <SwatchesPicker
                     color={status.color}
                     onChangeComplete={handleColorChange}
                 />
@@ -127,7 +127,7 @@ const StatusForm = (props) => {
                 <label>Color code</label>
                 <br/>
                 <br/>
-                <SliderPicker
+                <SwatchesPicker
                     color={status.color}
                     onChangeComplete={handleColorChange}
                 />
@@ -145,9 +145,10 @@ const StatusForm = (props) => {
                 <label>Color code</label>
                 <br/>
                 <br/>
-                <SliderPicker
+                <SwatchesPicker
                     color={status.color}
                     disabled={true}
+                    readOnly
                 />
             </Form>
     }

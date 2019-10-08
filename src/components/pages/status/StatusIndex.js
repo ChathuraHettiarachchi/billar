@@ -29,11 +29,11 @@ function StatusIndex() {
         fetchData();
     }, []);
 
-    const handleConfirmation = e => {
+    const handleConfirmation = (event, data) => {
         const r = window.confirm("Do you really want to remove this project status?");
         if (r == true) {
             setLoading(true);
-            axios.delete(process.env.REACT_APP_BASE_URL + 'status/remove/' + e.target.value)
+            axios.delete(process.env.REACT_APP_BASE_URL + 'status/remove/' + data.value)
                 .then(res => {
                     console.log(res);
                     window.location.reload()
@@ -50,7 +50,7 @@ function StatusIndex() {
             <Table.Row key={status.status_id}>
                 <Table.Cell>{index + 1}</Table.Cell>
                 <Table.Cell>{status.title}</Table.Cell>
-                <Table.Cell style={{backgroundColor:status.color}}>{status.color}</Table.Cell>
+                <Table.Cell style={{backgroundColor:status.color}}/>
                 <Table.Cell>
                     <Button size="mini" icon color="green" as={Link} to={'/status/' + status.status_id + '/view'}>
                         <Icon name="desktop"/>

@@ -95,7 +95,11 @@ const QuotIndex = (props) => {
         if (quotation.status === null || quotation.status === ''){
             color = '#fff';
         } else {
-            color = statusList.find(x => x.status_id === parseInt(quotation.status)).color;
+            try{
+                color = statusList.find(x => x.status_id === parseInt(quotation.status)).color;
+            } catch (e) {
+                color = '#fff';
+            }
         }
         return color
     };
