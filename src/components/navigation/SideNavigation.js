@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import {Button, Menu} from 'semantic-ui-react'
 import {Link} from 'react-router-dom';
-import {useAuth0} from "../../react-auth0-wrapper";
 
 function SideNavigation(props) {
 
-    const {isAuthenticated, loginWithRedirect, logout} = useAuth0();
     const [activeItem, setActiveItem] = useState(((window.location.href).split("/"))[3]);
 
     useEffect(() => {
@@ -88,10 +86,6 @@ function SideNavigation(props) {
                                    onClick={handleItemClick}
                         />
                     </Menu.Menu>
-                </Menu.Item>
-                <Menu.Item>
-                    {isAuthenticated &&
-                    <Button style={{width: '100%'}} primary onClick={() => logout()}>Log out</Button>}
                 </Menu.Item>
             </Menu>
         )
