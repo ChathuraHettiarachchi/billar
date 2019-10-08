@@ -109,7 +109,7 @@ const ClientView = (props) => {
                     <Form.Input label='Address Line 2' placeholder='Address Line 2' value={client.address_line_last}
                                 readOnly name='address_line_last'/>
                     <Form.Select fluid label='Country' placeholder='Country' options={COUNTRY_OPTIONS}
-                                 value={client.country} readOnly name='country'/>
+                                 value={client.country} disabled name='country'/>
                 </Form.Group>
 
                 <Form.TextArea label='Description' placeholder='Tell us more about client...' value={client.description}
