@@ -32,6 +32,7 @@ function StatusIndex() {
     const handleConfirmation = e => {
         const r = window.confirm("Do you really want to remove this project status?");
         if (r == true) {
+            setLoading(true);
             axios.delete(process.env.REACT_APP_BASE_URL + 'status/remove/' + e.target.value)
                 .then(res => {
                     console.log(res);
@@ -57,9 +58,9 @@ function StatusIndex() {
                     <Button size="mini" icon color="blue" as={Link} to={'/status/' + status.status_id + '/edit'}>
                         <Icon name="pencil"/>
                     </Button>
-                    {/*<Button color="red" size="mini" icon onClick={handleConfirmation} value={status.status_id} key={status.status_id}>*/}
-                    {/*    <Icon name="delete"/>*/}
-                    {/*</Button>*/}
+                    <Button color="red" size="mini" icon onClick={handleConfirmation} value={status.status_id} key={status.status_id}>
+                        <Icon name="delete"/>
+                    </Button>
                 </Table.Cell>
             </Table.Row>
         );

@@ -76,7 +76,9 @@ const QuotIndex = (props) => {
     const handleConfirmation = (event, data) => {
         const r = window.confirm("Do you really want to remove this quotation?");
         if (r == true) {
-            axios.delete(process.env.REACT_APP_BASE_URL + 'quotations/remove/' + data.value)
+            const id = data.value;
+            setLoading(true);
+            axios.delete(process.env.REACT_APP_BASE_URL + 'quotations/remove/' + id)
                 .then(res => {
                     console.log(res);
                     window.location.reload()

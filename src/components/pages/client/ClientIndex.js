@@ -30,10 +30,14 @@ const ClientIndex = () => {
         fetchData();
     }, []);
 
-    const handleConfirmation = e => {
-        const r = window.confirm("Do you really want to remove this user?");
+    const handleConfirmation = (event, data) => {
+        const r = window.confirm("Do you really want to remove this client? This will also remove client related quotations too.");
         if (r == true) {
-            axios.delete(process.env.REACT_APP_BASE_URL + 'clients/remove/' + e.target.value)
+
+            const id = data.value;
+            setLoading(true);
+
+            axios.delete(process.env.REACT_APP_BASE_URL + 'clients/remove/' + id)
                 .then(res => {
                     console.log(res);
                     window.location.reload()
@@ -44,10 +48,6 @@ const ClientIndex = () => {
                 });
         }
     };
-
-    const handleCancel = () => {
-
-    }
 
     const getTableData = clients => {
         return clients.map((user, index) =>
