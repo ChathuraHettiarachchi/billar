@@ -2,30 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="150b1cc0-d2d0-4322-8fd0-3d89c7100349" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/06650c0be7e7e456a76bf80c9584a88b6dcccc26" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/06650c0be7e7e456a76bf80c9584a88b6dcccc26" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1f0e95d61ddba9ad72daad5b3a785b8b0fa18a3a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1f0e95d61ddba9ad72daad5b3a785b8b0fa18a3a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/a/2a4be9d11bd930ab69408a47b7cc347eef6852c0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/a/2a4be9d11bd930ab69408a47b7cc347eef6852c0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/c/2cc41641918d7206446e659ef705fd2ad5f0cc6c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/c/2cc41641918d7206446e659ef705fd2ad5f0cc6c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/f/2f1f7745e06e5ce527fb21f142d4a8895c72274c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/f/2f1f7745e06e5ce527fb21f142d4a8895c72274c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5ca496a06e62ea8f8b430eb132c1b292fb5ac89f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cb8f412f5351d8a56880225d69ee64877a79954" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cb8f412f5351d8a56880225d69ee64877a79954" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/f/6fa79a60385f1e77cb5e42a928da99a2b4202dd5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/f/6fa79a60385f1e77cb5e42a928da99a2b4202dd5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/f/7fb9d0e357d3235a7fdb0def5cf3d282d92f71de" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/f/7fb9d0e357d3235a7fdb0def5cf3d282d92f71de" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/4/8412c5f30f5b280cc85c22097efc49fb522c6bb0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/4/8412c5f30f5b280cc85c22097efc49fb522c6bb0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/c/bceb243ef2a45d489f55c0e91f216342d09b041c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/c/bceb243ef2a45d489f55c0e91f216342d09b041c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/7/d7f85d0832f2dd069bf82b516407c1d308b8ed9e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/7/d7f85d0832f2dd069bf82b516407c1d308b8ed9e" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/6/e681c301c225cd234381309a9721853d574f92fa" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/6/e681c301c225cd234381309a9721853d574f92fa" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/a/eafac5ac98a5ede1109f5a09d3cfc04d93a03422" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/a/eafac5ac98a5ede1109f5a09d3cfc04d93a03422" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fd1c733029efbbab37b1e46fc4fa678cf34428e3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fd1c733029efbbab37b1e46fc4fa678cf34428e3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/f/ff31500ec06335a57db6f6bffdcd26a45d68ce40" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/f/ff31500ec06335a57db6f6bffdcd26a45d68ce40" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/data/quotationFilterOptions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/billar_shield.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/billar_shield.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/client/ClientIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/client/ClientIndex.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/invoice/InvoiceIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/invoice/InvoiceIndex.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/Quotation.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/Quotation.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/status/StatusIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/status/StatusIndex.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,7 +32,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/data" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -65,19 +45,19 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/assets/images" />
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/components/pages/releases" />
-      <recent name="$PROJECT_DIR$/src/components/pages/quotation" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/assets/data" />
       <recent name="$PROJECT_DIR$/src/assets" />
       <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/components" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/data" />
+      <recent name="$PROJECT_DIR$/src/assets/images" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/components/pages/releases" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -141,7 +121,7 @@
       <workItem from="1570418924560" duration="220000" />
       <workItem from="1570420741056" duration="13374000" />
       <workItem from="1570504562690" duration="14527000" />
-      <workItem from="1570595511786" duration="5408000" />
+      <workItem from="1570595511786" duration="8083000" />
     </task>
     <servers />
   </component>

@@ -132,7 +132,7 @@ function StatusIndex() {
             <Modal
                 id='modal'
                 basic
-                size='large'
+                size='tiny'
                 open={modalOpen}>
                 <Header icon='archive' content='Delete Confirmation'/>
                 <Modal.Content>

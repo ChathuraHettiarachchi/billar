@@ -4,6 +4,7 @@ import {Button, Form, Grid, Header, Icon, Modal, Segment, Table} from "semantic-
 import Loader from "react-loader-spinner";
 import axios from 'axios';
 import Moment from 'moment';
+import FILTER_OPTIONS from "../../../assets/data/quotationFilterOptions";
 
 const QuotIndex = (props) => {
 
@@ -12,8 +13,15 @@ const QuotIndex = (props) => {
     const [statusList, setStatusList] = useState([]);
     const [statusOptions, setStatusOptions] = useState([]);
 
-    const [modalOpen, setModalOpen] = useState(false);
+    const [confirmationModalOpen, setConfirmationModalOpen] = useState(false);
+    const [filterModalOpen, setFilterModalOpen] = useState(false);
     const [deletingItem, setDeletingItem] = useState(false);
+
+    const [isFilterSet, setIsFilterSet] = useState(false);
+    const [filterReqData, setFilterReqData]=useState({
+        type:'',
+        searchParam:''
+    });
 
     useEffect(() => {
         const fetchData = () => {
@@ -71,13 +79,17 @@ const QuotIndex = (props) => {
     };
 
     const handleConfirmation = (event, data) => {
-         handleModelVisibility();
+         handleConfirmationModalVisibility();
          setDeletingItem(data.value);
         console.log(data.value)
     };
 
-    const handleModelVisibility = () => {
-        setModalOpen(!modalOpen)
+    const handleConfirmationModalVisibility = () => {
+        setConfirmationModalOpen(!confirmationModalOpen)
+    };
+
+    const handleFilterModalVisibility = () => {
+        setFilterModalOpen(!filterModalOpen)
     };
 
     const handleItemDelete = () => {
@@ -91,6 +103,27 @@ const QuotIndex = (props) => {
                 console.log(error);
                 setLoading(false);
             });
+    };
+
+    const filterData = () => {
+        handleFilterModalVisibility();
+        setIsFilterSet(true)
+    };
+
+    const clearFilter = () => {
+        setFilterReqData({
+            type:'',
+            searchParam:''
+        });
+        setIsFilterSet(false)
+    };
+
+    const handleFilterSerachChange = (event, data) => {
+        setFilterReqData({...filterReqData, 'searchParam': data.value})
+    };
+
+    const handleFilterTypeChange = (event, data) => {
+        setFilterReqData({...filterReqData, 'type': data.value})
     };
 
     const getStatusColor = quotation => {
@@ -205,7 +238,16 @@ const QuotIndex = (props) => {
                     {tableContent}
                 </Segment>
             </div>
-            <Button id='fab' circular icon='filter' style={{
+            <Button id='fab' circular icon='close' onClick={clearFilter} style={{
+                width: '60px',
+                height: '60px',
+                position: 'fixed',
+                right: '20px',
+                bottom: '100px',
+                background: '#1b1c1d',
+                display: (isFilterSet ? '':'none')
+            }}/>
+            <Button id='fab' circular icon='filter' onClick={handleFilterModalVisibility} style={{
                 width: '60px',
                 height: '60px',
                 position: 'fixed',
@@ -216,8 +258,8 @@ const QuotIndex = (props) => {
             <Modal
                 id='modal'
                 basic
-                size='large'
-                open={modalOpen}>
+                size='tiny'
+                open={confirmationModalOpen}>
                 <Header icon='archive' content='Delete Confirmation'/>
                 <Modal.Content>
                     <p>
@@ -226,7 +268,7 @@ const QuotIndex = (props) => {
                     </p>
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button basic color='red' inverted onClick={handleModelVisibility}>
+                    <Button basic color='red' inverted onClick={handleConfirmationModalVisibility}>
                         <Icon name='remove'/> No
                     </Button>
                     <Button color='green' inverted onClick={handleItemDelete}>
@@ -234,9 +276,33 @@ const QuotIndex = (props) => {
                     </Button>
                 </Modal.Actions>
             </Modal>
+            <Modal
+                id='modal'
+                size='small'
+                open={filterModalOpen}>
+                <Header icon='filter' content='Filter Manager'/>
+                <Modal.Content>
+                    <Form>
+                        <Form.Group widths='equal'>
+                            <Form.Input fluid label='Search' placeholder='Search data' value={filterReqData.searchParam}
+                                        onChange={handleFilterSerachChange} name='search' autoComplete="new-password"/>
+                            <Form.Select fluid label='Filter' placeholder='Filter' options={FILTER_OPTIONS}
+                                         value={filterReqData.type} onChange={handleFilterTypeChange} name='filter' autoComplete="new-password"/>
+                        </Form.Group>
+                    </Form>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button color='red' inverted onClick={handleFilterModalVisibility}>
+                        <Icon name='remove'/> Cancel
+                    </Button>
+                    <Button color='green' inverted onClick={filterData}>
+                        <Icon name='checkmark'/> Filter Data
+                    </Button>
+                </Modal.Actions>
+            </Modal>
         </div>
     );
-}
+};
 
 
 export default QuotIndex
