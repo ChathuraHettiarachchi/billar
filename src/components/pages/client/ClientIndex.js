@@ -7,7 +7,7 @@ import {
     Segment,
     Table,
     Icon,
-    Confirm
+    Modal
 } from "semantic-ui-react";
 import axios from 'axios';
 import Loader from "react-loader-spinner";
@@ -16,6 +16,9 @@ const ClientIndex = () => {
 
     const [clients, setClients] = useState([]);
     const [isLoading, setLoading] = useState(true);
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const [deletingItem, setDeletingItem] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,24 +33,29 @@ const ClientIndex = () => {
         fetchData();
     }, []);
 
-    const handleConfirmation = e => {
-        const r = window.confirm("Do you really want to remove this user?");
-        if (r == true) {
-            axios.delete(process.env.REACT_APP_BASE_URL + 'clients/remove/' + e.target.value)
-                .then(res => {
-                    console.log(res);
-                    window.location.reload()
-                })
-                .catch(error => {
-                    console.log(error);
-                    setLoading(false);
-                });
-        }
+    const handleConfirmation = (event, data) => {
+        handleModelVisibility();
+        setDeletingItem(data.value);
+        console.log(data.value)
     };
 
-    const handleCancel = () => {
+    const handleModelVisibility = () => {
+        setModalOpen(!modalOpen)
+    };
 
-    }
+    const handleItemDelete = () => {
+        setLoading(true);
+        axios.delete(process.env.REACT_APP_BASE_URL + 'clients/remove/' + deletingItem)
+            .then(res => {
+                console.log(res);
+                window.location.reload()
+            })
+            .catch(error => {
+                console.log(error);
+                setLoading(false);
+            });
+    };
+
 
     const getTableData = clients => {
         return clients.map((user, index) =>
@@ -67,15 +75,6 @@ const ClientIndex = () => {
                     <Button color="red" size="mini" icon onClick={handleConfirmation} value={user.client_id} key={user.client_id}>
                         <Icon name="delete"/>
                     </Button>
-                    {/*<Confirm
-                        open={isConfirmOpen}
-                        content='Are you sure, you need to delete this client?'
-                        onCancel={handleCancel}
-                        cancelButton='Never mind'
-                        confirmButton="Let's do it"
-                        onConfirm={handleConfirm}
-                        style={{position:''}}
-                    />*/}
                 </Table.Cell>
             </Table.Row>
         );
@@ -93,7 +92,7 @@ const ClientIndex = () => {
                     alignItems: "center"
                 }}
                 >
-                    <Loader type="Plane" color="blue" height="100" width="100"/>
+                    <Loader type="Oval" color="blue" height="100" width="100"/>
                 </div>
             </div>
     } else {
@@ -134,6 +133,26 @@ const ClientIndex = () => {
             <Segment>
                 {tableContent}
             </Segment>
+            <Modal
+                id='modal'
+                basic
+                size='tiny'
+                open={modalOpen}>
+                <Header icon='archive' content='Delete Confirmation'/>
+                <Modal.Content>
+                    <p>
+                        Do you really want to remove this client?  This will also remove client related quotations too.
+                    </p>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button basic color='red' inverted onClick={handleModelVisibility}>
+                        <Icon name='remove'/> No
+                    </Button>
+                    <Button color='green' inverted onClick={handleItemDelete}>
+                        <Icon name='checkmark'/> Yes
+                    </Button>
+                </Modal.Actions>
+            </Modal>
         </div>
     );
 }

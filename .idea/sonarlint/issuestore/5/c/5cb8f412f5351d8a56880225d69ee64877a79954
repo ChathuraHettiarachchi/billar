@@ -1,10 +1,12 @@
 
-hjavascript:UnusedVariable"<Remove the declaration of the unused 'setReadOnly' variable.(ôõÓ•8¹Æò¶Ä-
-hjavascript:UnusedVariable"<Remove the declaration of the unused 'setPageType' variable.(©À£8ƒæ¶‘Ä-
-pjavascript:UnusedVariable "?Remove the declaration of the unused 'setQuotationId' variable.(›Î˜ûÿÿÿÿ8öˆø°Ä-
-hjavascript:UnusedVariable"<Remove the declaration of the unused 'setClientId' variable.(ƒ¤®°8Š–¾‘Ä-
-ajavascript:S1854">Remove this useless assignment to local variable "setPageType"(©À£8ƒæ¶‘Ä-
-ijavascript:S1854 "ARemove this useless assignment to local variable "setQuotationId"(›Î˜ûÿÿÿÿ8öˆø°Ä-
-@javascript:S1128"$Remove this unused import of 'Link'.(‚Ğ¦
-ajavascript:S1854">Remove this useless assignment to local variable "setReadOnly"(ôõÓ•8¹Æò¶Ä-
-ajavascript:S1854">Remove this useless assignment to local variable "setClientId"(ƒ¤®°8Š–¾‘Ä-
+pjavascript:UnusedVariable"?Remove the declaration of the unused 'setQuotationId' variable.(›Î˜ûÿÿÿÿ8öˆø°Ä-
+hjavascript:UnusedVariable"<Remove the declaration of the unused 'setPageType' variable.(©À£8ƒæ¶‘Ä-
+|javascript:S1117L"T"terms" hides or potentially hides a variable declared in an outer scope at line 27.(ÛŞÉÙûÿÿÿÿ8Å¬¶¥Ú-
+zjavascript:S11174"W"content" hides or potentially hides a variable declared in an outer scope at line 230.(Àı½8Å¬¶¥Ú-
+ajavascript:S1854">Remove this useless assignment to local variable "setReadOnly"(ôõÓ•8¹Æò¶Ä-
+ajavascript:S1854">Remove this useless assignment to local variable "setPageType"(©À£8ƒæ¶‘Ä-
+hjavascript:UnusedVariable"<Remove the declaration of the unused 'setReadOnly' variable.(ôõÓ•8¹Æò¶Ä-
+hjavascript:UnusedVariable"<Remove the declaration of the unused 'setClientId' variable.(ƒ¤®°8Š–¾‘Ä-
+ajavascript:S1854">Remove this useless assignment to local variable "setClientId"(ƒ¤®°8Š–¾‘Ä-
+xjavascript:S1117H"U"client" hides or potentially hides a variable declared in an outer scope at line 43.(Â¬¤ç8Å¬¶¥Ú-
+ijavascript:S1854"ARemove this useless assignment to local variable "setQuotationId"(›Î˜ûÿÿÿÿ8öˆø°Ä-

@@ -1,11 +1,5 @@
-import React, {useState, useEffect}  from 'react';
-import {Link} from 'react-router-dom';
-import {
-    Header,
-    Segment,
-    Form,
-    Button
-} from "semantic-ui-react";
+import React, {useEffect, useState} from 'react';
+import {Button, Form, Header, Segment} from "semantic-ui-react";
 import Loader from "react-loader-spinner";
 
 const QuotCreateStepOne = (props) => {
@@ -23,8 +17,12 @@ const QuotCreateStepOne = (props) => {
 
             let clients = [];
             let cList = json.content.clients;
-            for (var i=0; i<cList.length; i++){
-                clients.push({"text": cList[i].name, "key": cList[i].client_id, "value": cList[i].client_id})
+            for (var i = 0; i < cList.length; i++) {
+                clients.push({
+                    "text": (cList[i].code + "  (" + cList[i].name + ")"),
+                    "key": cList[i].client_id,
+                    "value": cList[i].client_id
+                })
             }
 
             setClients(clients);
@@ -39,7 +37,7 @@ const QuotCreateStepOne = (props) => {
     };
 
     const onContinue = () => {
-        props.history.push('/quotation/step2/'+clientId+'/new');
+        props.history.push('/quotation/step2/' + clientId + '/new');
     };
 
     let content;
@@ -54,13 +52,14 @@ const QuotCreateStepOne = (props) => {
                     alignItems: "center"
                 }}
                 >
-                    <Loader type="Plane" color="blue" height="100" width="100"/>
+                    <Loader type="Oval" color="blue" height="100" width="100"/>
                 </div>
             </div>
     } else {
         content =
             <Form>
-                <Form.Select fluid label='Client' placeholder='Client' options={clientList} width={8} onChange={handleClientSelection} name='clientId' value={clientId}/>
+                <Form.Select fluid label='Client' placeholder='Client' options={clientList} width={8}
+                             onChange={handleClientSelection} name='clientId' value={clientId}/>
                 <Button primary onClick={onContinue}>Continue</Button>
             </Form>
     }

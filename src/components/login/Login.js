@@ -9,10 +9,16 @@ import {
 
 import './Login.css'
 import { useAuth0 } from "../../react-auth0-wrapper";
-import background from '../../assets/images/background_login.jpg'
+
+import fidenzLogo from '../../assets/images/fidenz.svg'
+import billarShield from '../../assets/images/billar_shield.png'
 
 const Login = () => {
     const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
+    const handleLogin = () => {
+        loginWithRedirect({})
+    };
 
     return (
         <div style={{backgroundColor: "#E4E5E6"}} className='backImage'>
@@ -23,17 +29,17 @@ const Login = () => {
                                  tablet="8"
                                  largeScreen="4"
                                  widescreen="4" style={{backgroundColor: 'white', padding: 40}} textAlign='center'>
-                        <Header as='h1'>Login</Header>
-                        <p style={{marginBottom: '20px', marginTop: '-10px'}}>Sign in to your account</p>
+
+                        <Image src={fidenzLogo} size='medium' style={{margin: 'auto'}}/>
+                        <br/>
+                        <br/>
+                        <Image src={billarShield} size='small' style={{margin: 'auto'}}/>
+                        <br/>
+                        <br/>
+                        <p>Login will redirect you to <b>Auth0</b> authentication.</p>
                         <Form>
-                            <Form.Field>
-                                <Input icon='user' iconPosition='left' placeholder='Username'/>
-                            </Form.Field>
-                            <Form.Field>
-                                <Input icon='lock' iconPosition='left' placeholder='Password'/>
-                            </Form.Field>
                             <Button primary type='submit' style={{width:'100%'}}
-                                    onClick={loginWithRedirect({})}>Submit</Button>
+                                    onClick={handleLogin}>Login</Button>
                         </Form>
                     </Grid.Column>
                 </Grid.Row>

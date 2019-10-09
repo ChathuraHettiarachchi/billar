@@ -1,15 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import {
-    Header,
-    Segment,
-    Form,
-    Button
-} from "semantic-ui-react";
+import React, {useEffect, useState} from 'react';
+import {Button, Form, Header, Segment} from "semantic-ui-react";
 import Loader from "react-loader-spinner";
 import axios from 'axios';
-import {SliderPicker} from 'react-color';
-
+import {SwatchesPicker} from 'react-color';
+import './Status.css'
 
 const StatusForm = (props) => {
 
@@ -19,7 +13,7 @@ const StatusForm = (props) => {
     const [status, setStatus] = useState({
         status_id: ((props.location.pathname).split("/"))[2],
         title: '',
-        color: ''
+        color: '#000000'
     });
 
     useEffect(() => {
@@ -68,37 +62,44 @@ const StatusForm = (props) => {
     };
 
     const submitCreate = data => {
-        setTitle("Creating...");
-        setLoading(true);
+        if (status.title && status.title.trim().length && status.color && status.color.trim().length) {
+            setTitle("Creating...");
+            setLoading(true);
 
-        axios.post(process.env.REACT_APP_BASE_URL + 'status/new', {
-            status
-        }).then(res => {
-            console.log(res);
-            props.history.push('/status/index');
-        }).catch(error => {
-            console.log(error);
-            setTitle("Create New Project Status");
-            setLoading(false);
-        });
+            axios.post(process.env.REACT_APP_BASE_URL + 'status/new', {
+                status
+            }).then(res => {
+                console.log(res);
+                props.history.push('/status/index');
+            }).catch(error => {
+                console.log(error);
+                setTitle("Create New Project Status");
+                setLoading(false);
+            });
+        } else {
+            window.confirm("Some information is missing, please check again before submit.");
+        }
     };
 
     const submitUpdate = data => {
-        setTitle("Updating...");
-        setLoading(true);
+        if (status.title && status.title.trim().length && status.color && status.color.trim().length) {
+            setTitle("Updating...");
+            setLoading(true);
 
-        axios.post(process.env.REACT_APP_BASE_URL + 'status/update/' + status.status_id, {
-            status
-        }).then(res => {
-            console.log(res);
-            props.history.push('/status/index');
-        }).catch(error => {
-            console.log(error);
-            setTitle("Edit '" + status.title + "' Info");
-            setLoading(false);
-        });
+            axios.post(process.env.REACT_APP_BASE_URL + 'status/update/' + status.status_id, {
+                status
+            }).then(res => {
+                console.log(res);
+                props.history.push('/status/index');
+            }).catch(error => {
+                console.log(error);
+                setTitle("Edit '" + status.title + "' Info");
+                setLoading(false);
+            });
+        } else {
+            window.confirm("Some information is missing, please check again before submit.");
+        }
     };
-
 
     let formData;
     if (pageType === 'new') {
@@ -109,7 +110,7 @@ const StatusForm = (props) => {
                 <label>Color code</label>
                 <br/>
                 <br/>
-                <SliderPicker
+                <SwatchesPicker
                     color={status.color}
                     onChangeComplete={handleColorChange}
                 />
@@ -127,7 +128,7 @@ const StatusForm = (props) => {
                 <label>Color code</label>
                 <br/>
                 <br/>
-                <SliderPicker
+                <SwatchesPicker
                     color={status.color}
                     onChangeComplete={handleColorChange}
                 />
@@ -145,9 +146,10 @@ const StatusForm = (props) => {
                 <label>Color code</label>
                 <br/>
                 <br/>
-                <SliderPicker
+                <SwatchesPicker
                     color={status.color}
                     disabled={true}
+                    readOnly
                 />
             </Form>
     }
@@ -164,7 +166,7 @@ const StatusForm = (props) => {
                     alignItems: "center"
                 }}
                 >
-                    <Loader type="Plane" color="blue" height="100" width="100"/>
+                    <Loader type="Oval" color="blue" height="100" width="100"/>
                 </div>
             </div>
     } else {

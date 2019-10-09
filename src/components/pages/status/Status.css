@@ -1,0 +1,9 @@
+.swatches-picker {
+    width: 100% !important;
+    height: 300px;
+}
+
+.swatches-picker div{
+    overflow-y: hidden !important;
+    box-shadow: none;
+}

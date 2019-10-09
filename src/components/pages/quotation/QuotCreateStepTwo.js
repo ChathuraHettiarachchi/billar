@@ -1,13 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import {
-    Header,
-    Segment,
-    Form,
-    Button,
-    Grid,
-    Image
-} from "semantic-ui-react";
+import React, {useEffect, useState} from 'react';
+import {Button, Form, Grid, Header, Image, Segment} from "semantic-ui-react";
 import Moment from 'moment';
 
 import AddressSection from './AddressSection'
@@ -15,7 +7,6 @@ import QuotationInfo from './QuotationInfo'
 import Financials from './Financials'
 import ReleasePlan from './ReleasePlan'
 import PaymentPlan from './PaymentPlan'
-import Terms from './Terms'
 
 import fidenz from '../../../assets/images/fidenz.png'
 import quotation from '../../../assets/images/quotation.png'
@@ -37,6 +28,10 @@ const QuotCreateStepTwo = (props) => {
     const [financials, setFinancials] = useState([]);
     const [releasePlans, setReleasePlans] = useState([]);
     const [paymentPlans, setPaymentPlans] = useState([]);
+
+    const [deletedFinancials, setDeletedFinancials] = useState([]);
+    const [deletedReleases, setDeletedReleases] = useState([]);
+    const [deletedPayments, setDeletedPayments] = useState([]);
 
     const [quotationData, setQuotationData] = useState({
         title: '',
@@ -92,19 +87,21 @@ const QuotCreateStepTwo = (props) => {
                     });
 
                     let financeData = [];
-                    if (financeInfo.data.content !=null && financeInfo.data.content.financials.length > 0){
-                      financeData = financeInfo.data.content.financials.map(f => {
-                          return {
-                              description: f.description,
-                              amount: f.amount
-                          }
-                      });
+                    if (financeInfo.data.content != null && financeInfo.data.content.financials.length > 0) {
+                        financeData = financeInfo.data.content.financials.map(f => {
+                            return {
+                                id: f.financial_id,
+                                description: f.description,
+                                amount: f.amount
+                            }
+                        });
                     }
 
                     let releaseData = [];
-                    if (releaseInfo.data.content !=null && releaseInfo.data.content.releases.length > 0){
+                    if (releaseInfo.data.content != null && releaseInfo.data.content.releases.length > 0) {
                         releaseData = releaseInfo.data.content.releases.map(r => {
                             return {
+                                id: r.release_id,
                                 description: r.description,
                                 release_date: (new Date(r.release_date).toISOString().slice(0, 10)),
                             }
@@ -112,9 +109,10 @@ const QuotCreateStepTwo = (props) => {
                     }
 
                     let paymentData = [];
-                    if (paymentInfo.data.content !=null && paymentInfo.data.content.payments.length > 0){
+                    if (paymentInfo.data.content != null && paymentInfo.data.content.payments.length > 0) {
                         paymentData = paymentInfo.data.content.payments.map(p => {
                             return {
+                                id: p.payment_id,
                                 description: p.description,
                                 invoice_date: (new Date(p.invoice_date).toISOString().slice(0, 10)),
                                 amount: p.amount
@@ -150,12 +148,24 @@ const QuotCreateStepTwo = (props) => {
         setPaymentPlans(data);
     };
 
-    const onTermsChange = (data) => {
-        setTerms(data);
+    const handleOnTermsChange = e => {
+        setTerms(e.target.value);
     };
 
     const onTotalChange = (data) => {
         setTotalAmount(data)
+    };
+
+    const onDeleteFinancial = (data) => {
+        setDeletedFinancials([...deletedFinancials, data])
+    };
+
+    const onDeleteRelease = (data) => {
+        setDeletedReleases([...deletedReleases, data])
+    };
+
+    const onDeletePayment = (data) => {
+        setDeletedPayments([...deletedPayments, data])
     };
 
     const handleQuotationData = e => {
@@ -174,7 +184,12 @@ const QuotCreateStepTwo = (props) => {
         status: '',
         financials: financials,
         releases: releasePlans,
-        payments: paymentPlans
+        payments: paymentPlans,
+        deletedItems: {
+            releases: deletedReleases,
+            financials: deletedFinancials,
+            payments: deletedPayments
+        }
     };
 
     const createOrUpdateQuotation = e => {
@@ -224,11 +239,11 @@ const QuotCreateStepTwo = (props) => {
                     alignItems: "center"
                 }}
                 >
-                    <Loader type="Plane" color="blue" height="100" width="100"/>
+                    <Loader type="Oval" color="blue" height="100" width="100"/>
                 </div>
             </div>
     } else {
-        content = <Segment style={{padding: '50px'}} ref={ref}>
+        content = <Segment style={{padding: '50px'}}>
             <Grid style={{minHeight: '90px'}}>
                 <Grid.Column width={4}>
                     <Image src={fidenz} style={{height: '60px'}}/>
@@ -253,24 +268,30 @@ const QuotCreateStepTwo = (props) => {
                     <Form.TextArea placeholder='Scope of Work' rows={4} name='description'
                                    value={quotationData.description} onChange={handleQuotationData}
                                    style={{marginBottom: '20px'}} readOnly={readOnly}/>
-                </Form>
 
-                <br/>
-                <Financials onFinanceDataChange={onFinanceDataChange} pageType={pageType} data={financials} total={onTotalChange}/>
-                <br/>
-                <br/>
-                <ReleasePlan onReleasePlanDataChange={onReleasePlanDataChange} pageType={pageType} data={releasePlans}/>
-                <br/>
-                <br/>
-                <PaymentPlan onPaymentPlanDataChange={onPaymentPlanDataChange} pageType={pageType} data={paymentPlans}/>
-                <br/>
-                <br/>
-                <Terms onTermsChange={onTermsChange} pageType={pageType} data={terms}/>
+                    <br/>
+                    <Financials onFinanceDataChange={onFinanceDataChange} pageType={pageType} data={financials}
+                                total={onTotalChange} deleted={onDeleteFinancial}/>
+                    <br/>
+                    <br/>
+                    <ReleasePlan onReleasePlanDataChange={onReleasePlanDataChange} pageType={pageType}
+                                 data={releasePlans} deleted={onDeleteRelease}/>
+                    <br/>
+                    <br/>
+                    <PaymentPlan onPaymentPlanDataChange={onPaymentPlanDataChange} pageType={pageType}
+                                 data={paymentPlans} deleted={onDeletePayment}/>
+                    <br/>
+                    <br/>
+                    <Form.TextArea rows={5} label='Terms' placeholder='Terms and Conditions'
+                                   style={{marginBottom: '20px'}}
+                                   name='term' value={terms} onChange={handleOnTermsChange} readOnly={readOnly}/>
+                </Form>
                 <Grid style={{minHeight: '40px', padding: '0rem !important'}}>
                     <Grid.Column id='create_quot_button' width={16} floated='right'>
                         {actionButton}
                     </Grid.Column>
                 </Grid>
+                <p hidden>{JSON.stringify(quotationObject)}</p>
             </div>
         </Segment>
     }

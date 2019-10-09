@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 import {
     Button,
     Grid,
-    Header, Icon, Image,
+    Header,
     Segment,
-    Table
+    Table,
 } from "semantic-ui-react";
 import axios from "axios";
 import Loader from "react-loader-spinner";
@@ -174,7 +174,7 @@ function InvoiceIndex(props) {
                     alignItems: "center"
                 }}
                 >
-                    <Loader type="Plane" color="blue" height="100" width="100"/>
+                    <Loader type="Oval" color="blue" height="100" width="100"/>
                 </div>
             </div>
     } else {

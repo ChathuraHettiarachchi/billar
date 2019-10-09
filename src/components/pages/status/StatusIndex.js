@@ -6,7 +6,8 @@ import {
     Header,
     Segment,
     Table,
-    Icon
+    Icon,
+    Modal
 } from "semantic-ui-react";
 import Loader from "react-loader-spinner";
 import axios from "axios";
@@ -15,6 +16,9 @@ function StatusIndex() {
 
     const [statusList, setStatusList] = useState([]);
     const [isLoading, setLoading] = useState(true);
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const [deletingItem, setDeletingItem] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,19 +33,27 @@ function StatusIndex() {
         fetchData();
     }, []);
 
-    const handleConfirmation = e => {
-        const r = window.confirm("Do you really want to remove this project status?");
-        if (r == true) {
-            axios.delete(process.env.REACT_APP_BASE_URL + 'status/remove/' + e.target.value)
-                .then(res => {
-                    console.log(res);
-                    window.location.reload()
-                })
-                .catch(error => {
-                    console.log(error);
-                    setLoading(false);
-                });
-        }
+    const handleConfirmation = (event, data) => {
+        handleModelVisibility();
+        setDeletingItem(data.value);
+        console.log(data.value)
+    };
+
+    const handleModelVisibility = () => {
+        setModalOpen(!modalOpen)
+    };
+
+    const handleItemDelete = () => {
+        setLoading(true);
+        axios.delete(process.env.REACT_APP_BASE_URL + 'status/remove/' + deletingItem)
+            .then(res => {
+                console.log(res);
+                window.location.reload()
+            })
+            .catch(error => {
+                console.log(error);
+                setLoading(false);
+            });
     };
 
     const getTableData = statusList => {
@@ -49,7 +61,7 @@ function StatusIndex() {
             <Table.Row key={status.status_id}>
                 <Table.Cell>{index + 1}</Table.Cell>
                 <Table.Cell>{status.title}</Table.Cell>
-                <Table.Cell style={{backgroundColor:status.color}}>{status.color}</Table.Cell>
+                <Table.Cell style={{backgroundColor:status.color}}/>
                 <Table.Cell>
                     <Button size="mini" icon color="green" as={Link} to={'/status/' + status.status_id + '/view'}>
                         <Icon name="desktop"/>
@@ -57,9 +69,9 @@ function StatusIndex() {
                     <Button size="mini" icon color="blue" as={Link} to={'/status/' + status.status_id + '/edit'}>
                         <Icon name="pencil"/>
                     </Button>
-                    {/*<Button color="red" size="mini" icon onClick={handleConfirmation} value={status.status_id} key={status.status_id}>*/}
-                    {/*    <Icon name="delete"/>*/}
-                    {/*</Button>*/}
+                    <Button color="red" size="mini" icon onClick={handleConfirmation} value={status.status_id} key={status.status_id}>
+                        <Icon name="delete"/>
+                    </Button>
                 </Table.Cell>
             </Table.Row>
         );
@@ -77,7 +89,7 @@ function StatusIndex() {
                     alignItems: "center"
                 }}
                 >
-                    <Loader type="Plane" color="blue" height="100" width="100"/>
+                    <Loader type="Oval" color="blue" height="100" width="100"/>
                 </div>
             </div>
     } else {
@@ -117,6 +129,26 @@ function StatusIndex() {
             <Segment>
                 {tableContent}
             </Segment>
+            <Modal
+                id='modal'
+                basic
+                size='tiny'
+                open={modalOpen}>
+                <Header icon='archive' content='Delete Confirmation'/>
+                <Modal.Content>
+                    <p>
+                        Do you really want to remove this project status?
+                    </p>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button basic color='red' inverted onClick={handleModelVisibility}>
+                        <Icon name='remove'/> No
+                    </Button>
+                    <Button color='green' inverted onClick={handleItemDelete}>
+                        <Icon name='checkmark'/> Yes
+                    </Button>
+                </Modal.Actions>
+            </Modal>
         </div>
     );
 }

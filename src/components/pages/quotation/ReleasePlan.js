@@ -7,7 +7,7 @@ import TableHeader from "./TableHeader";
 
 import './Quotation.css'
 
-const ReleasePlan = ({onReleasePlanDataChange, pageType, data}) => {
+const ReleasePlan = ({onReleasePlanDataChange, pageType, data, deleted}) => {
 
     const [releaseData, setReleaseData] = useState(data);
     const [readOnly, setReadOnly] = useState(pageType === 'view');
@@ -31,6 +31,12 @@ const ReleasePlan = ({onReleasePlanDataChange, pageType, data}) => {
 
     const handleReleaseItemRemove = (event, data) => {
         const _tempReleases = [...releaseData];
+
+        let removingItem = _tempReleases[data.value];
+        if(removingItem.id  > 0){
+            deleted(removingItem.id)
+        }
+
         _tempReleases.splice(data.value, 1);
         setReleaseData(_tempReleases);
 

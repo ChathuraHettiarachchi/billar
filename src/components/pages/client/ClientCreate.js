@@ -9,6 +9,7 @@ import {
 import Loader from "react-loader-spinner";
 import axios from 'axios';
 import COUNTRY_OPTIONS from '../../../assets/data/countriesData'
+import Select from 'react-select';
 
 const ClientCreate = (props) => {
 
@@ -70,7 +71,7 @@ const ClientCreate = (props) => {
                     alignItems: "center"
                 }}
                 >
-                    <Loader type="Plane" color="blue" height="100" width="100"/>
+                    <Loader type="Oval" color="blue" height="100" width="100"/>
                 </div>
             </div>
     } else {
@@ -95,8 +96,8 @@ const ClientCreate = (props) => {
                                 onChange={updateFieldData} name='address_line_first'/>
                     <Form.Input label='Address Line 2' placeholder='Address Line 2' value={client.address_line_last}
                                 onChange={updateFieldData} name='address_line_last'/>
-                    <Form.Select fluid label='Country' placeholder='Country' options={COUNTRY_OPTIONS}
-                                 value={client.country} onChange={updateCountrySelect} name='country'/>
+                    <Form.Select search fluid label='Country' placeholder='Country' options={COUNTRY_OPTIONS}
+                                 value={client.country} onChange={updateCountrySelect} name='country' autoComplete="new-password"/>
                 </Form.Group>
 
                 <Form.TextArea label='Description' placeholder='Tell us more about client...' value={client.description}
