@@ -54,8 +54,6 @@ Z
 0src/components/pages/quotation/AddressSection.js,2/1/21b0072ec9487dd2ac429933e21e3d42966e0723
 _
 /src/components/pages/quotation/QuotationInfo.js,9/4/9460a7e0f62457a113fa1fb864dbb995e903fba6
-W
-'src/components/pages/quotation/Terms.js,5/c/5ca496a06e62ea8f8b430eb132c1b292fb5ac89f
 \
 ,src/components/pages/quotation/Quotation.css,6/f/6f734122858c207274fc9e8d8d5c0295da49d38f
 ^
@@ -91,3 +89,9 @@ J
 src/react-auth0-wrapper.js,1/a/1a767a377e3e2c46b4c231a90b14ac4d36807434
 R
 "src/components/BillarNavigation.js,b/c/bceb243ef2a45d489f55c0e91f216342d09b041c
+V
+&src/components/pages/status/Status.css,e/c/eca424eb1b6bb0193092f2774a7a9d10f3696ae7
+A
+package-lock.json,f/a/fa288d1472d29beccb489a676f68739ad365fc47
+L
+src/assets/images/fidenz.svg,f/6/f6d3f246ad4773463e62b65989eab8371c648946

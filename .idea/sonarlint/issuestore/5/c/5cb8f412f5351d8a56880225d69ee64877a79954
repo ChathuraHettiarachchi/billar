@@ -1,13 +1,12 @@
 
-ajavascript:S1854">Remove this useless assignment to local variable "setReadOnly"(ôõÓ•8¹Æò¶Ä-
-ijavascript:S1854"ARemove this useless assignment to local variable "setQuotationId"(›Î˜ûÿÿÿÿ8öˆø°Ä-
-|javascript:S1117U"T"terms" hides or potentially hides a variable declared in an outer scope at line 36.(ÛŞÉÙûÿÿÿÿ8Å¬¶¥Ú-
-hjavascript:UnusedVariable"<Remove the declaration of the unused 'setPageType' variable.(©À£8ƒæ¶‘Ä-
-ajavascript:S1854">Remove this useless assignment to local variable "setPageType"(©À£8ƒæ¶‘Ä-
-pjavascript:UnusedVariable"?Remove the declaration of the unused 'setQuotationId' variable.(›Î˜ûÿÿÿÿ8öˆø°Ä-
-xjavascript:S1117Q"U"client" hides or potentially hides a variable declared in an outer scope at line 52.(Â¬¤ç8Å¬¶¥Ú-
-ajavascript:S1854">Remove this useless assignment to local variable "setClientId"(ƒ¤®°8Š–¾‘Ä-
-Gjavascript:S1128"$Remove this unused import of 'Link'.(‚Ğ¦8¡ä¹§Ú-
-hjavascript:UnusedVariable"<Remove the declaration of the unused 'setReadOnly' variable.(ôõÓ•8¹Æò¶Ä-
-zjavascript:S1117="W"content" hides or potentially hides a variable declared in an outer scope at line 239.(Àı½8Å¬¶¥Ú-
-hjavascript:UnusedVariable"<Remove the declaration of the unused 'setClientId' variable.(ƒ¤®°8Š–¾‘Ä-
+pjavascript:UnusedVariable"?Remove the declaration of the unused 'setQuotationId' variable.(›Î˜ûÿÿÿÿ8öˆø°Ä-
+hjavascript:UnusedVariable"<Remove the declaration of the unused 'setPageType' variable.(©À£8ƒæ¶‘Ä-
+|javascript:S1117L"T"terms" hides or potentially hides a variable declared in an outer scope at line 27.(ÛŞÉÙûÿÿÿÿ8Å¬¶¥Ú-
+zjavascript:S11174"W"content" hides or potentially hides a variable declared in an outer scope at line 230.(Àı½8Å¬¶¥Ú-
+ajavascript:S1854">Remove this useless assignment to local variable "setReadOnly"(ôõÓ•8¹Æò¶Ä-
+ajavascript:S1854">Remove this useless assignment to local variable "setPageType"(©À£8ƒæ¶‘Ä-
+hjavascript:UnusedVariable"<Remove the declaration of the unused 'setReadOnly' variable.(ôõÓ•8¹Æò¶Ä-
+hjavascript:UnusedVariable"<Remove the declaration of the unused 'setClientId' variable.(ƒ¤®°8Š–¾‘Ä-
+ajavascript:S1854">Remove this useless assignment to local variable "setClientId"(ƒ¤®°8Š–¾‘Ä-
+xjavascript:S1117H"U"client" hides or potentially hides a variable declared in an outer scope at line 43.(Â¬¤ç8Å¬¶¥Ú-
+ijavascript:S1854"ARemove this useless assignment to local variable "setQuotationId"(›Î˜ûÿÿÿÿ8öˆø°Ä-

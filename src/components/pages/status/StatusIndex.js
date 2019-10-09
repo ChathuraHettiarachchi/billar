@@ -6,7 +6,8 @@ import {
     Header,
     Segment,
     Table,
-    Icon
+    Icon,
+    Modal
 } from "semantic-ui-react";
 import Loader from "react-loader-spinner";
 import axios from "axios";
@@ -15,6 +16,9 @@ function StatusIndex() {
 
     const [statusList, setStatusList] = useState([]);
     const [isLoading, setLoading] = useState(true);
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const [deletingItem, setDeletingItem] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,19 +34,26 @@ function StatusIndex() {
     }, []);
 
     const handleConfirmation = (event, data) => {
-        const r = window.confirm("Do you really want to remove this project status?");
-        if (r == true) {
-            setLoading(true);
-            axios.delete(process.env.REACT_APP_BASE_URL + 'status/remove/' + data.value)
-                .then(res => {
-                    console.log(res);
-                    window.location.reload()
-                })
-                .catch(error => {
-                    console.log(error);
-                    setLoading(false);
-                });
-        }
+        handleModelVisibility();
+        setDeletingItem(data.value);
+        console.log(data.value)
+    };
+
+    const handleModelVisibility = () => {
+        setModalOpen(!modalOpen)
+    };
+
+    const handleItemDelete = () => {
+        setLoading(true);
+        axios.delete(process.env.REACT_APP_BASE_URL + 'status/remove/' + deletingItem)
+            .then(res => {
+                console.log(res);
+                window.location.reload()
+            })
+            .catch(error => {
+                console.log(error);
+                setLoading(false);
+            });
     };
 
     const getTableData = statusList => {
@@ -118,6 +129,26 @@ function StatusIndex() {
             <Segment>
                 {tableContent}
             </Segment>
+            <Modal
+                id='modal'
+                basic
+                size='large'
+                open={modalOpen}>
+                <Header icon='archive' content='Delete Confirmation'/>
+                <Modal.Content>
+                    <p>
+                        Do you really want to remove this project status?
+                    </p>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button basic color='red' inverted onClick={handleModelVisibility}>
+                        <Icon name='remove'/> No
+                    </Button>
+                    <Button color='green' inverted onClick={handleItemDelete}>
+                        <Icon name='checkmark'/> Yes
+                    </Button>
+                </Modal.Actions>
+            </Modal>
         </div>
     );
 }

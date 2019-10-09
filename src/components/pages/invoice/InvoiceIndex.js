@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 import {
     Button,
     Grid,
-    Header, Icon, Image,
+    Header,
     Segment,
-    Table
+    Table,
 } from "semantic-ui-react";
 import axios from "axios";
 import Loader from "react-loader-spinner";

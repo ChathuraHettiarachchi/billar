@@ -1,12 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
-import {
-    Button, Form,
-    Grid,
-    Header, Icon,
-    Segment,
-    Table
-} from "semantic-ui-react";
+import {Button, Form, Grid, Header, Icon, Modal, Segment, Table} from "semantic-ui-react";
 import Loader from "react-loader-spinner";
 import axios from 'axios';
 import Moment from 'moment';
@@ -17,6 +11,9 @@ const QuotIndex = (props) => {
     const [quotations, setQuotations] = useState([]);
     const [statusList, setStatusList] = useState([]);
     const [statusOptions, setStatusOptions] = useState([]);
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const [deletingItem, setDeletingItem] = useState(false);
 
     useEffect(() => {
         const fetchData = () => {
@@ -60,7 +57,7 @@ const QuotIndex = (props) => {
         setQuotations(_tempQuotations);
 
         setLoading(true);
-        axios.post((process.env.REACT_APP_BASE_URL + 'quotations/update/'+quotations[index['data-id']].quotation_id+'/status'), {
+        axios.post((process.env.REACT_APP_BASE_URL + 'quotations/update/' + quotations[index['data-id']].quotation_id + '/status'), {
             quotation: {
                 status: index.value
             }
@@ -74,28 +71,34 @@ const QuotIndex = (props) => {
     };
 
     const handleConfirmation = (event, data) => {
-        const r = window.confirm("Do you really want to remove this quotation?");
-        if (r == true) {
-            const id = data.value;
-            setLoading(true);
-            axios.delete(process.env.REACT_APP_BASE_URL + 'quotations/remove/' + id)
-                .then(res => {
-                    console.log(res);
-                    window.location.reload()
-                })
-                .catch(error => {
-                    console.log(error);
-                    setLoading(false);
-                });
-        }
+         handleModelVisibility();
+         setDeletingItem(data.value);
+        console.log(data.value)
+    };
+
+    const handleModelVisibility = () => {
+        setModalOpen(!modalOpen)
+    };
+
+    const handleItemDelete = () => {
+        setLoading(true);
+        axios.delete(process.env.REACT_APP_BASE_URL + 'quotations/remove/' + deletingItem)
+            .then(res => {
+                console.log(res);
+                window.location.reload()
+            })
+            .catch(error => {
+                console.log(error);
+                setLoading(false);
+            });
     };
 
     const getStatusColor = quotation => {
         let color;
-        if (quotation.status === null || quotation.status === ''){
+        if (quotation.status === null || quotation.status === '') {
             color = '#fff';
         } else {
-            try{
+            try {
                 color = statusList.find(x => x.status_id === parseInt(quotation.status)).color;
             } catch (e) {
                 color = '#fff';
@@ -121,7 +124,7 @@ const QuotIndex = (props) => {
                             onChange={onQuotationStateChange}
                             name='status'
                             data-id={index}
-                            style={{backgroundColor:(getStatusColor(quotation))}}
+                            style={{backgroundColor: (getStatusColor(quotation))}}
                         />
                     </Form>
                 </Table.Cell>
@@ -183,22 +186,54 @@ const QuotIndex = (props) => {
 
 
     return (
-        <div>
-            <Segment>
-                <Grid style={{minHeight: '0'}}>
-                    <Grid.Row>
-                        <Grid.Column width={4} floated='left' verticalAlign='middle'>
-                            <Header>Quotations</Header>
-                        </Grid.Column>
-                        <Grid.Column width={4} floated='right'>
-                            <Button primary floated='right' as={Link} to={'/quotation/step1'}>Add New Quotation</Button>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
-            </Segment>
-            <Segment>
-                {tableContent}
-            </Segment>
+        <div style={{position: 'relative'}}>
+            <div>
+                <Segment>
+                    <Grid style={{minHeight: '0'}}>
+                        <Grid.Row>
+                            <Grid.Column width={4} floated='left' verticalAlign='middle'>
+                                <Header>Quotations</Header>
+                            </Grid.Column>
+                            <Grid.Column width={4} floated='right'>
+                                <Button primary floated='right' as={Link} to={'/quotation/step1'}>Add New
+                                    Quotation</Button>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </Segment>
+                <Segment>
+                    {tableContent}
+                </Segment>
+            </div>
+            <Button id='fab' circular icon='filter' style={{
+                width: '60px',
+                height: '60px',
+                position: 'fixed',
+                right: '20px',
+                bottom: '20px',
+                background: '#1b1c1d'
+            }}/>
+            <Modal
+                id='modal'
+                basic
+                size='large'
+                open={modalOpen}>
+                <Header icon='archive' content='Delete Confirmation'/>
+                <Modal.Content>
+                    <p>
+                        Do you really want to remove this quotation? This will remove all associated invoices,
+                        releases and other data.
+                    </p>
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button basic color='red' inverted onClick={handleModelVisibility}>
+                        <Icon name='remove'/> No
+                    </Button>
+                    <Button color='green' inverted onClick={handleItemDelete}>
+                        <Icon name='checkmark'/> Yes
+                    </Button>
+                </Modal.Actions>
+            </Modal>
         </div>
     );
 }
