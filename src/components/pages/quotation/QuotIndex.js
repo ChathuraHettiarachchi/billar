@@ -346,7 +346,7 @@ const QuotIndex = (props) => {
                 id='modal'
                 size='small'
                 open={filterModalOpen}>
-                <Header icon='filter' content='Filter Manager'/>
+                <Header icon='filter' content='Filter Quotations'/>
                 <Modal.Content>
                     <Form>
                         <Form.Group widths='equal'>
