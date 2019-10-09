@@ -9,7 +9,10 @@ import FILTER_OPTIONS from "../../../assets/data/quotationFilterOptions";
 const QuotIndex = (props) => {
 
     const [isLoading, setLoading] = useState(true);
+
     const [quotations, setQuotations] = useState([]);
+    const [tempQuotations, setTempQuotations] = useState([]);
+
     const [statusList, setStatusList] = useState([]);
     const [statusOptions, setStatusOptions] = useState([]);
 
@@ -30,7 +33,6 @@ const QuotIndex = (props) => {
                 axios.get(process.env.REACT_APP_BASE_URL + 'quotations/'),
                 axios.get(process.env.REACT_APP_BASE_URL + 'status/')
             ]).then(axios.spread((quotations, statusList) => {
-                let quots = quotations.data.content.quotations;
                 let statusData = statusList.data.content.status_list;
                 let statusForSelect = statusData.map(status => {
                     return {
@@ -39,10 +41,21 @@ const QuotIndex = (props) => {
                         "value": status.status_id
                     }
                 });
-
                 setStatusList(statusData);
-                setQuotations(quots);
                 setStatusOptions(statusForSelect);
+
+                let quots = quotations.data.content.quotations;
+                let quotsList = quots.map(q => {
+                    return {
+                        ...q,
+                        "quotNumber":("#"+(Moment(q.created_at).format('YYYYMM') + '00' + q.quotation_id)),
+                        "created_at":(new Date(q.created_at).toLocaleDateString()),
+                        "status_name": (getStatusName(q.status, statusData))
+                    }
+                });
+                setQuotations(quotsList);
+                setTempQuotations(quotsList);
+
             })).then(() => {
                 setLoading(false);
             }).catch(error => {
@@ -54,6 +67,20 @@ const QuotIndex = (props) => {
 
         fetchData();
     }, []);
+
+    const getStatusName = (id, data) =>{
+        let status;
+        if (id === null || id === '') {
+            status = 'N/A, Not Assigned';
+        } else {
+            try {
+                status = data.find(x => x.status_id === parseInt(id)).title;
+            } catch (e) {
+                status = e;
+            }
+        }
+        return status
+    };
 
     const onQuotationStateChange = (event, index, rowValue) => {
         console.log(index.value);
@@ -107,7 +134,8 @@ const QuotIndex = (props) => {
 
     const filterData = () => {
         handleFilterModalVisibility();
-        setIsFilterSet(true)
+        setIsFilterSet(true);
+        filterWithParams();
     };
 
     const clearFilter = () => {
@@ -115,10 +143,12 @@ const QuotIndex = (props) => {
             type:'',
             searchParam:''
         });
-        setIsFilterSet(false)
+        setIsFilterSet(false);
+
+        setQuotations(tempQuotations);
     };
 
-    const handleFilterSerachChange = (event, data) => {
+    const handleFilterSearchChange = (event, data) => {
         setFilterReqData({...filterReqData, 'searchParam': data.value})
     };
 
@@ -144,10 +174,10 @@ const QuotIndex = (props) => {
         return quotations.map((quotation, index) =>
             <Table.Row key={quotation.quotation_id}>
                 <Table.Cell>{index + 1}</Table.Cell>
-                <Table.Cell><b>#{(Moment(quotation.created_at).format('YYYYMM') + '00' + quotation.quotation_id)}</b></Table.Cell>
+                <Table.Cell><b>{quotation.quotNumber}</b></Table.Cell>
                 <Table.Cell>{quotation.code}</Table.Cell>
                 <Table.Cell>{quotation.title}</Table.Cell>
-                <Table.Cell>{new Date(quotation.created_at).toLocaleDateString()}</Table.Cell>
+                <Table.Cell>{quotation.created_at}</Table.Cell>
                 <Table.Cell>
                     <Form>
                         <Form.Select
@@ -177,6 +207,44 @@ const QuotIndex = (props) => {
                 </Table.Cell>
             </Table.Row>
         );
+    };
+
+    const filterWithParams = () => {
+        let filterData = [];
+
+        try{
+            if (filterReqData.type === 'QUOTATION_NUMBER'){
+                filterData = tempQuotations.filter(function (i){
+                    return i.quotNumber.includes(filterReqData.searchParam)
+                });
+            } else if (filterReqData.type === 'TITLE'){
+                filterData = tempQuotations.filter(function (i){
+                    return i.title.includes(filterReqData.searchParam)
+                });
+            } else if (filterReqData.type === 'CLIENT_CODE'){
+                filterData = tempQuotations.filter(function (i){
+                    return i.code.includes(filterReqData.searchParam)
+                });
+            } else if (filterReqData.type === 'CREATED_DATE'){
+                filterData = tempQuotations.filter(function (i){
+                    return i.created_at.includes(filterReqData.searchParam)
+                });
+            } else if (filterReqData.type === 'STATUS'){
+                filterData = tempQuotations.filter(function (i){
+                    return i.status_name.includes(filterReqData.searchParam)
+                });
+            } else if (filterReqData.type === 'AMOUNT'){
+                filterData = tempQuotations.filter(function (i){
+                    return (""+i.amount).includes(filterReqData.searchParam)
+                });
+            } else {
+                filterData = tempQuotations;
+            }
+
+            setQuotations(filterData);
+        } catch (e) {
+            setQuotations(tempQuotations);
+        }
     };
 
     let tableContent;
@@ -214,9 +282,7 @@ const QuotIndex = (props) => {
                     {getTableData(quotations)}
                 </Table.Body>
             </Table>
-
     }
-
 
     return (
         <div style={{position: 'relative'}}>
@@ -284,18 +350,20 @@ const QuotIndex = (props) => {
                 <Modal.Content>
                     <Form>
                         <Form.Group widths='equal'>
-                            <Form.Input fluid label='Search' placeholder='Search data' value={filterReqData.searchParam}
-                                        onChange={handleFilterSerachChange} name='search' autoComplete="new-password"/>
                             <Form.Select fluid label='Filter' placeholder='Filter' options={FILTER_OPTIONS}
                                          value={filterReqData.type} onChange={handleFilterTypeChange} name='filter' autoComplete="new-password"/>
+                            <Form.Input fluid label='Search' placeholder='Search data' value={filterReqData.searchParam}
+                                        onChange={handleFilterSearchChange} name='search' autoComplete="new-password" readOnly={filterReqData.type === ''}/>
                         </Form.Group>
                     </Form>
+                    <br/>
+                    <p>You have to select <b>Filter</b> & add input to <b>Search</b> before apply filter</p>
                 </Modal.Content>
                 <Modal.Actions>
                     <Button color='red' inverted onClick={handleFilterModalVisibility}>
                         <Icon name='remove'/> Cancel
                     </Button>
-                    <Button color='green' inverted onClick={filterData}>
+                    <Button color='green' inverted onClick={filterData} disabled={filterReqData.type === '' || filterReqData.searchParam === ''}>
                         <Icon name='checkmark'/> Filter Data
                     </Button>
                 </Modal.Actions>
