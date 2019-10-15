@@ -17,7 +17,7 @@ function InvoiceIndex(props) {
 
     const [filterModalOpen, setFilterModalOpen] = useState(false);
     const [isFilterSet, setIsFilterSet] = useState(false);
-    const [filterReqData, setFilterReqData] = useState({
+    const [filterRequestedData, setFilterRequestedData] = useState({
         datesRange: '',
         client: '',
         quotationNumber: '',
@@ -134,7 +134,7 @@ function InvoiceIndex(props) {
 
     const clearFilter = () => {
         setIsFilterSet(false);
-        setFilterReqData({
+        setFilterRequestedData({
             datesRange: '',
             client: '',
             quotationNumber: '',
@@ -149,37 +149,37 @@ function InvoiceIndex(props) {
     };
 
     const handleDateRangeChange = (event, {name, value}) => {
-        setFilterReqData({...filterReqData, datesRange: value});
+        setFilterRequestedData({...filterRequestedData, datesRange: value});
         applyFilterEnable();
     };
 
     const handleFilterClientChange = (event, data) => {
-        setFilterReqData({...filterReqData, 'client': data.value});
+        setFilterRequestedData({...filterRequestedData, 'client': data.value});
         applyFilterEnable();
     };
 
     const handleFilterQuotationChange = (event, data) => {
-        setFilterReqData({...filterReqData, 'quotationNumber': data.value});
+        setFilterRequestedData({...filterRequestedData, 'quotationNumber': data.value});
         applyFilterEnable();
     };
 
     const handleFilterIsCompletedChange = (event, data) => {
-        setFilterReqData({...filterReqData, 'isCompleted': data.checked});
+        setFilterRequestedData({...filterRequestedData, 'isCompleted': data.checked});
         applyFilterEnable();
     };
 
     const handleFilterIsRemainingChange = (event, data) => {
-        setFilterReqData({...filterReqData, 'isRemaining': data.checked});
+        setFilterRequestedData({...filterRequestedData, 'isRemaining': data.checked});
         applyFilterEnable();
     };
 
     const applyFilterEnable = () => {
-        if (filterReqData.datesRange.length > 0 || filterReqData.client.length > 0 || filterReqData.quotationNumber.length > 0 || filterReqData.isCompleted || filterReqData.isRemaining) {
+        if (filterRequestedData.datesRange.length > 0 || filterRequestedData.client.length > 0 || filterRequestedData.quotationNumber.length > 0 || filterRequestedData.isCompleted || filterRequestedData.isRemaining) {
             setIsFilterSet(true)
         } else {
             setIsFilterSet(false)
         }
-        console.log(filterReqData);
+        console.log(filterRequestedData);
     };
 
     const getTableData = invoiceList => {
@@ -303,12 +303,12 @@ function InvoiceIndex(props) {
                     <Form>
                         <Form.Group widths='equal'>
                             <Form.Select search fluid label='Client code' placeholder='Client' options={clientList}
-                                         value={filterReqData.client} onChange={handleFilterClientChange}
+                                         value={filterRequestedData.client} onChange={handleFilterClientChange}
                                          name='client'
                                          autoComplete="new-password"/>
                             <Form.Select search fluid label='Quotation number' placeholder='Quotation'
                                          options={quotNumberList}
-                                         value={filterReqData.quotationNumber} onChange={handleFilterQuotationChange}
+                                         value={filterRequestedData.quotationNumber} onChange={handleFilterQuotationChange}
                                          name='quotationNumber'
                                          autoComplete="new-password"/>
                         </Form.Group>
@@ -317,22 +317,22 @@ function InvoiceIndex(props) {
                                 name="datesRange"
                                 label='Invoice date range'
                                 placeholder="From - To"
-                                value={filterReqData.datesRange}
+                                value={filterRequestedData.datesRange}
                                 iconPosition="left"
                                 onChange={handleDateRangeChange}
                                 closable={true}
                             />
                         </Form.Group>
                         <Form.Group widths='equal'>
-                            <Form.Checkbox label='Completed invoices' checked={filterReqData.isCompleted}
+                            <Form.Checkbox label='Completed invoices' checked={filterRequestedData.isCompleted}
                                            onChange={handleFilterIsCompletedChange}
-                                           disabled={filterReqData.isRemaining}
+                                           disabled={filterRequestedData.isRemaining}
                                            name='isRemaining'/>
                         </Form.Group>
                         <Form.Group widths='equal'>
-                            <Form.Checkbox label='Remaining invoices' checked={filterReqData.isRemaining}
+                            <Form.Checkbox label='Remaining invoices' checked={filterRequestedData.isRemaining}
                                            onChange={handleFilterIsRemainingChange}
-                                           disabled={filterReqData.isCompleted}
+                                           disabled={filterRequestedData.isCompleted}
                                            name='isCompleted'/>
                         </Form.Group>
                     </Form>
