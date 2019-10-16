@@ -1,15 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Checkbox, Form, Grid, Header, Icon, Modal, Segment, Table,} from "semantic-ui-react";
+import {Button, Form, Grid, Header, Icon, Modal, Segment, Table,} from "semantic-ui-react";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 import Moment from "moment";
 import {DatesRangeInput} from 'semantic-ui-calendar-react';
 
-import FILTER_OPTIONS from "../../../assets/data/quotationFilterOptions";
-
-function InvoiceIndex(props) {
+const InvoiceIndex = (props) => {
 
     const [invoiceList, setInvoiceList] = useState([]);
+    const [tempInvoiceList, setTempInvoiceList] = useState([]);
     const [isLoading, setLoading] = useState(true);
 
     const [clientList, setClientList] = useState([]);
@@ -17,6 +16,7 @@ function InvoiceIndex(props) {
 
     const [filterModalOpen, setFilterModalOpen] = useState(false);
     const [isFilterSet, setIsFilterSet] = useState(false);
+    const [isFilterSetByAction, setIsFilterSetByAction] = useState(false);
     const [filterRequestedData, setFilterRequestedData] = useState({
         datesRange: '',
         client: '',
@@ -43,12 +43,13 @@ function InvoiceIndex(props) {
                     const resultClient = [];
                     const mapClient = new Map();
                     for (const item of data) {
-                        if(!mapClient.has(item.item.client_code)){
-                            mapClient.set(item.item.client_code, true);    // set any value to Map
+                        let val = item.item.client_code;
+                        if (!mapClient.has(val)) {
+                            mapClient.set(val, true);    // set any value to Map
                             resultClient.push({
-                                text: item.item.client_code,
-                                key: item.item.client_code,
-                                value: item.item.client_code
+                                text: val,
+                                key: val,
+                                value: val
                             });
                         }
                     }
@@ -56,17 +57,19 @@ function InvoiceIndex(props) {
                     const resultQuot = [];
                     const mapQuot = new Map();
                     for (const item of data) {
-                        if(!mapQuot.has((Moment(item.item.quotation_created_at).format('YYYYMM') + '00' + item.item.quotation_id))){
-                            mapQuot.set((Moment(item.item.quotation_created_at).format('YYYYMM') + '00' + item.item.quotation_id), true);
+                        let val = (Moment(item.item.quotation_created_at).format('YYYYMM') + '00' + item.item.quotation_id);
+                        if (!mapQuot.has(val)) {
+                            mapQuot.set(val, true);
                             resultQuot.push({
-                                text: (Moment(item.item.quotation_created_at).format('YYYYMM') + '00' + item.item.quotation_id),
-                                key: (Moment(item.item.quotation_created_at).format('YYYYMM') + '00' + item.item.quotation_id),
-                                value: (Moment(item.item.quotation_created_at).format('YYYYMM') + '00' + item.item.quotation_id)
+                                text: val,
+                                key: val,
+                                value: val
                             });
                         }
                     }
 
                     setInvoiceList(data);
+                    setTempInvoiceList(data);
                     setClientList(resultClient);
                     setQuotNumberList(resultQuot);
                 })
@@ -132,54 +135,112 @@ function InvoiceIndex(props) {
         setFilterModalOpen(!filterModalOpen);
     };
 
+    const handleCancelModal = () => {
+        handleFilterModalVisibility();
+        if (!isFilterSetByAction){
+            clearFilter();
+        }
+    };
+
     const clearFilter = () => {
         setIsFilterSet(false);
+        setIsFilterSetByAction(false);
         setFilterRequestedData({
             datesRange: '',
             client: '',
             quotationNumber: '',
             isCompleted: false,
             isRemaining: false
-        })
+        });
+        setInvoiceList(tempInvoiceList);
     };
 
     const filterData = () => {
         setIsFilterSet(true);
+        setIsFilterSetByAction(true);
         handleFilterModalVisibility();
+        filterWithParams();
     };
 
     const handleDateRangeChange = (event, {name, value}) => {
         setFilterRequestedData({...filterRequestedData, datesRange: value});
-        applyFilterEnable();
+        setIsFilterSet(true);
     };
 
     const handleFilterClientChange = (event, data) => {
-        setFilterRequestedData({...filterRequestedData, 'client': data.value});
-        applyFilterEnable();
+        setFilterRequestedData({...filterRequestedData, client: data.value});
+        setIsFilterSet(true);
     };
 
     const handleFilterQuotationChange = (event, data) => {
-        setFilterRequestedData({...filterRequestedData, 'quotationNumber': data.value});
-        applyFilterEnable();
+        setFilterRequestedData({...filterRequestedData, quotationNumber: data.value});
+        setIsFilterSet(true);
     };
 
     const handleFilterIsCompletedChange = (event, data) => {
-        setFilterRequestedData({...filterRequestedData, 'isCompleted': data.checked});
-        applyFilterEnable();
+        setFilterRequestedData({...filterRequestedData, isCompleted: data.checked});
+        setIsFilterSet(true);
     };
 
     const handleFilterIsRemainingChange = (event, data) => {
-        setFilterRequestedData({...filterRequestedData, 'isRemaining': data.checked});
-        applyFilterEnable();
+        setFilterRequestedData({...filterRequestedData, isRemaining: data.checked});
+        setIsFilterSet(true);
     };
 
-    const applyFilterEnable = () => {
-        if (filterRequestedData.datesRange.length > 0 || filterRequestedData.client.length > 0 || filterRequestedData.quotationNumber.length > 0 || filterRequestedData.isCompleted || filterRequestedData.isRemaining) {
-            setIsFilterSet(true)
-        } else {
-            setIsFilterSet(false)
+    const filterWithParams = () => {
+        let filterData = [];
+
+        try {
+            filterData = tempInvoiceList.filter(function (i) {
+                let item = i.item;
+                let quotNumber = (Moment(item.quotation_created_at).format('YYYYMM') + '00' + item.quotation_id);
+                let isCom = isEnable(item);
+                let isRem = !isCom;
+
+                let output;
+                let dateRanges = filterRequestedData.datesRange.split(' - ');
+                if (filterRequestedData.datesRange.length > 0 && dateRanges.length > 1) {
+                    let start = Moment(dateRanges[0]).format('YYYY-MMM-DD');
+                    let end = Moment(dateRanges[1]).format('YYYY-MMM-DD');
+                    let invoiceDate = Moment(item.invoice_date).format('YYYY-MMM-DD');
+
+                    if (filterRequestedData.isRemaining) {
+                        output = item.client_code.includes(filterRequestedData.client) &&
+                            quotNumber.includes(filterRequestedData.quotationNumber) &&
+                            isRem &&
+                            (Moment(invoiceDate).isBetween(start, end, null, '[]'))
+                    } else if (filterRequestedData.isCompleted) {
+                        output = item.client_code.includes(filterRequestedData.client) &&
+                            quotNumber.includes(filterRequestedData.quotationNumber) &&
+                            isCom &&
+                            (Moment(invoiceDate).isBetween(start, end, null, '[]'))
+                    } else {
+                        output = item.client_code.includes(filterRequestedData.client) &&
+                            quotNumber.includes(filterRequestedData.quotationNumber) &&
+                            (Moment(invoiceDate).isBetween(start, end, null, '[]'))
+                    }
+                } else {
+                    if (filterRequestedData.isRemaining) {
+                        output = item.client_code.includes(filterRequestedData.client) &&
+                            quotNumber.includes(filterRequestedData.quotationNumber) &&
+                            isRem
+                    } else if (filterRequestedData.isCompleted) {
+                        output = item.client_code.includes(filterRequestedData.client) &&
+                            quotNumber.includes(filterRequestedData.quotationNumber) &&
+                            isCom
+                    } else {
+                        output = item.client_code.includes(filterRequestedData.client) &&
+                            quotNumber.includes(filterRequestedData.quotationNumber)
+                    }
+                }
+
+                return output;
+            });
+
+            setInvoiceList(filterData);
+        } catch (e) {
+            setInvoiceList(tempInvoiceList);
         }
-        console.log(filterRequestedData);
     };
 
     const getTableData = invoiceList => {
@@ -282,7 +343,7 @@ function InvoiceIndex(props) {
                 right: '20px',
                 bottom: '100px',
                 background: '#1b1c1d',
-                display: (isFilterSet ? '' : 'none')
+                display: (isFilterSetByAction ? '' : 'none')
             }}/>
             <Button id='fab' circular icon='filter' onClick={handleFilterModalVisibility} style={{
                 width: '60px',
@@ -308,7 +369,8 @@ function InvoiceIndex(props) {
                                          autoComplete="new-password"/>
                             <Form.Select search fluid label='Quotation number' placeholder='Quotation'
                                          options={quotNumberList}
-                                         value={filterRequestedData.quotationNumber} onChange={handleFilterQuotationChange}
+                                         value={filterRequestedData.quotationNumber}
+                                         onChange={handleFilterQuotationChange}
                                          name='quotationNumber'
                                          autoComplete="new-password"/>
                         </Form.Group>
@@ -321,6 +383,7 @@ function InvoiceIndex(props) {
                                 iconPosition="left"
                                 onChange={handleDateRangeChange}
                                 closable={true}
+                                dateFormat='YYYY-MMM-DD'
                             />
                         </Form.Group>
                         <Form.Group widths='equal'>
@@ -338,7 +401,7 @@ function InvoiceIndex(props) {
                     </Form>
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button color='red' inverted onClick={handleFilterModalVisibility}>
+                    <Button color='red' inverted onClick={handleCancelModal}>
                         <Icon name='remove'/> Cancel
                     </Button>
                     <Button color='green' inverted onClick={filterData}
