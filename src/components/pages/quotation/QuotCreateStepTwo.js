@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Form, Grid, Header, Image, Segment} from "semantic-ui-react";
+import {PDFDownloadLink} from '@react-pdf/renderer'
 import Moment from 'moment';
 
 import AddressSection from './AddressSection'
@@ -7,6 +8,7 @@ import QuotationInfo from './QuotationInfo'
 import Financials from './Financials'
 import ReleasePlan from './ReleasePlan'
 import PaymentPlan from './PaymentPlan'
+import QuotationFile from './QuotationFile'
 
 import fidenz from '../../../assets/images/fidenz.png'
 import quotation from '../../../assets/images/quotation.png'
@@ -215,12 +217,18 @@ const QuotCreateStepTwo = (props) => {
     };
 
     const downloadAsPDF = e => {
-        console.log('Downloading as PDF')
+        console.log('Downloading as PDF');
     };
 
     let actionButton;
     if (pageType === 'view') {
-        actionButton = <Button primary floated='right' onClick={downloadAsPDF}>Download as PDF</Button>
+        // actionButton = <Button primary floated='right' onClick={downloadAsPDF}>Download as PDF</Button>
+        actionButton =
+            <div style={{float:'right'}}>
+                <PDFDownloadLink document={<QuotationFile/>} fileName="somename.pdf" className='ui primary button'>
+                    {({blob, url, loading, error}) => (loading ? 'Loading document...' : 'Download now!')}
+                </PDFDownloadLink>
+            </div>
     } else if (pageType === 'edit') {
         actionButton = <Button primary floated='right' onClick={createOrUpdateQuotation}>Update Quotation</Button>
     } else {
