@@ -8,7 +8,7 @@ import quotation from '../../../assets/images/quotation.png'
 const styles = StyleSheet.create({
     page: {
         backgroundColor: '#fff',
-        padding: 20
+        padding: 30
     },
     row: {
         flexDirection: 'row'
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         display: 'block',
         height: 'auto',
         width: 140,
-        marginBottom: 10
+        marginBottom: 15
     },
     logoAlignRight: {
         position: 'absolute',
@@ -53,13 +53,15 @@ const styles = StyleSheet.create({
         display: 'block',
         height: 'auto',
         width: 140,
-        marginBottom: 10
+        marginBottom: 15
     },
     rowInfo: {
         flexDirection: 'row',
         backgroundColor: '#1579D0',
         height: 20,
-        marginTop: 5
+        marginTop: 20,
+        marginLeft: -30,
+        marginRight: -30
     },
     columnInfo: {
         width: '33.33%'
@@ -67,20 +69,44 @@ const styles = StyleSheet.create({
     infoTextRight: {
         textAlign: 'right',
         color: '#fff',
-        fontSize: 10,
-        margin: 4
+        fontSize: 9,
+        marginRight: 30,
+        marginTop: 4,
+        marginBottom: 4
     },
     infoTextCenter: {
         textAlign: 'center',
         color: '#fff',
-        fontSize: 10,
+        fontSize: 9,
         margin: 4
     },
     infoTextLeft: {
         textAlign: 'left',
         color: '#fff',
-        fontSize: 10,
-        margin: 4
+        fontSize: 9,
+        marginLeft: 30,
+        marginTop: 4,
+        marginBottom: 4
+    },
+    textTitle: {
+        textAlign: 'left',
+        color: '#1579D0',
+        fontSize: 16,
+        marginTop: 25,
+        marginBottom: 25
+    },
+    line: {
+        backgroundColor: 'grey',
+        height: 1,
+        flexDirection: 'row'
+    },
+    pageTitle:{
+        textAlign: 'left',
+        width: '100%',
+        color: '#1579D0',
+        fontSize: 18,
+        marginTop: 15,
+        marginBottom: 10
     }
 });
 
@@ -108,6 +134,7 @@ const QuotationFile = ({quotationData, financialData, releasePlanData, paymentPl
                     <Text style={styles.addressFrom}>info@fidenz.com</Text>
                 </View>
             </View>
+
             <View style={styles.rowInfo}>
                 <View style={styles.columnInfo}>
                     <Text style={styles.infoTextLeft}>Quotation No: #{quotationData.quot_no}</Text>
@@ -118,6 +145,23 @@ const QuotationFile = ({quotationData, financialData, releasePlanData, paymentPl
                 <View style={styles.columnInfo}>
                     <Text style={styles.infoTextRight}>Updated Date: {quotationData.updated_at}</Text>
                 </View>
+            </View>
+
+            <View style={styles.row}>
+                <Text style={styles.textTitle}>{quotationData.title}</Text>
+            </View>
+
+            <View style={styles.line}/>
+
+            <View style={styles.row}>
+                <Text style={styles.pageTitle}>Scope of Work</Text>
+            </View>
+            <View style={styles.row}>
+                <Text style={styles.addressTo}>{quotationData.description}</Text>
+            </View>
+
+            <View style={styles.row}>
+                <Text style={styles.pageTitle}>Financials</Text>
             </View>
         </Page>
     </Document>
