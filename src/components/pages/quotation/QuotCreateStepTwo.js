@@ -216,16 +216,14 @@ const QuotCreateStepTwo = (props) => {
         });
     };
 
-    const downloadAsPDF = e => {
-        console.log('Downloading as PDF');
-    };
-
     let actionButton;
     if (pageType === 'view') {
         // actionButton = <Button primary floated='right' onClick={downloadAsPDF}>Download as PDF</Button>
+        let quotName = ""+ quotationData.quot_no+"_"+client.code+".pdf";
+
         actionButton =
             <div style={{float:'right'}}>
-                <PDFDownloadLink document={<QuotationFile/>} fileName="somename.pdf" className='ui primary button'>
+                <PDFDownloadLink document={<QuotationFile quotationData={quotationData} financialData={financials} releasePlanData={releasePlans} paymentPlanData={paymentPlans} clientData={client}/>} fileName={quotName} className='ui primary button'>
                     {({blob, url, loading, error}) => (loading ? 'Loading document...' : 'Download now!')}
                 </PDFDownloadLink>
             </div>
