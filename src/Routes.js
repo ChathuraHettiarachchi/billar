@@ -13,6 +13,7 @@ import StatusForm from './components/pages/status/StatusForm'
 import QuotIndex from './components/pages/quotation/QuotIndex'
 import QuotCreateStepOne from './components/pages/quotation/QuotCreateStepOne'
 import QuotCreateStepTwo from './components/pages/quotation/QuotCreateStepTwo'
+import QuotationFile from './components/pages/quotation/QuotationFile'
 
 import Invoice from './components/pages/invoice/InvoiceIndex'
 
@@ -29,6 +30,7 @@ const Routes = () => {
             <Route exact path="/client/:id/edit" component={ClientEdit}/>
 
             <Route exact path="/quotation/index" component={QuotIndex}/>
+            <Route exact path="/quotation/file" component={QuotationFile}/>
             <Route exact path="/quotation/step1" component={QuotCreateStepOne}/>
             <Route exact path="/quotation/step2/:id/new" component={QuotCreateStepTwo}/>
             <Route exact path="/quotation/step2/:id/view/:quotationId" component={QuotCreateStepTwo}/>

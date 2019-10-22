@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Form, Grid, Header, Image, Segment} from "semantic-ui-react";
+import {PDFDownloadLink} from '@react-pdf/renderer'
 import Moment from 'moment';
 
 import AddressSection from './AddressSection'
@@ -7,6 +8,7 @@ import QuotationInfo from './QuotationInfo'
 import Financials from './Financials'
 import ReleasePlan from './ReleasePlan'
 import PaymentPlan from './PaymentPlan'
+import QuotationFile from './QuotationFile'
 
 import fidenz from '../../../assets/images/fidenz.png'
 import quotation from '../../../assets/images/quotation.png'
@@ -214,13 +216,17 @@ const QuotCreateStepTwo = (props) => {
         });
     };
 
-    const downloadAsPDF = e => {
-        console.log('Downloading as PDF')
-    };
-
     let actionButton;
     if (pageType === 'view') {
-        actionButton = <Button primary floated='right' onClick={downloadAsPDF}>Download as PDF</Button>
+        // actionButton = <Button primary floated='right' onClick={downloadAsPDF}>Download as PDF</Button>
+        let quotName = ""+ quotationData.quot_no+"_"+client.code+".pdf";
+
+        actionButton =
+            <div style={{float:'right'}}>
+                <PDFDownloadLink document={<QuotationFile quotationData={quotationData} financialData={financials} releasePlanData={releasePlans} paymentPlanData={paymentPlans} clientData={client} terms={terms}/>} fileName={quotName} className='ui primary button'>
+                    {({blob, url, loading, error}) => (loading ? 'Loading document...' : 'Download Quotation as PDF')}
+                </PDFDownloadLink>
+            </div>
     } else if (pageType === 'edit') {
         actionButton = <Button primary floated='right' onClick={createOrUpdateQuotation}>Update Quotation</Button>
     } else {
@@ -267,7 +273,7 @@ const QuotCreateStepTwo = (props) => {
                     <Header as='h1' style={{color: "#1579D0"}}>Scope of Work</Header>
                     <Form.TextArea placeholder='Scope of Work' rows={4} name='description'
                                    value={quotationData.description} onChange={handleQuotationData}
-                                   style={{marginBottom: '20px'}} readOnly={readOnly}/>
+                                   style={{marginBottom: '20px'}} readOnly={readOnly} maxLength="400"/>
 
                     <br/>
                     <Financials onFinanceDataChange={onFinanceDataChange} pageType={pageType} data={financials}

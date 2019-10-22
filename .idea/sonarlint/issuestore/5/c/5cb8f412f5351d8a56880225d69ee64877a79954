@@ -1,12 +1,12 @@
 
-pjavascript:UnusedVariable"?Remove the declaration of the unused 'setQuotationId' variable.(›Î˜ûÿÿÿÿ8öˆø°Ä-
-hjavascript:UnusedVariable"<Remove the declaration of the unused 'setPageType' variable.(©À£8ƒæ¶‘Ä-
-|javascript:S1117L"T"terms" hides or potentially hides a variable declared in an outer scope at line 27.(ÛŞÉÙûÿÿÿÿ8Å¬¶¥Ú-
-zjavascript:S11174"W"content" hides or potentially hides a variable declared in an outer scope at line 230.(Àı½8Å¬¶¥Ú-
-ajavascript:S1854">Remove this useless assignment to local variable "setReadOnly"(ôõÓ•8¹Æò¶Ä-
-ajavascript:S1854">Remove this useless assignment to local variable "setPageType"(©À£8ƒæ¶‘Ä-
-hjavascript:UnusedVariable"<Remove the declaration of the unused 'setReadOnly' variable.(ôõÓ•8¹Æò¶Ä-
-hjavascript:UnusedVariable"<Remove the declaration of the unused 'setClientId' variable.(ƒ¤®°8Š–¾‘Ä-
-ajavascript:S1854">Remove this useless assignment to local variable "setClientId"(ƒ¤®°8Š–¾‘Ä-
-xjavascript:S1117H"U"client" hides or potentially hides a variable declared in an outer scope at line 43.(Â¬¤ç8Å¬¶¥Ú-
-ijavascript:S1854"ARemove this useless assignment to local variable "setQuotationId"(›Î˜ûÿÿÿÿ8öˆø°Ä-
+hjavascript:UnusedVariable"<Remove the declaration of the unused 'setReadOnly' variable.(ôõÓ•8ì“ß-
+ajavascript:S1854">Remove this useless assignment to local variable "setPageType"(©À£8ƒæ¶‘Ä-
+hjavascript:UnusedVariable"<Remove the declaration of the unused 'setClientId' variable.(ƒ¤®°8Š–¾‘Ä-
+ajavascript:S1854">Remove this useless assignment to local variable "setReadOnly"(ôõÓ•8ì“ß-
+ijavascript:S1854"ARemove this useless assignment to local variable "setQuotationId"(›Î˜ûÿÿÿÿ8ì“ß-
+ajavascript:S1854">Remove this useless assignment to local variable "setClientId"(ƒ¤®°8Š–¾‘Ä-
+hjavascript:UnusedVariable"<Remove the declaration of the unused 'setPageType' variable.(©À£8ƒæ¶‘Ä-
+xjavascript:S1117J"U"client" hides or potentially hides a variable declared in an outer scope at line 45.(Â¬¤ç8ì“ß-
+pjavascript:UnusedVariable"?Remove the declaration of the unused 'setQuotationId' variable.(›Î˜ûÿÿÿÿ8ì“ß-
+|javascript:S1117N"T"terms" hides or potentially hides a variable declared in an outer scope at line 29.(ÛŞÉÙûÿÿÿÿ8ì“ß-
+zjavascript:S11176"W"content" hides or potentially hides a variable declared in an outer scope at line 236.(Àı½8ì“ß-
