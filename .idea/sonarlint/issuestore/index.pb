@@ -97,3 +97,5 @@ L
 src/assets/images/fidenz.svg,f/6/f6d3f246ad4773463e62b65989eab8371c648946
 Y
 )src/assets/data/quotationFilterOptions.js,5/9/598ae664d303ce5a2f9bc19de8219fb8c9903323
+_
+/src/components/pages/quotation/QuotationFile.js,7/a/7a4a0a907ae3363268a3dc8305d91aed8185a04e

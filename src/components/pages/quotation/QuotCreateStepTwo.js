@@ -223,8 +223,8 @@ const QuotCreateStepTwo = (props) => {
 
         actionButton =
             <div style={{float:'right'}}>
-                <PDFDownloadLink document={<QuotationFile quotationData={quotationData} financialData={financials} releasePlanData={releasePlans} paymentPlanData={paymentPlans} clientData={client}/>} fileName={quotName} className='ui primary button'>
-                    {({blob, url, loading, error}) => (loading ? 'Loading document...' : 'Download now!')}
+                <PDFDownloadLink document={<QuotationFile quotationData={quotationData} financialData={financials} releasePlanData={releasePlans} paymentPlanData={paymentPlans} clientData={client} terms={terms}/>} fileName={quotName} className='ui primary button'>
+                    {({blob, url, loading, error}) => (loading ? 'Loading document...' : 'Download Quotation as PDF')}
                 </PDFDownloadLink>
             </div>
     } else if (pageType === 'edit') {
@@ -273,7 +273,7 @@ const QuotCreateStepTwo = (props) => {
                     <Header as='h1' style={{color: "#1579D0"}}>Scope of Work</Header>
                     <Form.TextArea placeholder='Scope of Work' rows={4} name='description'
                                    value={quotationData.description} onChange={handleQuotationData}
-                                   style={{marginBottom: '20px'}} readOnly={readOnly}/>
+                                   style={{marginBottom: '20px'}} readOnly={readOnly} maxLength="400"/>
 
                     <br/>
                     <Financials onFinanceDataChange={onFinanceDataChange} pageType={pageType} data={financials}
