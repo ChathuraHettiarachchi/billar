@@ -195,8 +195,6 @@ const QuotCreateStepTwo = (props) => {
     };
 
     const createOrUpdateQuotation = e => {
-        setLoading(true);
-
         let url;
         if (pageType === 'new') {
             url = process.env.REACT_APP_BASE_URL + 'quotations/new'
@@ -204,16 +202,34 @@ const QuotCreateStepTwo = (props) => {
             url = process.env.REACT_APP_BASE_URL + 'quotations/update/' + quotationId
         }
 
-        axios.post(url, {
-            quotation: quotationObject
-        }).then(res => {
-            console.log(res);
-            setLoading(false);
-            props.history.push('/quotation/index');
-        }).catch(error => {
-            console.log(error);
-            setLoading(false);
-        });
+        if (quotationObject.title.length>0 && quotationObject.description.length>0 && quotationObject.amount>0 && quotationObject.financials.length>0 && quotationObject.releases.length>0 && quotationObject.payments.length>0){
+            if (getTotal(quotationObject.payments) === quotationObject.amount){
+                setLoading(true);
+
+                axios.post(url, {
+                    quotation: quotationObject
+                }).then(res => {
+                    console.log(res);
+                    setLoading(false);
+                    props.history.push('/quotation/index');
+                }).catch(error => {
+                    console.log(error);
+                    setLoading(false);
+                });
+            } else {
+                alert("Sorry, total of payment plans not equal with the financial total value.");
+            }
+        } else {
+            alert("Sorry, you must fill all fields.");
+        }
+    };
+
+    const getTotal = d => {
+        const t = d.reduce((total, item) => {
+            return total + Number(item.amount);
+        }, 0);
+
+        return t
     };
 
     let actionButton;

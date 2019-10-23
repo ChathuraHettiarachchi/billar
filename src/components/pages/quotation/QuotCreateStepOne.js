@@ -6,7 +6,7 @@ const QuotCreateStepOne = (props) => {
 
     const [clientList, setClients] = useState([]);
     const [isLoading, setLoading] = useState(true);
-    const [clientId, setClientId] = useState('');
+    const [clientId, setClientId] = useState(-1);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,7 +37,11 @@ const QuotCreateStepOne = (props) => {
     };
 
     const onContinue = () => {
-        props.history.push('/quotation/step2/' + clientId + '/new');
+        if (clientId>-1) {
+            props.history.push('/quotation/step2/' + clientId + '/new');
+        } else {
+            alert("You need to select a client first.");
+        }
     };
 
     let content;

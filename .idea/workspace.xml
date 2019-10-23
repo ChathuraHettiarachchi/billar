@@ -3,12 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="150b1cc0-d2d0-4322-8fd0-3d89c7100349" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cb8f412f5351d8a56880225d69ee64877a79954" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cb8f412f5351d8a56880225d69ee64877a79954" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/4/9460a7e0f62457a113fa1fb864dbb995e903fba6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/4/9460a7e0f62457a113fa1fb864dbb995e903fba6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/f/6fa79a60385f1e77cb5e42a928da99a2b4202dd5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/f/6fa79a60385f1e77cb5e42a928da99a2b4202dd5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/5/852039d23b5174777856e37f4ccbc4bd97eb08d9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/5/852039d23b5174777856e37f4ccbc4bd97eb08d9" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fd1c733029efbbab37b1e46fc4fa678cf34428e3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fd1c733029efbbab37b1e46fc4fa678cf34428e3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepOne.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepOne.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotationFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotationFile.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +135,9 @@
       <workItem from="1571629866852" duration="486000" />
       <workItem from="1571715081550" duration="598000" />
       <workItem from="1571716685330" duration="18437000" />
-      <workItem from="1571762098653" duration="4122000" />
+      <workItem from="1571762098653" duration="4311000" />
+      <workItem from="1571800161854" duration="1315000" />
+      <workItem from="1571824839931" duration="1744000" />
     </task>
     <servers />
   </component>
