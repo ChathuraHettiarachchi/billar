@@ -444,7 +444,7 @@ const QuotationFile = ({quotationData, financialData, releasePlanData, paymentPl
                     <View style={styles.tableColIndex}>
                         <Text style={styles.tableCellCenter}>No</Text>
                     </View>
-                    <View style={styles.tableColContent}>
+                    <View style={styles.tableColLeftContent}>
                         <Text style={styles.tableCellCenter}>Description</Text>
                     </View>
                     <View style={styles.tableColRight}>
@@ -482,7 +482,7 @@ const QuotationFile = ({quotationData, financialData, releasePlanData, paymentPl
                     <View style={styles.tableColIndex}>
                         <Text style={styles.tableCellCenter}>No</Text>
                     </View>
-                    <View style={styles.tableColContent}>
+                    <View style={styles.tableColLeftContent}>
                         <Text style={styles.tableCellCenter}>Description</Text>
                     </View>
                     <View style={styles.tableColRight}>
@@ -507,7 +507,7 @@ const QuotationFile = ({quotationData, financialData, releasePlanData, paymentPl
                     <View style={styles.tableColIndex}>
                         <Text style={styles.tableCellCenter}>No</Text>
                     </View>
-                    <View style={styles.tableColContentPayment}>
+                    <View style={styles.tableColContentLeftPayment}>
                         <Text style={styles.tableCellCenter}>Description</Text>
                     </View>
                     <View style={styles.tableColRightPayment}>
