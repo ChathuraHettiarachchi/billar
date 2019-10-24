@@ -1,0 +1,46 @@
+.fidenz_color {
+    background-color: #1579D0;
+}
+
+.ui.grid {
+    margin: 0rem !important;
+}
+
+
+.quotation_detail {
+    min-height: 30px;
+    height: 30px;
+    margin: 40px 0 40px 0;
+}
+
+.quotation_detail div {
+    padding: 0 20px 0 20px !important;
+    color: white;
+}
+
+.project_title {
+    font-size: 1.3em;
+    height: 50px;
+    min-height: 50px;
+}
+
+#finance .ui.table {
+    margin: 0 !important;
+}
+
+#create_quot_button {
+    padding: 0px !important;
+}
+
+#fab {
+    background: #1b1c1d;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+#fab > i {
+    color: white;
+}
+
+#modal .content {
+    position: unset !important;
+}

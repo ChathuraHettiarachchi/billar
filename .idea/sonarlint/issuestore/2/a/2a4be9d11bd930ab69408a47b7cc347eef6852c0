@@ -1,0 +1,6 @@
+
+mjavascript:UnusedVariable
+"<Remove the declaration of the unused 'setPageType' variable.(ÙÌ²üÿÿÿÿ8£æ™ĞÚ-
+fjavascript:S1854
+">Remove this useless assignment to local variable "setPageType"(ÙÌ²üÿÿÿÿ8£æ™ĞÚ-
+javascript:S1117"W"content" hides or potentially hides a variable declared in an outer scope at line 157.(Û²‘¼úÿÿÿÿ8£æ™ĞÚ-
