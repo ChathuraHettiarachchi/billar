@@ -23,7 +23,11 @@ const ClientCreate = (props) => {
         address_line_first: '',
         address_line_last: '',
         description: '',
-        country: ''
+        country: '',
+        city:'',
+        street:'',
+        zipcode:'',
+        state:''
     });
 
     useEffect(() => {
@@ -96,14 +100,20 @@ const ClientCreate = (props) => {
                                 onChange={updateFieldData} name='address_line_first'/>
                     <Form.Input label='Address Line 2' placeholder='Address Line 2' value={client.address_line_last}
                                 onChange={updateFieldData} name='address_line_last'/>
-                    <Form.Select search fluid label='Country' placeholder='Country' options={COUNTRY_OPTIONS}
-                                 value={client.country} onChange={updateCountrySelect} name='country' autoComplete="new-password"/>
+                    <Form.Input fluid label='Street' placeholder='Street' name='street' value={client.street} autoComplete="new-password"  onChange={updateFieldData}/>
                 </Form.Group>
+
+                <Form.Group widths='equal'>
+                    <Form.Input label='City' placeholder='City' onChange={updateFieldData} value={client.city}/>
+                    <Form.Input label='State / Province' placeholder='State / Province' onChange={updateFieldData} value={client.state}/>
+                    <Form.Input label='Zip Code' placeholder='Zip Code' onChange={updateFieldData} value={client.zipcode}/>
+                </Form.Group>
+
+                <Form.Select search fluid label='Country' placeholder='Country' options={COUNTRY_OPTIONS}
+                             value={client.country} onChange={updateCountrySelect} name='country' autoComplete="new-password"/>
 
                 <Form.TextArea label='Description' placeholder='Tell us more about client...' value={client.description}
                                onChange={updateFieldData} name='description'/>
-
-                {/*<Form.Input type="file" fluid label='Client logo' placeholder='Select your logo file'/>*/}
 
                 <Button primary onClick={submitUpdate}>Create New Client</Button>
             </Form>

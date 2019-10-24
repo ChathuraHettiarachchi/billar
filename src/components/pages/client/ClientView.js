@@ -23,7 +23,11 @@ const ClientView = (props) => {
         address_line_first: '',
         address_line_last: '',
         description: '',
-        country: ''
+        country: '',
+        city:'',
+        street:'',
+        zipcode:'',
+        state:''
     });
 
     useEffect(() => {
@@ -45,7 +49,11 @@ const ClientView = (props) => {
                         address_line_first: content.address_line_first,
                         address_line_last: content.address_line_last,
                         description: content.description,
-                        country: content.country
+                        country: content.country,
+                        city: content.city,
+                        street: content.street,
+                        state: content.state,
+                        zipcode: content.zipcode
                     });
                 })
                 .catch(error => {
@@ -104,18 +112,25 @@ const ClientView = (props) => {
                 </Form.Group>
 
                 <Form.Group widths='equal'>
-                    <Form.Input label='Address Line 1' placeholder='Address Line 1' value={client.address_line_first}
-                                readOnly name='address_line_first'/>
-                    <Form.Input label='Address Line 2' placeholder='Address Line 2' value={client.address_line_last}
-                                readOnly name='address_line_last'/>
-                    <Form.Select fluid label='Country' placeholder='Country' options={COUNTRY_OPTIONS}
-                                 value={client.country} disabled name='country'/>
+                    <Form.Input readOnly label='Address Line 1' placeholder='Address Line 1' value={client.address_line_first}
+                                name='address_line_first'/>
+                    <Form.Input readOnly label='Address Line 2' placeholder='Address Line 2' value={client.address_line_last}
+                                name='address_line_last'/>
+                    <Form.Input readOnly fluid label='Street' placeholder='Street' name='street' autoComplete="new-password"  value={client.street}/>
                 </Form.Group>
+
+                <Form.Group widths='equal'>
+                    <Form.Input readOnly label='City' placeholder='City' value={client.city}/>
+                    <Form.Input readOnly label='State / Province' placeholder='State / Province' value={client.state}/>
+                    <Form.Input readOnly label='Zip Code' placeholder='Zip Code' value={client.zipcode}/>
+                </Form.Group>
+
+                <Form.Select search fluid label='Country' placeholder='Country' options={COUNTRY_OPTIONS}
+                             value={client.country} name='country' autoComplete="new-password" disabled/>
+
 
                 <Form.TextArea label='Description' placeholder='Tell us more about client...' value={client.description}
                                readOnly name='description'/>
-
-                {/*<Form.Input type="file" fluid label='Client logo' placeholder='Select your logo file'/>*/}
             </Form>
     }
 
