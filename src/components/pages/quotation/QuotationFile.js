@@ -4,6 +4,7 @@ import Moment from 'moment';
 
 import fidenz from '../../../assets/images/fidenz.png'
 import quotation from '../../../assets/images/quotation.png'
+import COUNTRY_OPTIONS from "../../../assets/data/countryOptionList";
 
 // Create Document Component
 const QuotationFile = ({quotationData, financialData, releasePlanData, paymentPlanData, clientData, terms}) => {
@@ -335,6 +336,15 @@ const QuotationFile = ({quotationData, financialData, releasePlanData, paymentPl
         return num_parts.join(".");
     };
 
+    const countryName = (slug) => {
+        for(let i=0; i<COUNTRY_OPTIONS.length; i++){
+            let c = COUNTRY_OPTIONS[i];
+            if (c.key === slug){
+                return c.text;
+            }
+        }
+    };
+
     return (
         <Document>
             <Page style={styles.page} wrap>
@@ -348,7 +358,7 @@ const QuotationFile = ({quotationData, financialData, releasePlanData, paymentPl
                         <Text style={styles.addressTitleTo}>Customer:</Text>
                         <Text style={styles.addressTo}>{clientData.name}</Text>
                         <Text style={styles.addressTo}>{clientData.address_line_first}</Text>
-                        <Text style={styles.addressTo}>{clientData.address_line_last}</Text>
+                        <Text style={styles.addressTo}>{clientData.address_line_last}, {countryName(clientData.country)}</Text>
                         <Text style={styles.addressTo}>{clientData.email}</Text>
                     </View>
                     <View style={styles.columnHeader}>

@@ -8,7 +8,7 @@ import {
 } from "semantic-ui-react";
 import Loader from "react-loader-spinner";
 import axios from 'axios';
-import COUNTRY_OPTIONS from '../../../assets/data/countriesData'
+import COUNTRY_OPTIONS from '../../../assets/data/countryOptionList'
 
 const ClientView = (props) => {
 

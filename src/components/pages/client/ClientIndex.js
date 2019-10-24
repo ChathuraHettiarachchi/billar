@@ -11,6 +11,7 @@ import {
 } from "semantic-ui-react";
 import axios from 'axios';
 import Loader from "react-loader-spinner";
+import COUNTRY_OPTIONS from '../../../assets/data/countryOptionList'
 
 const ClientIndex = () => {
 
@@ -32,6 +33,15 @@ const ClientIndex = () => {
 
         fetchData();
     }, []);
+
+    const countryName = (slug) => {
+        for(let i=0; i<COUNTRY_OPTIONS.length; i++){
+            let c = COUNTRY_OPTIONS[i];
+            if (c.key === slug){
+                return c.text;
+            }
+        }
+    };
 
     const handleConfirmation = (event, data) => {
         handleModelVisibility();
@@ -64,7 +74,7 @@ const ClientIndex = () => {
                 <Table.Cell>{user.code}</Table.Cell>
                 <Table.Cell>{user.name}</Table.Cell>
                 <Table.Cell>{user.contact_number}</Table.Cell>
-                <Table.Cell>{user.country}</Table.Cell>
+                <Table.Cell>{countryName(user.country)}</Table.Cell>
                 <Table.Cell>
                     <Button size="mini" icon color="green" as={Link} to={'/client/' + user.client_id + '/view'}>
                         <Icon name="desktop"/>
