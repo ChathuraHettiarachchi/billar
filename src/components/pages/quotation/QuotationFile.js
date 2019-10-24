@@ -272,7 +272,7 @@ const QuotationFile = ({quotationData, financialData, releasePlanData, paymentPl
         return d.map((data, index) =>
             <View style={styles.tableRow} key={index}>
                 <View style={styles.tableColIndex}>
-                    <Text style={styles.tableCellContent}>{('0' + (index+1)).slice(-2)}</Text>
+                    <Text style={styles.tableCellContent}>{('0' + (index + 1)).slice(-2)}</Text>
                 </View>
                 <View style={styles.tableColLeftContent}>
                     <Text style={styles.tableCellContent}>{data.description}</Text>
@@ -287,7 +287,7 @@ const QuotationFile = ({quotationData, financialData, releasePlanData, paymentPl
         return d.map((data, index) =>
             <View style={styles.tableRow} key={index}>
                 <View style={styles.tableColIndex}>
-                    <Text style={styles.tableCellContent}>{('0' + (index+1)).slice(-2)}</Text>
+                    <Text style={styles.tableCellContent}>{('0' + (index + 1)).slice(-2)}</Text>
                 </View>
                 <View style={styles.tableColLeftContent}>
                     <Text style={styles.tableCellContent}>{data.description}</Text>
@@ -302,7 +302,7 @@ const QuotationFile = ({quotationData, financialData, releasePlanData, paymentPl
         return d.map((data, index) =>
             <View style={styles.tableRow} key={index}>
                 <View style={styles.tableColIndex}>
-                    <Text style={styles.tableCellContent}>{('0' + (index+1)).slice(-2)}</Text>
+                    <Text style={styles.tableCellContent}>{('0' + (index + 1)).slice(-2)}</Text>
                 </View>
                 <View style={styles.tableColContentLeftPayment}>
                     <Text style={styles.tableCellContent}>{data.description}</Text>
@@ -317,7 +317,7 @@ const QuotationFile = ({quotationData, financialData, releasePlanData, paymentPl
     };
 
     const getDate = d => {
-        try{
+        try {
             return Moment(d).format('DD-MMM-YYYY')
         } catch (e) {
             return "N/A"
@@ -337,151 +337,207 @@ const QuotationFile = ({quotationData, financialData, releasePlanData, paymentPl
     };
 
     const countryName = (slug) => {
-        for(let i=0; i<COUNTRY_OPTIONS.length; i++){
+        for (let i = 0; i < COUNTRY_OPTIONS.length; i++) {
             let c = COUNTRY_OPTIONS[i];
-            if (c.key === slug){
+            if (c.key === slug) {
                 return c.text;
             }
         }
     };
 
+    const documentContent = (q, f, r, p, t) => {
+        let result;
+
+        if ((f.length + r.length) > 8) {
+            // break into 2 pages
+            result =
+                <>
+                    <Page style={styles.page} wrap>
+                        {quotationTopSection(q)}
+                        {financialTable(f)}
+                    </Page>
+                    <Page style={styles.page} wrap>
+                        {releaseTable(r)}
+                        {paymentTable(p)}
+                        {termsSection(t)}
+                    </Page>
+                </>;
+        } else {
+            // top page contain q & r
+            result =
+                <>
+                    <Page style={styles.page} wrap>
+                        {quotationTopSection(q)}
+                        {financialTable(f)}
+                        {releaseTable(r)}
+                    </Page>
+                    <Page style={styles.page} wrap>
+                        {paymentTable(p)}
+                        {termsSection(t)}
+                    </Page>
+                </>;
+        }
+        return result;
+    };
+
+    const quotationTopSection = (data) => {
+        return <>
+            <View style={styles.row}>
+                <Image src={fidenz} style={styles.logo}/>
+                <Image src={quotation} style={styles.logoAlignRight}/>
+            </View>
+            {/*----------------------------------------------------------------------*/}
+            <View style={styles.row}>
+                <View style={styles.columnHeader}>
+                    <Text style={styles.addressTitleTo}>Customer:</Text>
+                    <Text style={styles.addressTo}>{clientData.name}</Text>
+                    <Text style={styles.addressTo}>{clientData.address_line_first}</Text>
+                    <Text
+                        style={styles.addressTo}>{clientData.address_line_last}, {countryName(clientData.country)}</Text>
+                    <Text style={styles.addressTo}>{clientData.email}</Text>
+                </View>
+                <View style={styles.columnHeader}>
+                    <Text style={styles.addressTitleFrom}>From:</Text>
+                    <Text style={styles.addressFrom}>Fidenz Private Limited</Text>
+                    <Text style={styles.addressFrom}>No. 239, Nawala Road,</Text>
+                    <Text style={styles.addressFrom}>Nawala, Sri Lanka</Text>
+                    <Text style={styles.addressFrom}>info@fidenz.com</Text>
+                </View>
+            </View>
+            {/*----------------------------------------------------------------------*/}
+            <View style={styles.rowInfo}>
+                <View style={styles.columnInfo}>
+                    <Text style={styles.infoTextLeft}>Quotation No: #{quotationData.quot_no}</Text>
+                </View>
+                <View style={styles.columnInfo}>
+                    <Text style={styles.infoTextCenter}>Created Date: {quotationData.created_at}</Text>
+                </View>
+                <View style={styles.columnInfo}>
+                    <Text style={styles.infoTextRight}>Updated Date: {quotationData.updated_at}</Text>
+                </View>
+            </View>
+            {/*----------------------------------------------------------------------*/}
+            <View style={styles.row}>
+                <Text style={styles.textTitle}>{data.title}</Text>
+            </View>
+            <View style={styles.line}/>
+            {/*----------------------------------------------------------------------*/}
+            <View style={styles.row}>
+                <Text style={styles.pageTitle}>Scope of Work</Text>
+            </View>
+            <View style={styles.row}>
+                <Text style={styles.addressTo}>{data.description}</Text>
+            </View>
+            {/*----------------------------------------------------------------------*/}
+            <View style={styles.contentBreak}/>
+            <View style={styles.row}>
+                <Text style={styles.pageTitle}>Financials</Text>
+            </View>
+        </>;
+    };
+
+    const financialTable = (data) => {
+        return <>
+            <Text style={styles.tableTitle}>Financial Details</Text>
+            <View style={styles.table}>
+                <View style={styles.tableRow}>
+                    <View style={styles.tableColIndex}>
+                        <Text style={styles.tableCellCenter}>No</Text>
+                    </View>
+                    <View style={styles.tableColContent}>
+                        <Text style={styles.tableCellCenter}>Description</Text>
+                    </View>
+                    <View style={styles.tableColRight}>
+                        <Text style={styles.tableCellCenter}>Amount (USD)</Text>
+                    </View>
+                </View>
+                {tableContentFinancial(data)}
+                <View style={styles.tableRowBlue}>
+                    <View style={styles.tableColIndex}>
+                        <Text style={styles.tableCellCenter}/>
+                    </View>
+                    <View style={styles.tableColLeftContent}>
+                        <Text style={styles.tableCellCenter}>Total</Text>
+                    </View>
+                    <View style={styles.tableColRightContent}>
+                        <Text
+                            style={styles.tableCellCenter}>{thousandsSeparators(getTotalCosts(financialData))}</Text>
+                    </View>
+                </View>
+            </View>
+        </>;
+    };
+
+    const releaseTable = (data) => {
+        return <>
+            {/*----------------------------------------------------------------------*/}
+            <View style={styles.contentBreak}/>
+            <View style={styles.row}>
+                <Text style={styles.pageTitle}>Release Plan</Text>
+            </View>
+            {/*----------------------------------------------------------------------*/}
+            <Text style={styles.tableTitle}>Invoicing Plan</Text>
+            <View style={styles.table}>
+                <View style={styles.tableRow}>
+                    <View style={styles.tableColIndex}>
+                        <Text style={styles.tableCellCenter}>No</Text>
+                    </View>
+                    <View style={styles.tableColContent}>
+                        <Text style={styles.tableCellCenter}>Description</Text>
+                    </View>
+                    <View style={styles.tableColRight}>
+                        <Text style={styles.tableCellCenter}>Release Date</Text>
+                    </View>
+                </View>
+                {tableContentRelease(data)}
+            </View></>;
+    };
+
+    const paymentTable = (data) => {
+        return <>
+            {/*----------------------------------------------------------------------*/}
+            <View style={styles.contentBreak}/>
+            <View style={styles.row}>
+                <Text style={styles.pageTitle}>Payment Plan</Text>
+            </View>
+            {/*----------------------------------------------------------------------*/}
+            <Text style={styles.tableTitle}>Invoicing Plan</Text>
+            <View style={styles.table}>
+                <View style={styles.tableRow}>
+                    <View style={styles.tableColIndex}>
+                        <Text style={styles.tableCellCenter}>No</Text>
+                    </View>
+                    <View style={styles.tableColContentPayment}>
+                        <Text style={styles.tableCellCenter}>Description</Text>
+                    </View>
+                    <View style={styles.tableColRightPayment}>
+                        <Text style={styles.tableCellCenter}>Invoice Date</Text>
+                    </View>
+                    <View style={styles.tableColRightPayment}>
+                        <Text style={styles.tableCellCenter}>Amount (USD)</Text>
+                    </View>
+                </View>
+                {tableContentPayment(data)}
+            </View>
+        </>;
+    };
+
+    const termsSection = (data) => {
+        return <>
+            <View style={styles.contentBreak}/>
+            <View style={styles.contentBreak}/>
+            <View style={styles.row}>
+                <Text style={styles.addressTitleTo}>Terms & Conditions </Text>
+            </View>
+            <View style={styles.row}>
+                <Text style={styles.addressTo}>{data}</Text>
+            </View>
+        </>;
+    };
+
     return (
         <Document>
-            <Page style={styles.page} wrap>
-                <View style={styles.row}>
-                    <Image src={fidenz} style={styles.logo}/>
-                    <Image src={quotation} style={styles.logoAlignRight}/>
-                </View>
-                {/*----------------------------------------------------------------------*/}
-                <View style={styles.row}>
-                    <View style={styles.columnHeader}>
-                        <Text style={styles.addressTitleTo}>Customer:</Text>
-                        <Text style={styles.addressTo}>{clientData.name}</Text>
-                        <Text style={styles.addressTo}>{clientData.address_line_first}</Text>
-                        <Text style={styles.addressTo}>{clientData.address_line_last}, {countryName(clientData.country)}</Text>
-                        <Text style={styles.addressTo}>{clientData.email}</Text>
-                    </View>
-                    <View style={styles.columnHeader}>
-                        <Text style={styles.addressTitleFrom}>From:</Text>
-                        <Text style={styles.addressFrom}>Fidenz Private Limited</Text>
-                        <Text style={styles.addressFrom}>No. 239, Nawala Road,</Text>
-                        <Text style={styles.addressFrom}>Nawala, Sri Lanka</Text>
-                        <Text style={styles.addressFrom}>info@fidenz.com</Text>
-                    </View>
-                </View>
-                {/*----------------------------------------------------------------------*/}
-                <View style={styles.rowInfo}>
-                    <View style={styles.columnInfo}>
-                        <Text style={styles.infoTextLeft}>Quotation No: #{quotationData.quot_no}</Text>
-                    </View>
-                    <View style={styles.columnInfo}>
-                        <Text style={styles.infoTextCenter}>Created Date: {quotationData.created_at}</Text>
-                    </View>
-                    <View style={styles.columnInfo}>
-                        <Text style={styles.infoTextRight}>Updated Date: {quotationData.updated_at}</Text>
-                    </View>
-                </View>
-                {/*----------------------------------------------------------------------*/}
-                <View style={styles.row}>
-                    <Text style={styles.textTitle}>{quotationData.title}</Text>
-                </View>
-                <View style={styles.line}/>
-                {/*----------------------------------------------------------------------*/}
-                <View style={styles.row}>
-                    <Text style={styles.pageTitle}>Scope of Work</Text>
-                </View>
-                <View style={styles.row}>
-                    <Text style={styles.addressTo}>{quotationData.description}</Text>
-                </View>
-                {/*----------------------------------------------------------------------*/}
-                <View style={styles.contentBreak}/>
-                <View style={styles.row}>
-                    <Text style={styles.pageTitle}>Financials</Text>
-                </View>
-                {/*----------------------------------------------------------------------*/}
-                <Text style={styles.tableTitle}>Financial Details</Text>
-                <View style={styles.table}>
-                    <View style={styles.tableRow}>
-                        <View style={styles.tableColIndex}>
-                            <Text style={styles.tableCellCenter}>No</Text>
-                        </View>
-                        <View style={styles.tableColContent}>
-                            <Text style={styles.tableCellCenter}>Description</Text>
-                        </View>
-                        <View style={styles.tableColRight}>
-                            <Text style={styles.tableCellCenter}>Amount (USD)</Text>
-                        </View>
-                    </View>
-                    {tableContentFinancial(financialData)}
-                    <View style={styles.tableRowBlue}>
-                        <View style={styles.tableColIndex}>
-                            <Text style={styles.tableCellCenter}/>
-                        </View>
-                        <View style={styles.tableColLeftContent}>
-                            <Text style={styles.tableCellCenter}>Total</Text>
-                        </View>
-                        <View style={styles.tableColRightContent}>
-                            <Text style={styles.tableCellCenter}>{thousandsSeparators(getTotalCosts(financialData))}</Text>
-                        </View>
-                    </View>
-                </View>
-            </Page>
-            <Page style={styles.page} wrap>
-                {/*----------------------------------------------------------------------*/}
-                <View style={styles.contentBreak}/>
-                <View style={styles.row}>
-                    <Text style={styles.pageTitle}>Release Plan</Text>
-                </View>
-                {/*----------------------------------------------------------------------*/}
-                <Text style={styles.tableTitle}>Invoicing Plan</Text>
-                <View style={styles.table}>
-                    <View style={styles.tableRow}>
-                        <View style={styles.tableColIndex}>
-                            <Text style={styles.tableCellCenter}>No</Text>
-                        </View>
-                        <View style={styles.tableColContent}>
-                            <Text style={styles.tableCellCenter}>Description</Text>
-                        </View>
-                        <View style={styles.tableColRight}>
-                            <Text style={styles.tableCellCenter}>Release Date</Text>
-                        </View>
-                    </View>
-                    {tableContentRelease(releasePlanData)}
-                </View>
-                {/*----------------------------------------------------------------------*/}
-                <View style={styles.contentBreak}/>
-                <View style={styles.row}>
-                    <Text style={styles.pageTitle}>Payment Plan</Text>
-                </View>
-                {/*----------------------------------------------------------------------*/}
-                <Text style={styles.tableTitle}>Invoicing Plan</Text>
-                <View style={styles.table}>
-                    <View style={styles.tableRow}>
-                        <View style={styles.tableColIndex}>
-                            <Text style={styles.tableCellCenter}>No</Text>
-                        </View>
-                        <View style={styles.tableColContentPayment}>
-                            <Text style={styles.tableCellCenter}>Description</Text>
-                        </View>
-                        <View style={styles.tableColRightPayment}>
-                            <Text style={styles.tableCellCenter}>Invoice Date</Text>
-                        </View>
-                        <View style={styles.tableColRightPayment}>
-                            <Text style={styles.tableCellCenter}>Amount (USD)</Text>
-                        </View>
-                    </View>
-                    {tableContentPayment(paymentPlanData)}
-                </View>
-                {/*----------------------------------------------------------------------*/}
-                <View style={styles.contentBreak}/>
-                <View style={styles.contentBreak}/>
-                <View style={styles.row}>
-                    <Text style={styles.addressTitleTo}>Terms & Conditions </Text>
-                </View>
-                <View style={styles.row}>
-                    <Text style={styles.addressTo}>{terms}</Text>
-                </View>
-            </Page>
+            {documentContent(quotationData, financialData, releasePlanData, paymentPlanData, terms)}
         </Document>)
 };
 

@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="150b1cc0-d2d0-4322-8fd0-3d89c7100349" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/data/countryOptionList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/data/countriesData.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/client/ClientCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/client/ClientCreate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/client/ClientEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/client/ClientEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/client/ClientIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/client/ClientIndex.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/client/ClientView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/client/ClientView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/AddressSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/AddressSection.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotationFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotationFile.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -140,7 +133,7 @@
       <workItem from="1571762098653" duration="4311000" />
       <workItem from="1571800161854" duration="1315000" />
       <workItem from="1571824839931" duration="2341000" />
-      <workItem from="1571890120655" duration="10109000" />
+      <workItem from="1571890120655" duration="12059000" />
     </task>
     <servers />
   </component>
