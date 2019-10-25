@@ -25,7 +25,7 @@ function StatusIndex() {
             axios.get(process.env.REACT_APP_BASE_URL + 'status')
                 .then(res => {
                     setLoading(false);
-                    setStatusList(res.content.status_list);
+                    setStatusList(res.data.content.status_list);
                 })
                 .catch(error => {
                     console.log(error);

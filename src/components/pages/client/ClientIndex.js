@@ -27,7 +27,8 @@ const ClientIndex = () => {
             axios.get(process.env.REACT_APP_BASE_URL + 'clients')
                 .then(res => {
                     setLoading(false);
-                    setClients(res.content.clients);
+                    console.log(res);
+                    setClients(res.data.content.clients);
                 })
                 .catch(error => {
                     console.log(error);
