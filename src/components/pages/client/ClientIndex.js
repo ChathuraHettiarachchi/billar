@@ -22,6 +22,7 @@ const ClientIndex = () => {
     const [deletingItem, setDeletingItem] = useState(false);
 
     useEffect(() => {
+
         const fetchData = async () => {
             axios.get(process.env.REACT_APP_BASE_URL + 'clients')
                 .then(res => {
