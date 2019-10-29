@@ -1,0 +1,44 @@
+=======================================================
+Release Note
+=======================================================
+Project       - Billar
+Date          - October 28 2019
+Language	  - NodeJs/React
+Version	      - 0.1.0.2
+Released By   - Chathura Hettiarachchi
+=======================================================
+
+1. Download Instructions:
+   ----------------------
+   - N/A
+
+2. New Features on this Release:
+   ----------------------------------------------------
+	1. Quotation filter
+	2. Invoices filter
+	3. Client changes
+	4. Quotation PDF
+
+3. Features NOT Included on this Release:
+   --------------------------------------
+   - Track the user who edit or create records
+   - Dashboard
+
+4. New Bug - Fixes On this Release:
+   --------------------------------
+   - N/A
+	
+5. Known Issues in this Release: 
+   -----------------------------
+   - N/A
+	
+6. Special Notes:
+   --------------
+	1. Dev Url : https://billar-fidenz.herokuapp.com/
+	Admin User:
+			Email: appdevchoot@gmail.com
+			Password: e#Wh4!2hkdWfr8W
+	
+
+
+	
