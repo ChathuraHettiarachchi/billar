@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="150b1cc0-d2d0-4322-8fd0-3d89c7100349" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a767a377e3e2c46b4c231a90b14ac4d36807434" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a767a377e3e2c46b4c231a90b14ac4d36807434" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/invoice/InvoiceIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/invoice/InvoiceIndex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepTwo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotIndex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotationInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotationInfo.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +143,7 @@
       <workItem from="1571992190727" duration="1116000" />
       <workItem from="1571998086263" duration="49000" />
       <workItem from="1572250311702" duration="559000" />
-      <workItem from="1572322401825" duration="2171000" />
+      <workItem from="1572322401825" duration="4647000" />
     </task>
     <servers />
   </component>

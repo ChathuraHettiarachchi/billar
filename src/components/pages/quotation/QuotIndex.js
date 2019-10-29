@@ -48,7 +48,7 @@ const QuotIndex = (props) => {
                 let quotsList = quots.map(q => {
                     return {
                         ...q,
-                        "quotNumber":("#"+(Moment(q.created_at).format('YYYYMM') + '00' + q.quotation_id)),
+                        "quotNumber":("Q"+q.quotation_number),
                         "created_at":(new Date(q.created_at).toLocaleDateString()),
                         "status_name": (getStatusName(q.status, statusData))
                     }
