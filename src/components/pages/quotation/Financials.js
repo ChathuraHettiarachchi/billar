@@ -42,7 +42,7 @@ const Financials = ({onFinanceDataChange, pageType, data, total, deleted}) => {
         const _tempFinances = [...financeData];
 
         let removingItem = _tempFinances[data.value];
-        if(removingItem.id > 0){
+        if(removingItem.id > -1){
             deleted(removingItem.id)
         }
 
