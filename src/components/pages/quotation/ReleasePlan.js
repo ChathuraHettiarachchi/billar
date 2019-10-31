@@ -33,7 +33,7 @@ const ReleasePlan = ({onReleasePlanDataChange, pageType, data, deleted}) => {
         const _tempReleases = [...releaseData];
 
         let removingItem = _tempReleases[data.value];
-        if(removingItem.id  > 0){
+        if(removingItem.id  > -1){
             deleted(removingItem.id)
         }
 

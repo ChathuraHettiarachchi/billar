@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="150b1cc0-d2d0-4322-8fd0-3d89c7100349" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/Financials.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/Financials.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepOne.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepOne.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +32,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../billar_node" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -133,6 +137,13 @@
       <workItem from="1571800161854" duration="1315000" />
       <workItem from="1571824839931" duration="2341000" />
       <workItem from="1571890120655" duration="13011000" />
+      <workItem from="1571978441578" duration="77000" />
+      <workItem from="1571980162049" duration="727000" />
+      <workItem from="1571981053193" duration="5622000" />
+      <workItem from="1571992190727" duration="1116000" />
+      <workItem from="1571998086263" duration="49000" />
+      <workItem from="1572250311702" duration="559000" />
+      <workItem from="1572322401825" duration="6656000" />
     </task>
     <servers />
   </component>

@@ -57,7 +57,7 @@ const InvoiceIndex = (props) => {
                     const resultQuot = [];
                     const mapQuot = new Map();
                     for (const item of data) {
-                        let val = (Moment(item.item.quotation_created_at).format('YYYYMM') + '00' + item.item.quotation_id);
+                        let val = item.item.quotation_number;
                         if (!mapQuot.has(val)) {
                             mapQuot.set(val, true);
                             resultQuot.push({
@@ -193,7 +193,7 @@ const InvoiceIndex = (props) => {
         try {
             filterData = tempInvoiceList.filter(function (i) {
                 let item = i.item;
-                let quotNumber = (Moment(item.quotation_created_at).format('YYYYMM') + '00' + item.quotation_id);
+                let quotNumber = item.quotation_number;
                 let isCom = isEnable(item);
                 let isRem = !isCom;
 
@@ -247,7 +247,7 @@ const InvoiceIndex = (props) => {
         return invoiceList.map((invoice, index) =>
             <Table.Row key={invoice.item.payment_id}>
                 <Table.Cell>{index + 1}</Table.Cell>
-                <Table.Cell>{(Moment(invoice.item.quotation_created_at).format('YYYYMM') + '00' + invoice.item.quotation_id)}</Table.Cell>
+                <Table.Cell><b>Q{invoice.item.quotation_number}</b></Table.Cell>
                 <Table.Cell>{invoice.item.client_code}</Table.Cell>
                 <Table.Cell>{(Moment(invoice.item.invoice_date).format('YYYY-MMM-DD'))}</Table.Cell>
                 <Table.Cell>{invoice.item.amount}</Table.Cell>

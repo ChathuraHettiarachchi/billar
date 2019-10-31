@@ -22,13 +22,16 @@ function StatusIndex() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch(process.env.REACT_APP_BASE_URL + 'status/');
-            const json = await res.json();
-
-            setLoading(false);
-            setStatusList(json.content.status_list);
+            axios.get(process.env.REACT_APP_BASE_URL + 'status')
+                .then(res => {
+                    setLoading(false);
+                    setStatusList(res.data.content.status_list);
+                })
+                .catch(error => {
+                    console.log(error);
+                    setLoading(false);
+                });
         };
-
 
         fetchData();
     }, []);

@@ -35,7 +35,7 @@ function PaymentPlan({onPaymentPlanDataChange, pageType, data, deleted}) {
         const _tempPayments = [...paymentData];
 
         let removingItem = _tempPayments[data.value];
-        if(removingItem.id  > 0){
+        if(removingItem.id  > -1){
             deleted(removingItem.id)
         }
 

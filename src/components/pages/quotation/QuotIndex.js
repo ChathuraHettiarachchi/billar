@@ -48,7 +48,7 @@ const QuotIndex = (props) => {
                 let quotsList = quots.map(q => {
                     return {
                         ...q,
-                        "quotNumber":("#"+(Moment(q.created_at).format('YYYYMM') + '00' + q.quotation_id)),
+                        "quotNumber":("Q"+q.quotation_number),
                         "created_at":(new Date(q.created_at).toLocaleDateString()),
                         "status_name": (getStatusName(q.status, statusData))
                     }
@@ -67,6 +67,27 @@ const QuotIndex = (props) => {
 
         fetchData();
     }, []);
+
+    const hexToRGBA = (hex) => {
+        let c;
+        if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+            c= hex.substring(1).split('');
+            if(c.length === 3){
+                c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+            }
+            c= '0x'+c.join('');
+            return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',1)';
+        }
+    };
+
+    const fontColor = (rgba) => {
+        rgba = rgba.match(/\d+/g);
+        if ((rgba[0] * 0.299) + (rgba[1] * 0.587) + (rgba[2] * 0.114) > 186) {
+            return 'black';
+        } else {
+            return 'white';
+        }
+    };
 
     const getStatusName = (id, data) =>{
         let status;
@@ -187,7 +208,7 @@ const QuotIndex = (props) => {
                             onChange={onQuotationStateChange}
                             name='status'
                             data-id={index}
-                            style={{backgroundColor: (getStatusColor(quotation))}}
+                            style={{backgroundColor: (getStatusColor(quotation)), color: fontColor(hexToRGBA(getStatusColor(quotation)))}}
                         />
                     </Form>
                 </Table.Cell>

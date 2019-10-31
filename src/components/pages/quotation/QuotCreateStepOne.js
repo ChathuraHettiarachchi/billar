@@ -71,7 +71,7 @@ const QuotCreateStepOne = (props) => {
     return (
         <div>
             <Segment>
-                <Header>Please select a cline to continue</Header>
+                <Header>Please select a client to continue</Header>
                 <br/>
                 {content}
             </Segment>

@@ -22,14 +22,19 @@ const ClientIndex = () => {
     const [deletingItem, setDeletingItem] = useState(false);
 
     useEffect(() => {
+
         const fetchData = async () => {
-            const res = await fetch(process.env.REACT_APP_BASE_URL + 'clients/');
-            const json = await res.json();
-
-            setLoading(false);
-            setClients(json.content.clients);
+            axios.get(process.env.REACT_APP_BASE_URL + 'clients')
+                .then(res => {
+                    setLoading(false);
+                    console.log(res);
+                    setClients(res.data.content.clients);
+                })
+                .catch(error => {
+                    console.log(error);
+                    setLoading(false);
+                });
         };
-
 
         fetchData();
     }, []);

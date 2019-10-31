@@ -117,11 +117,11 @@ const ClientCreate = (props) => {
 
                 <Form.Group widths='equal'>
                     <Form.Input required label='City' placeholder='City' onChange={updateFieldData}
-                                value={client.city}/>
+                                value={client.city} name='city'/>
                     <Form.Input required label='State / Province' placeholder='State / Province'
-                                onChange={updateFieldData} value={client.state}/>
+                                onChange={updateFieldData} value={client.state} name='state' />
                     <Form.Input required label='Zip Code' placeholder='Zip Code' onChange={updateFieldData}
-                                value={client.zipcode}/>
+                                value={client.zipcode} name='zipcode' />
                 </Form.Group>
 
                 <Form.Select required search fluid label='Country' placeholder='Country' options={COUNTRY_OPTIONS}
