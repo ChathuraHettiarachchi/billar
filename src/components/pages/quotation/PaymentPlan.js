@@ -7,6 +7,7 @@ import {
 import TableHeader from "./TableHeader";
 
 import './Quotation.css'
+import Moment from "react-moment";
 
 function PaymentPlan({onPaymentPlanDataChange, pageType, data, deleted}) {
 
@@ -46,6 +47,10 @@ function PaymentPlan({onPaymentPlanDataChange, pageType, data, deleted}) {
     };
 
     const getTableData = paymentData => {
+
+        let today = new Date();
+        today = ""+today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate();
+
         return paymentData.map((data, index) =>
             <Table.Row key={index}>
                 <Table.Cell>{index + 1}</Table.Cell>
@@ -68,6 +73,7 @@ function PaymentPlan({onPaymentPlanDataChange, pageType, data, deleted}) {
                         onChange={handleReleaseItemChange}
                         style={{height: '35px', width: '100%'}}
                         type='date'
+                        min={today}
                         placeholder='Invoice Date'
                         readOnly={readOnly}
                     />

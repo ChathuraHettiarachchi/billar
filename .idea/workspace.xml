@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="150b1cc0-d2d0-4322-8fd0-3d89c7100349" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/06650c0be7e7e456a76bf80c9584a88b6dcccc26" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/06650c0be7e7e456a76bf80c9584a88b6dcccc26" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a767a377e3e2c46b4c231a90b14ac4d36807434" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a767a377e3e2c46b4c231a90b14ac4d36807434" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1f0e95d61ddba9ad72daad5b3a785b8b0fa18a3a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1f0e95d61ddba9ad72daad5b3a785b8b0fa18a3a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cb8f412f5351d8a56880225d69ee64877a79954" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/c/5cb8f412f5351d8a56880225d69ee64877a79954" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/f/6fa79a60385f1e77cb5e42a928da99a2b4202dd5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/f/6fa79a60385f1e77cb5e42a928da99a2b4202dd5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7ba118fac1b8b015dce71051f88e8520a58d31c9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7ba118fac1b8b015dce71051f88e8520a58d31c9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/5/852039d23b5174777856e37f4ccbc4bd97eb08d9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/5/852039d23b5174777856e37f4ccbc4bd97eb08d9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/4/9460a7e0f62457a113fa1fb864dbb995e903fba6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/4/9460a7e0f62457a113fa1fb864dbb995e903fba6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/7/d7f85d0832f2dd069bf82b516407c1d308b8ed9e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/7/d7f85d0832f2dd069bf82b516407c1d308b8ed9e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fd1c733029efbbab37b1e46fc4fa678cf34428e3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fd1c733029efbbab37b1e46fc4fa678cf34428e3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/Financials.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/Financials.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/PaymentPlan.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepOne.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/QuotCreateStepOne.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/quotation/ReleasePlan.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -143,7 +151,12 @@
       <workItem from="1571992190727" duration="1116000" />
       <workItem from="1571998086263" duration="49000" />
       <workItem from="1572250311702" duration="559000" />
-      <workItem from="1572322401825" duration="6656000" />
+      <workItem from="1572322401825" duration="8963000" />
+      <workItem from="1572409486421" duration="263000" />
+      <workItem from="1572420813657" duration="464000" />
+      <workItem from="1572939196964" duration="4924000" />
+      <workItem from="1573012349083" duration="158000" />
+      <workItem from="1574157961788" duration="155000" />
     </task>
     <servers />
   </component>

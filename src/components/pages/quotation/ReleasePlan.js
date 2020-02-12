@@ -44,6 +44,10 @@ const ReleasePlan = ({onReleasePlanDataChange, pageType, data, deleted}) => {
     };
 
     const getTableData = releaseData => {
+
+        let today = new Date();
+        today = ""+today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate();
+
         return releaseData.map((data, index) =>
             <Table.Row key={index}>
                 <Table.Cell>{index + 1}</Table.Cell>
@@ -67,6 +71,7 @@ const ReleasePlan = ({onReleasePlanDataChange, pageType, data, deleted}) => {
                         style={{height: '35px', width: '100%'}}
                         placeholder='Release Date'
                         type='date'
+                        min={today}
                         readOnly={readOnly}
                     />
                 </Table.Cell>
